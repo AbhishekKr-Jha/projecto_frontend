@@ -1,43 +1,48 @@
 import React from 'react'
+import '../../Items/Underline.css'
 import './Navbar.css'
+import { NavLink } from 'react-router-dom'
 
 export default function Navbar() {
-  return (
-    <>
-    <div className="navContainer">
-<div className=" flex navbarBox ">
-    <div className=" padding navbarFirstBox">
+    return (
+        <>
+            <div className="navContainer">
+                <div className=" flex padding navbarBox ">
+                    <div className=" navbarFirstBox">
+                        <h1><NavLink className='normal-link' to='/'>Projecto</NavLink></h1>
+                    </div>
+                    <div className=" flex  navbarSecondBox">
+                        <div className="  navItems">
+                            <span className='animated-underline'><NavLink className='normal-link' to='/options_page'>email</NavLink></span>
+                        </div>
 
-    <h1>Projecto</h1>
+                        <div className="navItems">
+                            <span className='animated-underline' ><NavLink className='normal-link' to='/contact'>contact</NavLink></span>
+                        </div>
 
-</div>
-<div className=" flex padding navbarSecondBox">
-<div className="navItems">
-    <span>About</span>
-</div>
-
-<div className="navItems">
-    <span>contact</span>
-</div>
-
-{/* <div className="navItems">
+                        {/* <div className="navItems">
     <span></span>
 </div> */}
-</div>
+                    </div>
 
-<div className="  flex padding navbarThirdBox">
-<div className="navItems">
-    <span>SignUp</span>
-</div>
-<div className="navItems">
-    <span>LogIn</span>
-</div>
-</div>
+                    <div className="  flex navbarThirdBox">
+                        <div className="navItems">
+                            <span className='animated-underline'><NavLink className='normal-link' to='/register'>SignUp</NavLink></span>
+                        </div>
+                        <div className="navItems">
+                            <span className='animated-underline'><NavLink className='normal-link' to='/login'> LogIn</NavLink></span>
+                                
+                        </div> 
+                        {/* <div className="navItems">
+                            <span className='animated-underline'><NavLink className='normal-link' to='/explore'>Explore</NavLink></span>
+                        </div> */}
+                    </div>
 
-</div>
-    </div>
-    
-    
-    </>
-  )
+                </div>
+
+            </div>
+
+
+        </>
+    )
 }

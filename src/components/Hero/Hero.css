@@ -1,0 +1,21 @@
+
+.hero-left-section{
+    /* background-color: orange; */
+
+}
+.hero-left-section h4{
+  font-size: 8vmin;
+  text-transform: uppercase;
+}
+.hero-left-section h1{
+  font-size:18vmin ;
+}
+.hero-left-section h2{text-align: end;}
+.hero-right-section{
+    justify-content: flex-start;
+  /* width: 50%; */
+}
+.hero-right-section img{
+width: 65%;
+/* background-color: red; */
+}

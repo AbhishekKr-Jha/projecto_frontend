@@ -1,8 +1,29 @@
-.navbarBox{
+.navContainer{
     width: 100vw;
+    padding: 0 35px;
+    position: fixed;
+    left: 0;
+    top: 0px;
+    background-color: black;
+}
+.navbarBox{
+    width: 100%;
     justify-content: space-between;
+   border-bottom: 2px solid white;
 }
-.navItems span{
+.navItems{
+    padding:10px 10px;
+}
+.navItems {font-size: 1.2rem;}
+.navItems span,h1{
     text-transform: uppercase;
-    font-size: 1.8rem;
+    font-weight: 700;
+    cursor: pointer;
 }
+
+
+@media only screen and (max-width: 950px) {
+   
+
+
+  }

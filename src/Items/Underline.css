@@ -1,0 +1,26 @@
+.animated-underline {
+    position: relative;
+    display: inline-block;
+    text-decoration: none; 
+
+
+    /* Define the underline styles */
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px; /* Adjust the height of the underline as needed */
+        bottom: 0;
+        left: 0;
+        background-color: white; /* Set the underline color */
+        transform: scaleX(0); /* Initial scale to hide the underline */
+        transform-origin: bottom right;
+        transition: transform 0.3s ease; /* Animation duration and easing */
+    }
+
+    /* Add hover effect to the underline */
+    &:hover::before {
+        transform: scaleX(1); /* Scale to 100% width on hover */
+        transform-origin: bottom left;
+    }
+}

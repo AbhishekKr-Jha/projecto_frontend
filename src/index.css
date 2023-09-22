@@ -3,12 +3,13 @@
   padding: 0;
   box-sizing: border-box;
   color: white;
+  background-color: black;
 }
 .flex{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 45px;
+  gap: 36px;
 }
 .flexC{
   display: flex;
@@ -16,30 +17,66 @@
   justify-content: center;
   align-items: center;
 }
+.element-Wrapper{
+  width: 100vw;
+height: 100%;
+padding: 0 25px;
+padding-top: 130px ;
+}
 .paraText{
-  font-size: 1rem;
-  padding: 1rem;
+  font-size: 1.2rem;
+  padding: 0.8rem;
 }
 
-.button{
-  padding: 10px 18px;
-  border-radius: 16px;
-  background-color: rgb(152, 242, 242);
-  transition: all linear 0.3s;
+input{
+  font-weight: 500;
+  font-size: 17px;
+  padding:10px 14px;
+border-radius:12px ;
+  margin: 5px;
+  outline: none;
+ border: 1px solid grey;
+}
+input:not([type="checkbox"]){   width: 300px;margin: 8px 0;}
+
+
+/* .button{
+color: white;
+  border-radius: 35px;
+  width: 99px;
+  padding: 10px;
+  margin-top: 15px;
+  font-weight: 500;
+  border-style: none;
+  transition: all linear 0.7s ease;
 }
 .button:hover{
-padding: 12px 20px;
-transition: padding linear 0.3s ease-in-out;
+ transition: all linear 0.6s ease;
+  padding: 10px 0px;
+  border-radius: 80%;
+  color: black;
+background-color: azure;
+} */
+
+
+.normal-link {
+  text-decoration: none;
+  color: inherit;
 }
 
-.primary-Heading{
 
+.primary-heading{
+  font-size: 8vw; font-weight: 700;
 }
 
-.secondary-Heading{
 
+.box-wrapper{gap: 100px;  height: 100%;}
+
+
+.secondary-heading{
+font-size: 3vw;font-weight: 500;
 }
 
 .padding{
-  padding: 2rem;
+  padding: 0.5rem;
 }

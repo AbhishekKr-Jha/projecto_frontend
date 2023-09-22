@@ -1,0 +1,79 @@
+/* 
+    .emailVerify-Box{
+     height: 100%;
+     gap: 100px;
+    } */
+    .email-left-section{
+        margin-top: -70px;
+        width: 50%;
+        justify-content: flex-end;
+    }
+    .email-left-section img{
+        width:75%;
+    }
+    .email-right-section{
+        width: 50%;
+        padding: 0px 15px;
+    justify-content: flex-start;
+    }
+
+
+
+
+
+
+    .flip-card {
+        background-color: transparent;
+        width: 190px;
+        height: 254px;
+        perspective: 1000px;
+        font-family: sans-serif;
+      }
+      
+      .title {
+        font-size: 1.5em;
+        font-weight: 900;
+        text-align: center;
+        margin: 0;
+        background-color: transparent;
+      }
+      .t2{   background-color: transparent;}
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-card-front, .flip-card-back {
+        
+        box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border: 1px solid white;
+        border-radius: 1rem;
+      }
+      
+      .flip-card-front {
+      background:transparent;
+                color: white;
+      }
+      
+      .flip-card-back {
+       background: linear-gradient(to top,white,grey,white);
+
+        color: white;
+        transform: rotateY(180deg);
+      }
