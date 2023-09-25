@@ -4,7 +4,7 @@ import image from '../Image.svg'
 export default function Hero1() {
   return (
    <>
-   <div className=" element-Wrapper flex hero-Box">
+   <div className=" flex hero-Box">
 <div className=" hero-left-section">
   <h4>Now showcase<br />your projects <br />to everyone easily!</h4>
   <h1 className='animated-underline'>PROJECTO</h1>

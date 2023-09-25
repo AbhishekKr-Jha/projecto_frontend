@@ -7,7 +7,7 @@ import './Contact.css'
 export default function Contact() {
   return (
     <>
-    <div className="element-Wrapper contact-Container">
+    <div className=" flex element-Wrapper contact-Container">
       
         <div className="flex box-wrapper contact-Box">
 <div className=" flex contact-left-section">

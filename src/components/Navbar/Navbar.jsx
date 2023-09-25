@@ -2,6 +2,7 @@ import React from 'react'
 import '../../Items/Underline.css'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom'
+// import Logout from '../../Items/Logout/Logout'
 
 export default function Navbar() {
     return (
@@ -20,22 +21,19 @@ export default function Navbar() {
                             <span className='animated-underline' ><NavLink className='normal-link' to='/contact'>contact</NavLink></span>
                         </div>
 
-                        {/* <div className="navItems">
-    <span></span>
-</div> */}
                     </div>
 
                     <div className="  flex navbarThirdBox">
-                        <div className="navItems">
-                            <span className='animated-underline'><NavLink className='normal-link' to='/register'>SignUp</NavLink></span>
+                        <div className="  navItems">
+                            <span className='animated-underline'><NavLink className='normal-link' to='/options_page'>Explore</NavLink></span>
                         </div>
-                        <div className="navItems">
-                            <span className='animated-underline'><NavLink className='normal-link' to='/login'> LogIn</NavLink></span>
-                                
-                        </div> 
-                        {/* <div className="navItems">
-                            <span className='animated-underline'><NavLink className='normal-link' to='/explore'>Explore</NavLink></span>
+
+{/* <div className="  navItems">
+                            <span >
+                                <Logout/>
+                            </span>
                         </div> */}
+
                     </div>
 
                 </div>

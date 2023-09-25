@@ -1,26 +1,24 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import '../../Items/Cards.css'
 import './Options.css'
 
 export default function Options() {
   return (
    <>
-   <div className="element-Wrapper options-container">
-   <h1 className='mt-5 secondary-heading'>Are you here to?</h1>
-    <div className="flex box-wrapper options-Box">
+   <div className="flexC element-Wrapper options-container">
+   <h1 className=' secondary-heading'>Are you here to?</h1>
+    <div className="flex box-wrapper  options-Box">
 
-
-{/* <div className="flex"> */}
-        <div className="flex  options-left-section">
-
+<div className="flex  options-left-section">
 <div className=" m-5 flip-card"> 
     <div className="flip-card-inner">
         <div className="flip-card-front">
             <h1 className="title">See Projects</h1>
-            {/* <p className="t2">Hover Me</p> */}  
+    
         </div>
         <div className="flip-card-back">
-            <h1 className="title">BACK</h1>
-            {/* <p >Leave Me</p> */}
+            <Link to='/search_email' className=" normal-link title">Click</Link>
         </div>
     </div>
 </div>
@@ -32,13 +30,11 @@ export default function Options() {
         <div className=" m-5 flip-card">
     <div className="flip-card-inner">
         <div className="flip-card-front">
-            <p className="title">Add Projects</p>
-            {/* <p className="t2">Hover Me</p> */}
+            <h1 className="title">Add Projects</h1>
         </div>
         <div className="flip-card-back">
-            <p className="title">SignUp</p>
-            <p className="title">SignIn</p>
-            {/* <p >Leave Me</p> */}
+            <Link to='/Email_Verification' className=" normal-link title ">SignUp</Link>
+            <Link to='/login' className=" normal-link title">SignIn</Link>
         </div>
     </div>
 </div>
@@ -46,7 +42,7 @@ export default function Options() {
 
  
         </div>
-        {/* </div> */}
+      
     </div>
    </div>
    

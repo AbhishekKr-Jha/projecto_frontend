@@ -8,6 +8,8 @@ import Login from './components/Login/Login';
 import Contact from './components/Contact/Contact';
 import EmailVerify from './components/Email_Verify/EmailVerify';
 import Options from './components/Options/Options';
+import EmailSearch from './components/Email_Search/EmailSearch';
+import Otp from './components/Registeration/OTP_Verify/Otp';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="Email_Verification" element={<EmailVerify />} />
           <Route path="options_page" element={<Options />} />
+          <Route path="search_email" element={<EmailSearch/>} />
+          <Route path="otp" element={<Otp/>} />
     </Routes>
   </div>
   </>

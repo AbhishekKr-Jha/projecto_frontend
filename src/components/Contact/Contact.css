@@ -16,6 +16,7 @@ text-align: center;
 }
 
 .contact-right-section textarea{
+    background-color: transparent;
     display: flex;
     align-items: center;
     font-weight: 500;
