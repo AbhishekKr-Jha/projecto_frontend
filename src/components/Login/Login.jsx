@@ -37,19 +37,19 @@ try {
 
   return (
     <>
-    <div className=" flex element-Wrapper login-Container">
-      <ToastContainer/>
-    <div className="flex box-wrapper login-Box">
-        <div className=" flexC login-left-section">
-        <h1 className='primary-heading'>SIGN IN</h1>
+    <div className=" flex element-Wrapper pt-[55px]">
+      {/* <ToastContainer/> */}
+    <div className=" box-wrapper flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]">
+        <div className=" flexC login-left-section mb-[20px]">
+        <h1 className='primary-heading sm:text-[5vw] lg:text-[8vw]'>SIGN IN</h1>
     <div className="paraText">
   New User?<Link  to='/register'>Create an account</Link>
 </div></div>         
-<div className="flex p-5 login-right-section">
+<div className="flex  login-right-section">
 <form onSubmit={submit_login} >
-<div className=" flexC ">
-<input  onChange={get_Data} value={loginForm_data.email} type="email"  id="email" name="email" placeholder="E-mail address" required autocomplete="off"/>
-<input onChange={get_Data} value={loginForm_data.pw} type="password"  id="pw" name="pw" placeholder="Password" required />
+<div className=" flexC  ">
+<input className=' input md:w-[400px] mb-2 '  onChange={get_Data} value={loginForm_data.email} type="email"  id="email" name="email" placeholder="E-mail address" required autocomplete="off"/>
+<input className=' input md:w-[400px] mb-2 '  onChange={get_Data} value={loginForm_data.pw} type="password"  id="pw" name="pw" placeholder="Password" required />
 
 <button type="submit"  className='button'>SignIn</button>
 

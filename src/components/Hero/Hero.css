@@ -3,10 +3,11 @@
     /* background-color: orange; */
 
 }
-.hero-left-section h4{
+.hero-Box{   }
+/* .hero-left-section h4{
   font-size: 8vmin;
-  text-transform: uppercase;
-}
+
+} */
 .hero-left-section h1{
   font-size:18vmin ;
 }
@@ -16,6 +17,7 @@
   /* width: 50%; */
 }
 .hero-right-section img{
+  margin-top: -10px;
 width: 65%;
 /* background-color: red; */
 }

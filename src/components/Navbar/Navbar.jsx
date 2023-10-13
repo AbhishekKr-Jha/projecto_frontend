@@ -10,11 +10,17 @@ export default function Navbar() {
             <div className="navContainer">
                 <div className=" flex padding navbarBox ">
                     <div className=" navbarFirstBox">
-                        <h1><NavLink className='normal-link' to='/'>Projecto</NavLink></h1>
+                        <h1 className='text-4xl'><NavLink className='normal-link' to='/'>Projecto</NavLink></h1>
                     </div>
                     <div className=" flex  navbarSecondBox">
                         <div className="  navItems">
-                            <span className='animated-underline'><NavLink className='normal-link' to='/options_page'>email</NavLink></span>
+                            <span className='animated-underline'><NavLink className='normal-link' to='/register'>email</NavLink></span>
+                        </div>
+
+                        <div className="  navItems px-1 py-0 ">
+                            <div className="border-solid border-2 border-white  rounded-[100%]  ">
+                            <i className="  text-4xl ri-account-circle-fill  "></i>
+                            </div>
                         </div>
 
                         <div className="navItems">

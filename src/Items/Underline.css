@@ -3,9 +3,9 @@
     display: inline-block;
     text-decoration: none; 
 
-
+}
     /* Define the underline styles */
-    &:before {
+    .animated-underline:before {
         content: '';
         position: absolute;
         width: 100%;
@@ -19,8 +19,7 @@
     }
 
     /* Add hover effect to the underline */
-    &:hover::before {
+    .animated-underline:hover::before {
         transform: scaleX(1); /* Scale to 100% width on hover */
         transform-origin: bottom left;
     }
-}

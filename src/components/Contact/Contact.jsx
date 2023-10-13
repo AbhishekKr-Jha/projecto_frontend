@@ -17,7 +17,7 @@ export default function Contact() {
      {/* <h1>Connect with Us</h1>  */}
 <form >
 <div className=" flexC ">
-<input  type="email"  id="email" name="email" placeholder="E-mail address"  autocomplete="off"/>
+<input className='input md:w-[400px]' type="email"  id="email" name="email" placeholder="E-mail address"  autocomplete="off"/>
 <textarea  type="text"  id="message"  name="message" placeholder="Your message"  />
 <button type="submit" className='button'>Send</button> 
 </div>

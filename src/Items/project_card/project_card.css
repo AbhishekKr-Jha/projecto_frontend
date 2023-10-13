@@ -1,0 +1,43 @@
+.project-card {
+    
+    background: transparent;
+    display: flex;
+    flex-direction:column;
+    gap: 15px;
+    padding: 5px;
+  }
+  
+  .project-card p {
+
+padding: 25px;
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .5s;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 12px;
+    display: flex;
+     flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .project-card p:hover {
+flex: 4;
+    color:grey;
+  }
+  
+  .project-card p span {
+
+    text-align: center;
+    transition: all .5s;
+    text-transform: uppercase;
+    color:white;
+    letter-spacing: .1em;
+  }
+  
+  .project-card p:hover span {
+    transform: rotate(0);
+  }
