@@ -1,14 +1,29 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { success,fail } from '../../Items/Toastify'
+import { login_function } from '../Services/Apis'
+import { useSelector,useDispatch } from 'react-redux';
+import {login} from '../../Redux/loginSlice'
 import '../../Items/Button/Button.css'
 import './Login.css'
-import { login_function } from '../Services/Apis'
+
 
 
 export default function Login() {
 const navigate=useNavigate()
+const isLogin=useSelector(state=>state.login.isLogin)
+const dispatch=useDispatch()
+
+useEffect(() => {
+  const userLogin=JSON.parse(localStorage.getItem("userData"))
+  if(userLogin){
+  console.log(userLogin)
+dispatch(login())
+  console.log("ok")
+  }
+},[])
+
 
 
 const [loginForm_data,setloginForm_data]=useState({email:"",pw:""})
@@ -26,6 +41,8 @@ try {
   console.log(data)
   if (data.success){
     console.log(data.message);success(data.message)
+    const saveUserData=localStorage.setItem("userData",JSON.stringify(data.loginDetails))
+    dispatch(login())
     navigate('/')
   }
   else{   console.log(data.message);

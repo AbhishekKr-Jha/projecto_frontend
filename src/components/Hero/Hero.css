@@ -4,15 +4,15 @@
 
 }
 .hero-Box{   }
-/* .hero-left-section h4{
+.hero-left-section h4{
   font-size: 8vmin;
 
-} */
+}
 .hero-left-section h1{
   font-size:18vmin ;
 }
 .hero-left-section h2{text-align: end;}
-.hero-right-section{
+.hero-right-section{ 
     justify-content: flex-start;
   /* width: 50%; */
 }

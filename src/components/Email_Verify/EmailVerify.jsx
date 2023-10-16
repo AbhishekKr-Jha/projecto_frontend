@@ -40,17 +40,17 @@ const send_otp=async(e)=>{
   return (
    <>
      {/* <ToastContainer/> */}
-   <div className="flex element-Wrapper pt-[25px]    bg-green-700 ">
+   <div className="flex element-Wrapper pt-[25px]     ">
   
-   {loader?<Loader text="Email" />: <div className=" flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]  bg-gray-800">
-    <div className="  bg-green-900   email-left-section  ">
+   {loader?<Loader text="Email" />: <div className=" flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]  ">
+    <div className="    email-left-section  ">
     <img className='w-[45vw] sm:w-[32vw] md:w-[32vw] lg:w-[450px]' src={email_image} alt="loading..."  /> 
 </div>
-<div className="flexC email-right-section  bg-red-900 ">
+<div className="flexC email-right-section  ">
      <h1 className='text-[7vw] sm:text-[30px] md:text-[50px] lg:text-[46px] ' style={{margin:"50px 0"}}>Email Verification</h1> 
 <form onSubmit={send_otp} >
 <div className=" flexC ">
-<input className='input md:w-[400px] bg-green-900' onChange={get_Data} value={email.email} type="email"  id="email" name="email" placeholder="please Enter your E-mail"  autoComplete="off"/>
+<input className='input md:w-[400px] ' onChange={get_Data} value={email.email} type="email"  id="email" name="email" placeholder="please Enter your E-mail"  autoComplete="off"/>
 <button type="submit"  className='button '>Send</button> 
 </div> 
 </form>

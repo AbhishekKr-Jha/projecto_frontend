@@ -2,9 +2,20 @@ import React from 'react'
 import '../../Items/Underline.css'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom'
-// import Logout from '../../Items/Logout/Logout'
+import {useSelector,useDispatch} from 'react-redux'
+import{logout} from '../../Redux/loginSlice'
+import Logout from '../../Items/Logout/Logout'
 
 export default function Navbar() {
+    const isLogin=useSelector(state=>state.login.isLogin)
+    const dispatch=useDispatch()
+
+const logoutBtn=()=>{
+    console.log("button clicked")
+    localStorage.removeItem("userData");
+    dispatch(logout())
+}
+
     return (
         <>
             <div className="navContainer">
@@ -16,12 +27,11 @@ export default function Navbar() {
                         <div className="  navItems">
                             <span className='animated-underline'><NavLink className='normal-link' to='/register'>email</NavLink></span>
                         </div>
-
-                        <div className="  navItems px-1 py-0 ">
+{  isLogin && <div className="  navItems px-1 py-0 ">
                             <div className="border-solid border-2 border-white  rounded-[100%]  ">
-                            <i className="  text-4xl ri-account-circle-fill  "></i>
+                          <NavLink to='user_profile'><i className="  text-4xl ri-account-circle-fill  "></i></NavLink>  
                             </div>
-                        </div>
+                        </div>   }
 
                         <div className="navItems">
                             <span className='animated-underline' ><NavLink className='normal-link' to='/contact'>contact</NavLink></span>
@@ -34,11 +44,7 @@ export default function Navbar() {
                             <span className='animated-underline'><NavLink className='normal-link' to='/options_page'>Explore</NavLink></span>
                         </div>
 
-{/* <div className="  navItems">
-                            <span >
-                                <Logout/>
-                            </span>
-                        </div> */}
+{ isLogin &&    <div className="navItems"><span onClick={logoutBtn} ><Logout /></span></div>}
 
                     </div>
 

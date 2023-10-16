@@ -5,10 +5,10 @@ import ContactBox from '../../../Items/Contat_Box/ContactBox'
 export default function UserProfile() {
     return (
         <>
-            <div className="element-Wrapper pt-[55px] w-[100vw] bg-red-700">
+            <div className="element-Wrapper pt-[55px] w-[100vw]">
                 <div className="flexC  space-y-3 h-[100%] mt-5 md:flex-row md:justify-around">
                     {/* todo_____ left section */}
-                    <div className=" flexC h-[100%] bg-slate-600">
+                    <div className=" flexC h-[100%] ">
                         <div className="overflow-hidden p-[5px] w-[40vw] max-w-[150px] rounded-full border-2 border-solid border-white sm:w-[34vw] md:w-[150px] ">
                             <img className='w-[100%] rounded-full' src="https://sg-res.9appsdownloading.com/sg/res/jpg/7d/61/e93e5eb2a71a82e81dbe1fb3267e-4a3e.jpg?x-oss-process=style/hq" alt="loading..." />
                         </div>
@@ -32,7 +32,7 @@ export default function UserProfile() {
                         <div className="flex flex-wrap border-solid border-white border-[1px] rounded-[12px] p-2">
                             <div className="flex m-2 ">
                                 <p className='text-[5.4vw] sm:text-xl  '>Password</p>
-                                <p className=' text-4xl my-auto bg-slate-700'>............</p>
+                                <p className=' text-4xl my-auto'>............</p>
                             </div>
                             <button className="edit-button mb-3   ">
                                 <svg className="edit-svgIcon" viewBox="0 0 512 512">
@@ -48,7 +48,7 @@ export default function UserProfile() {
                     </div>
 
                     {/* todo ______right section */}
-                    <div className="flexC bg-red-500">
+                    <div className="flexC">
 
 
                         <div className="mt-3 flex  border-solid border-white border-[1px] rounded-[12px] p-2">

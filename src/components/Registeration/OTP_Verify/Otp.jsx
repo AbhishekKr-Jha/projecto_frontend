@@ -15,9 +15,10 @@ export default function Otp() {
 
 const [loader,setloader]=useState(false)
   const [Otp_detail, setOtp_detail] = useState({ email: location.state, otp: "" })
-  console.log("mbmb")
+
   const get_Data = (e) => {
-    setOtp_detail({ ...Otp_detail, otp: e.target.value });
+    let value=e.target.value 
+    setOtp_detail({ ...Otp_detail, otp: value });
     console.log(Otp_detail)
   }
   console.log(Otp_detail)
@@ -26,16 +27,12 @@ const [loader,setloader]=useState(false)
     setloader(true)
     try {
       const { data } = await verifyOTP_function(Otp_detail)
-
       console.log(data)
       setTimeout(() => {
         setloader(false)
         if (data.success) {
-         
           console.log(data.message);
-          
           navigate('/register', { state: email })
-         
         }
         else {
           console.log(data.message);
@@ -54,7 +51,7 @@ const [loader,setloader]=useState(false)
 
           <form onSubmit={submit_data} >
             <div className="flexC">
-              <input type="text" onChange={get_Data} name="otp" value={Otp_detail.otp} placeholder="please Enter your OTP" autoComplete="off" />
+              <input className='input input md:w-[400px]' type="text" onChange={get_Data} name="otp" value={Otp_detail.otp} placeholder="please Enter your OTP" autoComplete="off" />
               <button type="submit" className='button'>Send</button>
             </div>
           </form>
