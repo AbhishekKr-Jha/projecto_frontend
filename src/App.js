@@ -15,7 +15,8 @@ import UserHome from './components/User_pages/After_login/UserHome';
 import UserProfile from './components/User_pages/After_login/UserProfile';
 import {useDispatch } from 'react-redux';
 import {login} from './Redux/loginSlice'
-import RadialMenu from './Items/RadialMenu/RadialMenu';
+import ProjectCard from './Items/project_card/ProjectCard';
+// import RadialMenu from './Items/RadialMenu/RadialMenu';
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
   return (
   <>
   <div className="app">
-    <RadialMenu/>
+    {/* <RadialMenu/> */}
     <Navbar/>
     <Routes>
     <Route path="/" element={<Hero />} />
@@ -46,6 +47,7 @@ function App() {
           <Route path="otp" element={<Otp/>} />
           <Route path="user_home" element={<UserHome/>} />
           <Route path="add_project" element={<AddProject/>} />
+          <Route path="project_card" element={<ProjectCard/>} />
           <Route path="user_profile" element={<UserProfile/>} />
     </Routes>
   </div>

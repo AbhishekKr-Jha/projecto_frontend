@@ -25,7 +25,7 @@ const logoutBtn=()=>{
                     </div>
                     <div className=" flex  navbarSecondBox">
                         <div className="  navItems">
-                            <span className='animated-underline'><NavLink className='normal-link' to='/register'>email</NavLink></span>
+                            <span className='animated-underline'><NavLink className='normal-link' to='/project_card'>email</NavLink></span>
                         </div>
 {  isLogin && <div className="  navItems px-1 py-0 ">
                             <div className="border-solid border-2 border-white  rounded-[100%]  ">
@@ -34,7 +34,7 @@ const logoutBtn=()=>{
                         </div>   }
 
                         <div className="navItems">
-                            <span className='animated-underline' ><NavLink className='normal-link' to='/contact'>contact</NavLink></span>
+                            <span className='animated-underline' ><NavLink className='normal-link' to='/user_home'>contact</NavLink></span>
                         </div>
 
                     </div>

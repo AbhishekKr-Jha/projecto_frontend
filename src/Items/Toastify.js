@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const success=(text)=>toast.success(text, {
         position: "top-center",
+        width:"50px", 
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,

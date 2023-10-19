@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
-import { ToastContainer } from 'react-toastify';
-import { success,fail } from '../../Items/Toastify'
+// import { ToastContainer } from 'react-toastify';
+// import { success,fail } from '../../Items/Toastify'
 import { login_function } from '../Services/Apis'
-import { useSelector,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {login} from '../../Redux/loginSlice'
 import '../../Items/Button/Button.css'
 import './Login.css'
@@ -12,7 +12,7 @@ import './Login.css'
 
 export default function Login() {
 const navigate=useNavigate()
-const isLogin=useSelector(state=>state.login.isLogin)
+// const isLogin=useSelector(state=>state.login.isLogin)
 const dispatch=useDispatch()
 
 useEffect(() => {
@@ -22,7 +22,7 @@ useEffect(() => {
 dispatch(login())
   console.log("ok")
   }
-},[])
+})
 
 
 
@@ -40,13 +40,15 @@ try {
   const {data}=await login_function(loginForm_data) 
   console.log(data)
   if (data.success){
-    console.log(data.message);success(data.message)
-    const saveUserData=localStorage.setItem("userData",JSON.stringify(data.loginDetails))
+    console.log(data.message);
+    // success(data.message)
+    localStorage.setItem("userData",JSON.stringify(data.loginDetails))
     dispatch(login())
     navigate('/')
   }
   else{   console.log(data.message);
-         fail(data.message)    }
+        //  fail(data.message)
+            }
 } catch (error) {
   console.log(error)  }
 }

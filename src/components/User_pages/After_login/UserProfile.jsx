@@ -1,11 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../../Items/Button/Edit_Btn.css'
-import ContactBox from '../../../Items/Contat_Box/ContactBox'
+// import ContactBox from '../../../Items/Contat_Box/ContactBox'
+import { NavLink } from 'react-router-dom'
+// import ProjectCard from '../../../Items/project_card/ProjectCard'
+import { changePassword_function } from '../../Services/Apis'
+import { success } from '../../../Items/Toastify'
+import {  ToastContainer } from 'react-toastify'
+import {IconButton} from '@mui/material'
+
 
 export default function UserProfile() {
+
+    const [new_password,setnew_password]=useState({pw:"",cpw:"",user:JSON.parse(localStorage.getItem('userData')).id})
+
+    const edit_password=()=>{ success("ghklo");document.getElementById('edit-password-field').style.display="flex"; document.getElementById('password-field').style.display="none"}
+
+const new_password_data=(e)=>{
+    const value=e.target.value
+setnew_password({...new_password,[e.target.name]:value})
+console.log(new_password)
+}
+    const change_password=async(e)=>{
+        e.preventDefault()
+        success("ghklo")
+        console.log(new_password.user)
+        if(new_password.pw===new_password.cpw){
+try {
+   
+    const {data}=await changePassword_function({user:new_password.user,new_password:new_password.pw})
+    if(data.success){
+        document.getElementById('edit-password-field').style.display="none"; document.getElementById('password-field').style.display="flex"
+        console.log(data.message)
+      
+        success("hello")
+    }
+    else{
+        console.log(data.message)
+    }
+
+} catch (error) {
+    console.log(error)
+}
+} 
+else{
+    console.log("password and confirm password does not match")
+} 
+    }
+
+
+
     return (
         <>
             <div className="element-Wrapper pt-[55px] w-[100vw]">
+                <ToastContainer/>
                 <div className="flexC  space-y-3 h-[100%] mt-5 md:flex-row md:justify-around">
                     {/* todo_____ left section */}
                     <div className=" flexC h-[100%] ">
@@ -31,20 +78,31 @@ export default function UserProfile() {
                         {/*________________---- password box */}
                         <div className="flex flex-wrap border-solid border-white border-[1px] rounded-[12px] p-2">
                             <div className="flex m-2 ">
+                                <div className="flex " id='password-field'>
                                 <p className='text-[5.4vw] sm:text-xl  '>Password</p>
                                 <p className=' text-4xl my-auto'>............</p>
-                            </div>
-                            <button className="edit-button mb-3   ">
+                                <button className="edit-button mb-3 " onClick={edit_password}>
                                 <svg className="edit-svgIcon" viewBox="0 0 512 512">
                                     <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
                                 </svg>
                             </button>
+                                </div>
+                                <form className="flexC hidden" onSubmit={change_password} id='edit-password-field' >
+                                <input className=' input w-[85vw]  sm:w-[300px] ' onChange={new_password_data} value={new_password.pw}  type="password"  id="pw" name="pw" placeholder="Password" required />
+<input className=' input w-[85vw]  sm:w-[300px]' onChange={new_password_data}  value={new_password.cpw} type="text"  id="cpw" name="cpw" placeholder="Confirm Password" required />
+<div className="flex">
+<button type="submit" className='button'>Save</button>
+<IconButton onClick={()=>{document.getElementById('edit-password-field').style.display="none"; document.getElementById('password-field').style.display="flex"}}><i class="ri-close-line"></i></IconButton> 
+</div>
+                                </form>
+                            </div>
+                           
                         </div>
                     </div>
 
                     {/* _______contact box_________ */}
                     <div className="flex mt-[40px]">
-                        <ContactBox />
+                        {/* <ContactBox /> */}
                     </div>
 
                     {/* todo ______right section */}
@@ -58,7 +116,7 @@ export default function UserProfile() {
                             </div>
                         </div>
 
-
+<NavLink to='/add_project' className='m-7'>add project</NavLink>
 
                     </div>
 

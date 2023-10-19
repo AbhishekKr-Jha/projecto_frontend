@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 export default function UserHome() {
   return (
  <>
-<div className="element-Wrapper pt-[55px] w-[100vw] ">
-<div className="flexC  space-y-3 h-[100%] mt-[100px]">
+<div className="element-Wrapper pt-[55px]  ">
+<div className="flexC  space-y-3 h-[100%] mt-[100px] ">
 <p className='text-xl mt-6'>abhishekhp935@gmail.com</p>
 <p className='text-xl  mt-5' >Projects</p>
 
@@ -22,7 +22,10 @@ export default function UserHome() {
 </button></Link>
 <p className='text-xl'>Add Projects</p>
 </div>
-<div className="">
+<div className="flexC space-y-2">
+<ProjectCard/>
+<ProjectCard/>
+<ProjectCard/>
 <ProjectCard/>
 </div>          
 

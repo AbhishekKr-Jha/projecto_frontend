@@ -3,7 +3,7 @@ import './Registeration.css'
 import { register_function } from '../Services/Apis'
 import {Link,useLocation,useNavigate} from 'react-router-dom'
 import { success,fail } from '../../Items/Toastify'
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
 
 export default function Registeration() {
 const location=useLocation()

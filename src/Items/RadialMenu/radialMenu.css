@@ -7,13 +7,16 @@
  
 /* generic styles for button & circular menu */
 .ctrl {
+display: none;
+	overflow: hidden;
 	position: absolute;
 	top: 200px; left:20px;
 	font: 1.5em/1.13 Verdana, sans-serif;
 	transition: .5s;
+	
 }
 
-/* generic link styles */
+
 a.ctrl, .ctrl div {
 	display: block;
 	opacity: .56;
@@ -24,6 +27,7 @@ a.ctrl, .ctrl div {
 	text-shadow: 0 -1px dimgrey;
   cursor: pointer;
 }
+
 a.ctrl:hover, .ctrl div:hover, a.ctrl:focus { opacity: 1; }
 a.ctrl:focus { outline: none; }
 .button {
@@ -34,7 +38,7 @@ a.ctrl:focus { outline: none; }
 	box-shadow: 0 0 3px 1px white;
 }
 
-/* circular menu */
+
 .tip {
 	z-index: 1;
 	/**outline: dotted 1px white;/**/
@@ -100,7 +104,7 @@ a.ctrl:focus { outline: none; }
 	top: 32%; left: 32%;
 	width: 136%; height: 136%;
 	border-radius: 50%;
-	/* "unskew" = skew by minus the same angle by which parent was skewed */
+
 	transform: skewY(-60deg);
 	content: '';
 }
