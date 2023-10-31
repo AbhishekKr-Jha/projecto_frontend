@@ -7,7 +7,7 @@ export default function Options() {
   return (
    <>
    <div className="flexC element-Wrapper  pt-[55px]  ">
-   <h1 className=' text-[7vw] sm:text-[30px] md:text-[50px] lg:text-[46px] '>Are you here to?</h1>
+   <h1 className='mt-10 sm:mt-0  text-[7vw] sm:text-[30px] md:text-[50px] lg:text-[46px] '>Are you here to?</h1>
     <div className="flexC  options-Box md:flex-row h-[100%]">
 
 <div className="flex  options-left-section ">

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './radialMenu.css'
+// import './radialMenu.css'
 
 
 export default function RadialMenu() {
@@ -14,8 +14,8 @@ export default function RadialMenu() {
 
   return (
   <>
-  
-{/* <a class='button ctrl'  id='radial-menu-bar'  href='#' tabindex='1'>.</a>                                                       */}
+  <div className="radial-box">
+<a class='button ctrl'  id='radial-menu-bar'  href='#' tabindex='1'>.</a>                                                      
 <ul class='tip ctrl '>
 	<li class='slice'><div ><i class="ri-account-circle-line"></i></div></li>
 	<li class='slice'><div><i class="ri-add-line"></i></div></li>
@@ -23,7 +23,7 @@ export default function RadialMenu() {
 	<li class='slice '><div><i class="ri-eye-line"></i></div></li>
 	<li class='slice'><div><i class="ri-login-box-line"></i></div></li>
 </ul>
-
+</div>
   
   </> 
   )

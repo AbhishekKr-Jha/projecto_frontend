@@ -1,19 +1,31 @@
-
-/* body {
+/* 
+body {
 
   position: relative;
 	background: slategray url(http://theearlcarlson.com/experiments/amTooltip/img/bg.jpg) 50% no-repeat;
 } */
  
 /* generic styles for button & circular menu */
+.radial-box{
+	/* background: rgba(255, 255, 255, 0.522);
+	filter: blur(130px);
+	border-radius: 300px; */
+	/* width: max-content;
+	background: rgba(255, 255, 255, 0.522);
+	filter: blur(30px); */
+}
+
+
 .ctrl {
-display: none;
 	overflow: hidden;
 	position: absolute;
 	top: 200px; left:20px;
 	font: 1.5em/1.13 Verdana, sans-serif;
 	transition: .5s;
-	
+	/* background: rgba(255, 255, 255, 0.522);
+	filter: blur();
+	border-radius: 300px; */
+	/* background-color: red; */
 }
 
 
@@ -87,7 +99,7 @@ a.ctrl:focus { outline: none; }
 .slice {
 	overflow: hidden;
 	position: absolute;
-	/**outline: dotted 1px yellow;/**/
+	/* outline: dotted 1px yellow; */
 	width: 50%; height: 50%;
 	transform-origin: 100% 100%;
 }

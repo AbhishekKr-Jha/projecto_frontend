@@ -1,8 +1,8 @@
 .project-card {
   width: max-content;
   height: max-content;
-  padding: 10px;
-  background:black;
+  padding: 12px 6px;
+  /* background:red; */
   position: relative;
   display: grid;
   place-content: center;
@@ -10,8 +10,6 @@
   overflow: hidden;
   transition: all 0.5s ease-in-out;
 }
-
-
 
 .border {
   position: absolute;
@@ -41,16 +39,10 @@
   transition: all 0.5s ease-in-out;
 }
 
-
-
-
-
-
 .project-card:hover {
   border-radius: 0;
   transform: scale(1.1);
 }
-
 
 .project-card:hover .border {
   inset: 15px;
@@ -64,14 +56,10 @@
   transform: translateX(-50%);
 }
 
-
-
-
-
 .card1 {
   position: relative;
   /* width: 350px; */
-  width: 90VW;
+  width: 90vw;
   height: 180px;
   max-width: 600px;
   box-sizing: border-box;
@@ -82,21 +70,20 @@
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 3px 13px;
   transition: all ease-in-out 0.8s;
   overflow: hidden;
 }
 
 .card1:hover {
-
-  border: 1px solid #bd9f67;
+  border: 2px solid #bd9f67;
 }
 
 .card-title {
   margin: 0;
   font-size: 18px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 600;
   color: #fff;
   cursor: default;
@@ -106,7 +93,7 @@
   margin: 0;
   font-size: 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 600;
   color: #fff;
   -webkit-box-orient: vertical;
@@ -124,7 +111,7 @@
   margin: 0;
   font-size: 14px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 400;
   color: #fff;
   right: 20px;
@@ -159,3 +146,11 @@
 /* .project-card-icons{   transition: all linear 3s ease-in-out;
   transform: scale(0);   }
 .project-card:hover + .project-card-icons{transform: scale(1.1);} */
+
+#commentInput:focus ~ #commentButton {
+  display: block;
+}
+
+#commentButton {
+  display: none;
+}

@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
-// import { ToastContainer } from 'react-toastify';
-// import { success,fail } from '../../Items/Toastify'
 import { login_function } from '../Services/Apis'
 import { useDispatch } from 'react-redux';
 import {login} from '../../Redux/loginSlice'
 import '../../Items/Button/Button.css'
 import './Login.css'
+import  { Toaster } from 'react-hot-toast';
+import { success,fail } from '../../Items/Toastify'; 
 
 
 
@@ -41,14 +41,14 @@ try {
   console.log(data)
   if (data.success){
     console.log(data.message);
-    // success(data.message)
+    success(data.message)
     localStorage.setItem("userData",JSON.stringify(data.loginDetails))
     dispatch(login())
     navigate('/')
   }
   else{   console.log(data.message);
-        //  fail(data.message)
-            }
+         fail(data.message)
+            } 
 } catch (error) {
   console.log(error)  }
 }
@@ -56,6 +56,7 @@ try {
 
   return (
     <>
+    <div className="fixed"><Toaster  position="bottom-right" /></div>
     <div className=" flex element-Wrapper pt-[55px]">
       {/* <ToastContainer/> */}
     <div className=" box-wrapper flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]">
@@ -68,7 +69,7 @@ try {
 <form onSubmit={submit_login} >
 <div className=" flexC  ">
 <input className=' input md:w-[400px] mb-2 '  onChange={get_Data} value={loginForm_data.email} type="email"  id="email" name="email" placeholder="E-mail address" required autocomplete="off"/>
-<input className=' input md:w-[400px] mb-2 '  onChange={get_Data} value={loginForm_data.pw} type="password"  id="pw" name="pw" placeholder="Password" required />
+<input className=' input md:w-[400px] mb-2 '  onChange={get_Data} value={loginForm_data.pw} type="password"  id="pw" name="pw" placeholder="Password" />
 
 <button type="submit"  className='button'>SignIn</button>
 

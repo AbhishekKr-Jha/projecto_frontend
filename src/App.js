@@ -16,6 +16,9 @@ import UserProfile from './components/User_pages/After_login/UserProfile';
 import {useDispatch } from 'react-redux';
 import {login} from './Redux/loginSlice'
 import ProjectCard from './Items/project_card/ProjectCard';
+import Modals from 'react-responsive-modal';
+import SearchResult from './components/SearchResult/SearchResult';
+import NewMenu from './Items/NewMenu/NewMenu';
 // import RadialMenu from './Items/RadialMenu/RadialMenu';
 
 
@@ -25,9 +28,9 @@ function App() {
   useEffect(() => {
     const userLogin=localStorage.getItem("userData")
     if(userLogin){
-    console.log(userLogin)
+    // console.log(userLogin)
   dispatch(login())
-    console.log("ok")
+    // console.log("ok")
     }
   })
 
@@ -35,6 +38,7 @@ function App() {
   <>
   <div className="app">
     {/* <RadialMenu/> */}
+    <NewMenu/>
     <Navbar/>
     <Routes>
     <Route path="/" element={<Hero />} />
@@ -46,14 +50,17 @@ function App() {
           <Route path="search_email" element={<EmailSearch/>} />
           <Route path="otp" element={<Otp/>} />
           <Route path="user_home" element={<UserHome/>} />
-          <Route path="add_project" element={<AddProject/>} />
+          <Route path='add_project' element={<AddProject/>} />
+          <Route path='update_project' element={<AddProject/>} />
           <Route path="project_card" element={<ProjectCard/>} />
           <Route path="user_profile" element={<UserProfile/>} />
+          <Route path="modals" element={<Modals/>} />
+          <Route path="search_result" element={<SearchResult/>} />
     </Routes>
-  </div>
+  </div> 
   </>
   );
-}
+} 
 export default App;
 
 
