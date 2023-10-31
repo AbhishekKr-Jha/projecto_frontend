@@ -5,6 +5,7 @@
   width: 100vw;
   background-color: black;
 } 
+.active{background: red;}
 @import 'tailwindcss/utilities';
 
 

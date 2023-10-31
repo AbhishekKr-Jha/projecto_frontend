@@ -2,11 +2,8 @@
 .menu {
     position: fixed;
     left: -22px;
-    /* background: grey; */
-    /* width: 3em;
-    height: 3em; */
     width: 40px;
-    height: 20px;
+    /* height: 20px; */
     border-radius: 5em;
     margin: auto;
     margin-top: 25vh;
@@ -14,6 +11,7 @@
     cursor: pointer;
     margin-right:20px ;
     border: 20px solid grey;
+    z-index: 9909;
   }
  
   .menu ul {
@@ -21,32 +19,26 @@
  display: flex;
  flex-direction: column;
 align-items: flex-end;
-    /* background-color: red; */
     list-style: none;
     padding: 0; 
     margin-top: -60px;
-    /* margin-left: 25px; */
     width: 230px;
     z-index: 9999;
     transform: scale(0);
-    /* background-color: red; */
   }
   .menu li {
     color: white;
     text-decoration: none;
     width: 130px;
     height: 35px;
-    /* padding: 0.2em; */
-    /* margin-top: -5px; */
-    /* margin-top: 0.2em; */
     text-align: center;
     margin: 12px;
     padding: 8px;
-    /* border-top-right-radius: 0.5em;
-    border-bottom-right-radius: 0.5em; */
-    transition: all 1s ease-in-out;
-    background: grey;
-    border: 2px solid white;
+/*   
+    background: grey; */
+    /* border: 2px solid white; */
+    background-color: grey;
+    border: 1px solid white;
     opacity: 0;
     z-index: -1;
     display: flex;
@@ -55,45 +47,30 @@ align-items: flex-end;
     border-radius: 15px;
     margin-right: -1px;
     transform: scale(0);
+    transition: all  0.3s ease-in-out;
   }
   .menu:hover{ border: 20px solid white;}
   .menu:hover li {
     opacity: 1;
   }
-
-  /* .menu:hover ul::before {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 0;
-    display: block;
-    left: 50%;
-    top: -5.0em;
-    border-width: 15px;
-    border-radius: 0 7.5em 7.5em 0;
-    border-left: 0;
-    border-style: solid;
-    border-color: rgba(0,0,0,0.01);
-    z-index: -1;
-    cursor: default;
-  } */
-  .menu a {
-    /* line-height: 1.5em; */
-  }
+ 
   .menu ul {
-    transform: rotate(180deg) translateY(-2em);
     margin-left: -235px;
-    transition: 0.1s all ease-in-out;
+    transition:all 0.6s  ease-in-out;
   }
   .menu:hover ul {
-    transform: rotate(0deg) translateY(-1em);
+    margin-top: -50px;
     margin-left: -25px;
     transform: scale(1.1);
   }
-  .menu:hover li{  transform: scale(1.1);  } 
+  .menu:hover li{  transform: scale(1);  } 
   .menu li:hover {
-    background: #cd3e3d;
+    /* background: #cd3e3d; */
     z-index: 10;
+    transform: scale(1.2);
+    background: black;
+    border: none;
+    border-radius:0px;
   }
   
   /* .menu li:nth-of-type(1) {

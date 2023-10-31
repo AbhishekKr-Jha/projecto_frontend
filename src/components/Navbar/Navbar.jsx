@@ -38,7 +38,7 @@ export default function Navbar() {
               </span>
             </div>
             {isLogin && (
-              <div className="  navItems px-1 py-0 hidden lg:block">
+              <div className="  navItems px-1 py-0 hidden md:block">
                 <div className="border-solid border-2 border-white  rounded-[100%]  ">
                   <NavLink to="user_profile">
                     <i className=" text-4xl ri-account-circle-fill "></i>

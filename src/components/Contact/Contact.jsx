@@ -1,36 +1,43 @@
-import React from 'react'
+import React from "react";
 // import contact_image from './contact_image.svg'
-import i1 from './i1.svg'
-import './Contact.css'
-
+import i1 from "./i1.svg";
+import "./Contact.css";
 
 export default function Contact() {
   return (
     <>
-    <div className=" flex element-Wrapper contact-Container">
-      
-        <div className="flex box-wrapper contact-Box">
-<div className=" flex contact-left-section">
-    <img src={i1} alt="loading..."  /> 
-</div>
-<div className="flex contact-right-section">
-     {/* <h1>Connect with Us</h1>  */}
-<form >
-<div className=" flexC ">
-<input className='input md:w-[400px]' type="email"  id="email" name="email" placeholder="E-mail address"  autocomplete="off"/>
-<textarea  type="text"  id="message"  name="message" placeholder="Your message"  />
-<button type="submit" className='button'>Send</button> 
-</div>
-</form>
-
- 
-
-</div>
+      <div className=" flexC element-Wrapper pt-[50px] ">
+        <div className="flexC lg:flex-row lg:flex lg:space-x-12">
+          <div className=" flexC  mt-[5vw] md:m-0"> 
+          <div className="border-solid border-l-8  rounded-full ">
+            <img className="my-3 w-[55vw] md:w-[38vw] lg:w-[360px]"  src={i1} alt="loading..." /></div>
+            <h3 className="text-center mt-2 text-base md:text-lg font-medium lg:text-xl">Need Help? <br/>PROJECTO is here</h3>
+          </div> 
+          <div className="flex contact-right-section">
+            <form>
+              <div className=" flexC ">
+                <input
+                  className="input md:w-[400px]"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="E-mail address"
+                  autocomplete="off"
+                />
+                <textarea
+                  type="text"
+                  className="ContactTextarea w-[85vw] md:w-[400px] mb-2"
+                  name="message"
+                  placeholder="Your Query"
+                />
+                <button type="submit" className="button">
+                  Send
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
-    
-    
-    
+      </div>
     </>
-  )
+  );
 }
