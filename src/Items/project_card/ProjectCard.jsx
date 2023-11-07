@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./project_card.css";
 import { Box, Button, IconButton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   deleteProject_function,
   getComment_function,
@@ -117,18 +117,21 @@ export default function ProjectCard({
       console.log(error);
     }
   };
+  const visitLink=(link)=>{
+window.location.href=link
+  }
   return (
     <>
       <div className="flexC">
-        <div class="project-card">
+        <div class="project-card hover:md:scale-110">
           <div class="border"></div>
           <div class="content">
-            <div class="card1">
+            <div className="card1 ">
               <div className="flex justify-between -mt-5">
                 <div className="flex  space-x-1 ">
                   <p class="card-title">{title}</p>
                   {githubLink?.length > 0 && (
-                    <span className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full">
+                    <Link onClick={()=>visitLink(githubLink)} className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full">
                       <IconButton className="">
                         <svg
                           viewBox="0 0 24 24"
@@ -142,12 +145,12 @@ export default function ProjectCard({
                           ></path>
                         </svg>
                       </IconButton>
-                    </span>
+                    </Link>
                   )}
                   {liveLink?.length > 0 && (
-                    <div className="text-[14px] animated-underline cursor-pointer ">
+                    <span onClick={()=>visitLink(liveLink)} className="text-[14px] animated-underline cursor-pointer ">
                       Show Live
-                    </div>
+                    </span>
                   )}
                 </div>
 
@@ -178,7 +181,7 @@ export default function ProjectCard({
                 <Modal
                   styles={{
                     modal: {
-                      backgroundColor: "grey",
+                      backgroundColor: "black",
                       border: "2px solid white",
                       borderRadius: "18px",
                     },
@@ -194,7 +197,7 @@ export default function ProjectCard({
                       <div className="flex  space-x-1 mb-2">
                         <p className="card-title m">{title}</p>
                         {githubLink?.length > 0 && (
-                          <span className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full">
+                          <Link to={`/${githubLink}`} className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full">
                             <Button className="">
                               <svg
                                 viewBox="0 0 24 24"
@@ -208,12 +211,12 @@ export default function ProjectCard({
                                 ></path>
                               </svg>
                             </Button>
-                          </span>
+                          </Link>
                         )}
                         {liveLink?.length > 0 && (
-                          <div className="text-[14px] animated-underline cursor-pointer ">
+                          <a to='/https://www.youtube.com/' className="text-[14px] animated-underline cursor-pointer ">
                             Show Live
-                          </div>
+                          </a>
                         )}
                       </div>
                     </div>
@@ -247,8 +250,8 @@ export default function ProjectCard({
                 <Modal
                   styles={{
                     modal: {
-                      backgroundColor: "green",
-                      border: "2px solid white",
+                      backgroundColor: "black",
+                      border: "4px solid grey",
                       borderRadius: "18px",
                     },
                     root: { margin: "98px 0" },
@@ -261,38 +264,36 @@ export default function ProjectCard({
                   }}
                   center
                 >
-                  {/* <IconButton  ><AddCommentIcon/></IconButton> */}
-                  {/* <form className='flexC mx-auto bg-red-800 max-w-max  ' > */}
-                  <div className="">
-                    <textarea
-                      id="commentInput"
-                      value={InputComment.comment}
-                      onChange={(e) => {
-                        // const h=document.getElementById('submitCommentBtn')
-                        // console.log("---",h)
-                        // h.style.display="block";
-                        setInputComment({
-                          ...InputComment,
-                          [e.target.name]: e.target.value,
-                        });
-                      }}
-                      type="text"
-                      placeholder="Add Your Comment"
-                      name="comment"
-                      className=" rounded-none border-t-0 border-l-0 border-r-0 input w-[90vw] md:w-[60vw] lg:w-[40vw] xl:w-[35vw] max-w-[1000px] "
-                      rows="1"
-                      autoFocus={!openSecond}
-                    />
-                    {InputComment.comment && (
-                      <button
-                        onClick={submitComment}
-                        id="submitCommentBtn"
-                        className=" button self-end"
-                      >
-                        hello
-                      </button>
-                    )}
-                  </div>
+                  {JSON.parse(localStorage.getItem("userData"))?.id !==
+                    creatorId && (
+                    <div className="flexC md:flex-row">
+                      <textarea
+                        id="commentInput"
+                        value={InputComment.comment}
+                        onChange={(e) => {
+                          setInputComment({
+                            ...InputComment,
+                            [e.target.name]: e.target.value,
+                          });
+                        }}
+                        type="text"
+                        placeholder="Add Your Comment"
+                        name="comment"
+                        className=" rounded-none border-t-0 border-l-0 border-r-0 input w-[90vw] md:w-[60vw] lg:w-[40vw] xl:w-[35vw] max-w-[1000px] "
+                        rows="1"
+                        autoFocus={!openSecond}
+                      />
+                      {InputComment.comment && (
+                        <button
+                          onClick={submitComment}
+                          id="submitCommentBtn"
+                          className=" button self-center mx-3"
+                        >
+                          Comment
+                        </button>
+                      )}
+                    </div>
+                  )}
                   {/* </form> */}
                   <div className="">
                     {Comment.length ? (
@@ -314,7 +315,7 @@ export default function ProjectCard({
                     ) : (
                       <div className="flexC w-[80vw] sm:w-[250px]">
                         <h3 className="m-2">No Comments Yet</h3>
-                        <h3>Be the first to comment</h3>
+                    
                       </div>
                     )}
                   </div>

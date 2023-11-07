@@ -12,8 +12,9 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const logoutBtn = () => {
-    console.log("button clicked");
+    console.log("logout button clicked");
     localStorage.removeItem("userData");
+    localStorage.removeItem("userProjectoData");
     dispatch(logout());
     navigate("/");
   };
@@ -32,8 +33,8 @@ export default function Navbar() {
           <div className=" flex  navbarSecondBox">
             <div className="  navItems hidden lg:block ">
               <span className="animated-underline ">
-                <NavLink className="normal-link" to="/user_home">
-                  About
+                <NavLink className="normal-link" to="/about">
+                  About 
                 </NavLink>
               </span>
             </div>

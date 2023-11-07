@@ -30,6 +30,16 @@ export default function NewMenu() {
               Contact
             </NavLink>
           </li>
+          <li className="">
+            <NavLink to="/options_page" >
+              explore
+            </NavLink>
+          </li>
+          <li className="">
+            <NavLink to="/user_profile" >
+              account
+            </NavLink>
+          </li>
         </ul>
       </nav>
 

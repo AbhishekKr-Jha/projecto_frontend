@@ -1,18 +1,18 @@
-.options-container{   gap: 0px;justify-content: center; }
 
-.options-Box{justify-content: space-around; 
+.options-Box{
+    /* justify-content: space-around;  */
     /* background-color: brown; */
 }
 .options-left-section{ 
     /* width: max-content; */
     /* width: 50%; */
-justify-content: flex-end; 
+/* justify-content: flex-end;  */
 }
 
 .options-right-section{
     /* width: max-content; */
      /* width: 50%; */
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
 }
 
 

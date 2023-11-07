@@ -47,9 +47,10 @@ export default function AddProject() {
           navigate("/user_home");
           success(data.message);
         } else {
-          fail(data.message);
+          fail(data.message.split(',')[0]);
           console.log("else block");
-          console.log(data.message);
+          console.log(data.message.split(',')[0]);
+        
         }
       }
     } catch (error) {
@@ -64,11 +65,11 @@ export default function AddProject() {
         <Toaster position="bottom-right" />
       </div>
       <div className=" element-Wrapper flex pt-[55px] ">
-        <div className="  flexC  space-y-3  h-[100%]  ">
+        <div className="  flexC space-y-3   h-[100%] mt-[20px]  ">
           {isUpdate ? (
             <h1 className=" text-xl mb-[5vh] "> Updating project... </h1>
           ) : (
-            <h1 className=" text-xl mb-[5vh] "> Adding project... </h1>
+            <h1 className=" text-xl mb-[5vh] md:mb-0 "> Adding project... </h1>
           )}
 
           <form className="flexC space-y-3 " onSubmit={submit_project}>
@@ -121,7 +122,7 @@ export default function AddProject() {
               </button>
             ) : (
               <button type="submit" className="button">
-                SignIn
+                Add
               </button>
             )}
           </form>

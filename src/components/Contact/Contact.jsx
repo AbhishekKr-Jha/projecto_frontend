@@ -26,7 +26,7 @@ export default function Contact() {
                 />
                 <textarea
                   type="text"
-                  className="ContactTextarea w-[85vw] md:w-[400px] mb-2"
+                  className="ContactTextarea w-[90vw] md:w-[400px] mb-2"
                   name="message"
                   placeholder="Your Query"
                 />

@@ -19,19 +19,37 @@ import ProjectCard from './Items/project_card/ProjectCard';
 import Modals from 'react-responsive-modal';
 import SearchResult from './components/SearchResult/SearchResult';
 import NewMenu from './Items/NewMenu/NewMenu';
+import { checkLogin_function } from './components/Services/Apis';
+import About from './components/About';
+
 // import RadialMenu from './Items/RadialMenu/RadialMenu';
 
 
 function App() {
   const dispatch=useDispatch()
 
+const checkLogin=async()=>{
+  // console.log("starting ...")
+ const ifUserData=JSON.parse(localStorage.getItem('userData'))
+//  console.log("checking storage")
+ if(ifUserData){
+ try {
+  // console.log("entering pro...")
+  const {data}=await checkLogin_function({email:ifUserData.email,id:ifUserData.id})
+  console.log("something found...")
+  if(data.success){
+    // console.log("--- is",data.userInfo)
+    localStorage.setItem('userProjectoData',JSON.stringify(data.userInfo))
+    dispatch(login());console.log("already login")}
+    else{console.log("nothing found")}
+ } catch (error) {
+  console.log("error")
+ }
+ }
+}
+
   useEffect(() => {
-    const userLogin=localStorage.getItem("userData")
-    if(userLogin){
-    // console.log(userLogin)
-  dispatch(login())
-    // console.log("ok")
-    }
+  checkLogin()
   })
 
   return (
@@ -45,6 +63,7 @@ function App() {
           <Route path="register" element={<Registeration />} />
           <Route path="login" element={<Login />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About/>} />
           <Route path="Email_Verification" element={<EmailVerify />} />
           <Route path="options_page" element={<Options />} />
           <Route path="search_email" element={<EmailSearch/>} />
@@ -56,7 +75,7 @@ function App() {
           <Route path="user_profile" element={<UserProfile/>} />
           <Route path="modals" element={<Modals/>} />
           <Route path="search_result" element={<SearchResult/>} />
-    </Routes>
+    </Routes> 
   </div> 
   </>
   );

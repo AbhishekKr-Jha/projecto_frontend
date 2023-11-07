@@ -41,7 +41,7 @@
 
 .project-card:hover {
   border-radius: 0;
-  transform: scale(1.1);
+  transform: scale(1.04);
 }
 
 .project-card:hover .border {
@@ -61,16 +61,17 @@
   /* width: 350px; */
   width: 90vw;
   height: 180px;
+  font-size: 17px;
   max-width: 600px;
   box-sizing: border-box;
   background-color: black;
   border: 1px solid white;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  padding: 3px 13px;
+  padding: 10px 14px;
   transition: all ease-in-out 0.8s;
   overflow: hidden;
 }

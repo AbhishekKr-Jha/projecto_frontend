@@ -34,9 +34,13 @@ export default function UserHome() {
   return (
     <>
       <div className="element-Wrapper pt-[55px]  ">
-        <div className="flexC  space-y-3 h-[100%] mt-[100px] ">
-          <p className="text-xl mt-6">{email}</p>
-          <p className="text-xl  mt-5">Projects</p>
+        <div className="flexC  space-y-3 h-[100%] mt-[50px] ">
+          <p className="text-lg md:text-2xl lg:text-2xl mt-6  underline underline-offset-8">
+            {email}
+          </p>
+          <p className=" p-1 animated-underline text-xl md:text-lg lg:text-3xl mt-5">
+            Projects
+          </p>
           <div className=" mt-4 flex justify-center border-2 border-white border-dashed rounded-lg p-3">
             <Link to="/add_project">
               <button
@@ -65,6 +69,7 @@ export default function UserHome() {
             {Project.length ? (
               Project.map((element, index) => {
                 return (
+                
                   <div className="" key={index}>
                     <ProjectCard
                       projectId={element._id}

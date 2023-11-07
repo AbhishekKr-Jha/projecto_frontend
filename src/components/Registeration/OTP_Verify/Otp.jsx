@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import './Otp.css'
 import { verifyOTP_function } from '../../Services/Apis'
 import Loader from '../../../Items/loader/Loader'
+import { Toaster } from 'react-hot-toast'
+import { success } from '../../../Items/Toastify'
 
 export default function Otp() {
 
@@ -12,6 +14,7 @@ export default function Otp() {
   console.log(email)
   console.log("jk")
   console.log(location)
+
 
 const [loader,setloader]=useState(false)
   const [Otp_detail, setOtp_detail] = useState({ email: location.state, otp: "" })
@@ -45,10 +48,15 @@ const [loader,setloader]=useState(false)
 
   return (
       <>
+       <div className="fixed">
+        <Toaster position="bottom-right" />
+      </div>
         <div className="flexC element-Wrapper otpVerify-Container">
 {loader?<Loader text="OTP"/>:<>
-          <h1 className='m-5'>Enter 6-digit OTP</h1>
-
+<div className="m-5">
+          <h1 className='text-[7vw] sm:text-[30px] md:text-[46px]'>ENTER 6-DIGIT OTP</h1>
+          {/* <h3 className='text-[5vw] sm:text-[25px] md:text-[46px] '>Send in Email</h3> */}
+          </div>
           <form onSubmit={submit_data} >
             <div className="flexC">
               <input className='input input md:w-[400px]' type="text" onChange={get_Data} name="otp" value={Otp_detail.otp} placeholder="please Enter your OTP" autoComplete="off" />

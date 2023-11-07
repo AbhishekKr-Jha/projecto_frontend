@@ -1,6 +1,12 @@
 import { commonRequest } from "./ApiCall"
 import {BACKEND} from './Helper'
 
+
+//is user Login
+export const checkLogin_function=async(data,header)=>{
+    return commonRequest("GET",`${BACKEND}/users/v1/checkLogin/${data.id}/${data.email}`)
+}
+
 //register
 export const register_function=async(data,header)=>{
     return commonRequest("POST",`${BACKEND}/users/v1/register`,data)
