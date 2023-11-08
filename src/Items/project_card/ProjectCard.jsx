@@ -9,12 +9,10 @@ import {
 } from "../../components/Services/Apis";
 import { useDispatch, useSelector } from "react-redux";
 import { delete_project_state, project_deleted } from "../../Redux/deleteSlice";
-// import Modals from '../../Items/modal/Modals'
-// import { modal_open } from '../../Redux/modalSlice'
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import CommentBox from "../CommentBox";
-import AddCommentIcon from "@mui/icons-material/AddComment";
+
 
 export default function ProjectCard({
   projectId,
@@ -127,10 +125,13 @@ window.location.href=link
           <div class="border"></div>
           <div class="content">
             <div className="card1 ">
-              <div className="flex justify-between -mt-5">
-                <div className="flex  space-x-1 ">
-                  <p class="card-title">{title}</p>
+              <div className="flexC md:flex-row justify-between -mt-5">
+             
+                  <p class="card-title ">{title}</p>
+                  <div className="flex  justify-between ">
+                  <div className="flex  space-x-1  self-start">
                   {githubLink?.length > 0 && (
+                 
                     <Link onClick={()=>visitLink(githubLink)} className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full">
                       <IconButton className="">
                         <svg
@@ -155,7 +156,7 @@ window.location.href=link
                 </div>
 
                 {ProjectCreator && (
-                  <div className="flex    project-card-icons ">
+                    <div className="flex  space-x-1 self-end ">
                     <span onClick={edit_project} className="">
                       <IconButton className=" animated-underline cursor-pointer">
                         <i className="ri-pencil-line"></i>
@@ -166,8 +167,8 @@ window.location.href=link
                         <i class="ri-delete-bin-5-fill"></i>
                       </IconButton>
                     </span>
-                  </div>
-                )}
+                    </div>
+                )} </div>
               </div>
 
               <p class="card-des">{description}</p>
@@ -214,15 +215,15 @@ window.location.href=link
                           </Link>
                         )}
                         {liveLink?.length > 0 && (
-                          <a to='/https://www.youtube.com/' className="text-[14px] animated-underline cursor-pointer ">
+                          <Link to='/https://www.youtube.com/' className="text-[14px] animated-underline cursor-pointer ">
                             Show Live
-                          </a>
+                          </Link>
                         )}
                       </div>
                     </div>
                     <p>{description}</p>
                     {ProjectCreator && (
-                      <div className="flex    project-card-icons  mb-2">
+                      <div className="flex    project-card-icons  ">
                         <span onClick={edit_project} className="">
                           <IconButton className=" animated-underline cursor-pointer">
                             <i className="ri-pencil-line"></i>
@@ -235,13 +236,13 @@ window.location.href=link
                         </span>
                       </div>
                     )}
-                    <hr className="w-[28vw] max-w-[280px] mx-auto bg-white h-[2px]" />
+                    <hr className="w-[28vw] max-w-[280px] mx-auto bg-white h-[2px] my-3" />
                   </div>
                   <div
                     onClick={() => {
                       openComment(projectId);
                     }}
-                    className="animated-underline text-[4vw] sm:text-[22px] md:text-[25px] lg:text-[28px]' cursor-pointer"
+                    className="animated-underline text-[4vw] sm:text-[22px] md:text-[25px] lg:text-[28px]' cursor-pointer "
                   >
                     Comments
                   </div>

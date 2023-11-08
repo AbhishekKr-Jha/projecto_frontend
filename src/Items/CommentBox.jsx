@@ -51,7 +51,7 @@ export default function CommentBox({
               <span id={commentId} name='replyBtn'>   
                 <IconButton
                   onClick={() => {
-                    console.log(">>>>>>>>>>>>>>>>>>>>>", index);
+                    // console.log(">>>>>>>>>>>>>>>>>>>>>", index);
                     const replyBox =
                       document.getElementsByClassName("replyBox")[index];
                     if (replyBox) {
@@ -60,21 +60,25 @@ export default function CommentBox({
                     }
                     const replyBtn =
                       document.getElementById(commentId);
-                      console.log(commentId)
-                      console.log(replyBtn)
+                      // console.log(commentId)
+                      // console.log(replyBtn)
                     if (replyBtn) {
                      
                       replyBtn.style.display = "none";
                     }
-                    console.log(">--->", Reply);
-                    console.log("-->:::::", commentorName);
+                    // console.log(">--->", Reply);
+                    // console.log("-->:::::", commentorName);
                   }}
                 >
                   <ReplyIcon />
                 </IconButton>
               </span>
             )}
-          <div className="p-0 rounded-2xl flex-wrap hidden bg-red-800 border-white border-solid border-[1px] replyBox">
+          
+        </div>
+        {/* border-white    border-solid border-[1px] input w-[70vw] md:w-[45vw] lg:w-[32vw] xl:w-[28vw] max-w-[500px] */}
+        <p className="text-base sm:text-lg ">{comment}</p>
+        <span className="p-0 rounded-2xl  hidden   replyBox">
             <input
               value={Reply.reply}
               onChange={(e) => {
@@ -82,9 +86,8 @@ export default function CommentBox({
               }}
               type="text"
               placeholder="Your Reply"
-              name="reply"
-              // className="bg-slate-800 rounded-none border-t-0 border-l-0 border-r-0 input w-[60vw] md:w-[45vw] lg:w-[35vw] xl:w-[25vw] max-w-[600px] focus:border-white focus:border-b-2 "
-              className="border-none input w-[70vw] md:w-[45vw] lg:w-[32vw] xl:w-[28vw] max-w-[660px]"
+              name="reply"             
+              className="  border-white    border-solid border-[1px] focus:border-2 input w-[70vw] md:w-[45vw] lg:w-[32vw] xl:w-[28vw] max-w-[500px]"
               rows="0"
               autoFocus={true}
               onBlur={() => {
@@ -101,19 +104,17 @@ export default function CommentBox({
               }}
             />
             {Reply.reply && (
-              <Box className="self-center">
+              <Box className="self-center md:mx-1">
                 <IconButton onClick={submitReply}>
                   <SendIcon />
                 </IconButton>
               </Box>
             )}
-          </div>
-        </div>
-        <p className="text-base sm:text-lg ">{comment}</p>
+          </span>
         {SuccessfulReply.length > 0 && (
 
-          <div className="mt-2 flex justify-start  ">
-           <div className="bg-red-700 rounded-full   px-[6px]"> A </div> <h3 className="text-sm -mx-7 ">{SuccessfulReply}</h3>
+          <div className=" mt-2 flex justify-start ">
+           <div className="bg-red-700 rounded-full   px-[6px]"> R </div> <h3 className="text-sm -mx-7 ">{SuccessfulReply}</h3>
           </div>
         )}
 

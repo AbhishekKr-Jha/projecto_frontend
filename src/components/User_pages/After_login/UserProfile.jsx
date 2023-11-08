@@ -156,9 +156,9 @@ export default function UserProfile() {
           <div className="flexC my-5">
             <div className="flexC space-y-5 ">
               <NavLink to="/user_home" className="">
-                {gettingUserDetails?.projects ? (
+                {gettingUserDetails?.totalProject ? (
                   <h3 className="text-[4.7vw] sm:text-xl lg:hover:border-solid lg:p-2 rounded-xl border-white lg:hover:border-b-[1px]">
-                    {gettingUserDetails?.projects} added
+                    {gettingUserDetails?.totalProject} Projects added
                   </h3>
                 ) : (
                   <h3 className="text-[4.7vw] sm:text-xl lg:hover:border-solid lg:p-2 rounded-xl border-white lg:hover:border-b-[1px]">
@@ -171,7 +171,7 @@ export default function UserProfile() {
                 className=" text-[4.7vw] sm:text-xl lg:hover:border-solid lg:p-2 rounded-xl border-white lg:hover:border-b-[1px] "
               >
                 <AddIcon style={{ fontSize: 27 }} />{" "}
-                {gettingUserDetails?.projects
+                {gettingUserDetails?.totalProject
                   ? "More Projects"
                   : "First Project"}
               </NavLink>
