@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "../../../Items/Button/Edit_Btn.css";
+import github from "../../../Items/Icons/github.svg";
+import instagram from "../../../Items/Icons/instagram.svg";
+import linkedin from "../../../Items/Icons/linkedin.svg";
 import { NavLink } from "react-router-dom";
 import { changePassword_function } from "../../Services/Apis";
 import { Toaster } from "react-hot-toast";
@@ -95,8 +98,7 @@ export default function UserProfile() {
                 <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
               </svg>
             </button>
-            {/*________________---- password box */}
-            {/* <div className="flex flex-wrap  p-2"> */}
+
             <div className="flex m-2 ">
               <div className="flex   " id="password-field">
                 <p className="text-[4.7vw] sm:text-xl  ">Password</p>
@@ -153,18 +155,15 @@ export default function UserProfile() {
             </div>
           </div>
           {/* todo ______right section */}
-          <div className="flexC my-5">
-            <div className="flexC space-y-5 ">
-              <NavLink to="/user_home" className="">
-                {gettingUserDetails?.totalProject ? (
-                  <h3 className="text-[4.7vw] sm:text-xl lg:hover:border-solid lg:p-2 rounded-xl border-white lg:hover:border-b-[1px]">
-                    {gettingUserDetails?.totalProject} Projects added
-                  </h3>
-                ) : (
-                  <h3 className="text-[4.7vw] sm:text-xl lg:hover:border-solid lg:p-2 rounded-xl border-white lg:hover:border-b-[1px]">
-                    No Projects Yet
-                  </h3>
-                )}
+          <div className="flexC my-4 lg:my-5">
+            <div className="flexC space-y-5 my-8">
+              <NavLink
+                to="/user_home"
+                className="text-[4.7vw] sm:text-xl lg:hover:border-solid lg:p-2 rounded-xl border-white lg:hover:border-b-[1px] m-1 md:m-0"
+              >
+                {gettingUserDetails?.totalProject
+                  ? `${gettingUserDetails?.totalProject} projects added`
+                  : "No Projects Yet"}
               </NavLink>
               <NavLink
                 to="/add_project"
@@ -176,10 +175,25 @@ export default function UserProfile() {
                   : "First Project"}
               </NavLink>
             </div>
+            <div className="border-dotted border-white border-2 p-3">
+
+              <h3 className="text-[4.7vw] sm:text-xl">Contact ( Not added yet... )</h3>
+              <div className=" flex my-2 space-x-1 md:space-x-2 ">
+                <span className="w-[38px]  bg-white rounded-md cursor-pointer hover:scale-150 transition-all duration-100 ease-in-out flexC">
+                  <img src={github} className="" alt="loading..." />
+                </span>
+                <span className="w-[50px] rounded-md cursor-pointer hover:scale-150 transition-all duration-100 ease-in-out">
+                  <img src={linkedin} alt="loading..." />
+                </span>
+                <span className=" w-[50px] rounded-md cursor-pointer hover:scale-150 transition-all duration-100 ease-in-out">
+                  <img src={instagram} alt="loading..." />
+                </span>
+               
+              </div> 
+            </div>
           </div>
         </div>
       </div>
-      
     </>
   );
 }

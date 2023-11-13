@@ -33,3 +33,12 @@ import toast from "react-hot-toast";
 export const success=(text)=>toast.success(text)
 
 export const fail=(text)=>toast.error(text);
+
+export const promise=(text,message)=>toast.promise(
+
+     {
+       loading: {text},
+       success: <b>{message}</b>,
+  
+     }
+   );

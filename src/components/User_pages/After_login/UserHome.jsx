@@ -34,11 +34,11 @@ export default function UserHome() {
   return (
     <>
       <div className="element-Wrapper pt-[55px]  ">
-        <div className="flexC  space-y-3 h-[100%] mt-[50px] ">
+        <div className="flexC  space-y-3 mt-[50px] ">
           <p className="text-lg md:text-2xl lg:text-2xl mt-6  underline underline-offset-8">
             {email}
           </p>
-          <p className=" p-1 animated-underline text-xl md:text-lg lg:text-3xl mt-5">
+          <p className=" p-1  text-xl md:text-lg lg:text-3xl mt-5">
             Projects
           </p>
           <div className=" mt-4 flex justify-center border-2 border-white border-dashed rounded-lg p-3">

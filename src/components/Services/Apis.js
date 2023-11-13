@@ -47,6 +47,10 @@ export const deleteProject_function=async(project_info,header)=>{
     return commonRequest("DELETE",`${BACKEND}/users/v1/deleteProject/${project_info.user}/${project_info.title}`)
 }
 
+//update project
+export const updateProject_function=async(updatedData,header)=>{
+    return commonRequest("PUT",`${BACKEND}/users/v1/updateProject`,updatedData)
+}
 
 //get comment of project
 export const getComment_function=async(projectId,header)=>{

@@ -5,10 +5,7 @@ import ProjectCard from '../../Items/project_card/ProjectCard'
 export default function SearchResult() {
   console.log("hello is it ok")
   const location=useLocation()
-const Project=location.state
-
-
-
+const Project=location.state[0]
 
   return (
    <>
@@ -17,8 +14,8 @@ const Project=location.state
   {/* <button class="search_button">
   <span class="search_span">🔎</span>
 </button> */}
-<div className=""> 
-    <h3 className='text-lg md:text-2xl lg:text-2xl '>abhishekhp935@gmail.com</h3>
+<div className="mt-[120px]">  
+    <h3 className='text-lg md:text-2xl lg:text-2xl '>{location.state[1]}</h3>
 </div>
 <div className="flexC space-y-2 mt-3"> 
 {  Project.length ? Project.map((element,index)=>{

@@ -7,7 +7,7 @@ import Hero1 from './Hero_Pages/Hero1'
 export default function Hero() {
   return (
     <> 
-    <div className="flex element-Wrapper  heroContainer">
+    <div className="flex element-Wrapper  heroContainer ">
     {/* <div id="carouselExampleIndicators" className="carousel slide">
   <div className="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>

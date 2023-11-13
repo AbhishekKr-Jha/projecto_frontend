@@ -66,11 +66,9 @@ export default function AddProject() {
       </div>
       <div className=" element-Wrapper flex pt-[55px] ">
         <div className="  flexC space-y-3   h-[100%] mt-[20px]  ">
-          {isUpdate ? (
-            <h1 className=" text-xl mb-[5vh] "> Updating project... </h1>
-          ) : (
-            <h1 className=" text-xl mb-[5vh] md:mb-0 "> Adding project... </h1>
-          )}
+         
+            <h1 className=" text-xl  mb-[2vh] max-mb-[25px] md:mb-0 "> Adding project... </h1>
+        
 
           <form className="flexC space-y-3 " onSubmit={submit_project}>
             <input
@@ -116,15 +114,11 @@ export default function AddProject() {
                 minlength="10"
               ></textarea>
             </div>
-            {isUpdate ? (
-              <button type="submit" className="button">
-                Update
-              </button>
-            ) : (
+           
               <button type="submit" className="button">
                 Add
               </button>
-            )}
+            
           </form>
         </div>
       </div>

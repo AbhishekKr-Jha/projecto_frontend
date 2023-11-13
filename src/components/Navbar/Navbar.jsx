@@ -1,33 +1,35 @@
 import React from "react";
 import "../../Items/Underline.css";
 import "./Navbar.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../Redux/loginSlice";
 import Logout from "../../Items/Logout/Logout";
 
+
 export default function Navbar() {
   const isLogin = useSelector((state) => state.login.isLogin);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const logoutBtn = () => {
-    console.log("logout button clicked");
-    localStorage.removeItem("userData");
-    localStorage.removeItem("userProjectoData");
-    dispatch(logout());
-    navigate("/");
-  };
+const dispatch = useDispatch();
+const navigate = useNavigate();
+const logoutBtn = () => {
+  console.log("logout button clicked");
+  localStorage.removeItem("userData");
+  localStorage.removeItem("userProjectoData");
+  dispatch(logout());
+  navigate("/"); 
+}; 
+ 
 
   return (
     <>
       <div className="navContainer fixed top-0 left-0 bg-black max-h-max w-screen px-3 sm:px-4 md:px-5 ">
         <div className=" flex padding navbarBox ">
           <div className=" navbarFirstBox">
-            <h1 className="text-4xl">
-              <NavLink className="normal-link" to="/">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl">
+              <Link className="normal-link" to="/">
                 Projecto
-              </NavLink>
+              </Link>
             </h1>
           </div>
           <div className=" flex  navbarSecondBox">
@@ -41,9 +43,9 @@ export default function Navbar() {
             {isLogin && (
               <div className="  navItems px-1 py-0 hidden md:block">
                 <div className="border-solid border-2 border-white  rounded-[100%]  ">
-                  <NavLink to="user_profile">
+                  <Link to="user_profile">
                     <i className=" text-4xl ri-account-circle-fill "></i>
-                  </NavLink>
+                  </Link>
                 </div>
               </div>
             )}

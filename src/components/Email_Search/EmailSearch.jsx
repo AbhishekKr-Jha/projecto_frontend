@@ -43,7 +43,7 @@ export default function EmailSearch() {
 
   const navigate_result = (e) => {
     e.preventDefault()
-    navigate("/search_result", { state: searchProject });
+    navigate("/search_result", { state: [searchProject,email] });
     console.log("results found")
   };
 

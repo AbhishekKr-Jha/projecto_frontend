@@ -1,11 +1,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+body{background-color: black;}
 .app{
  /* position: relative; */
-  width: 100vw;
+  /* width: 100vw; */
   background-color: black;
+ 
 } 
-.active{background: red;}
+.active{
+ color: red;
+}
 @import 'tailwindcss/utilities';
 
 
