@@ -68,7 +68,7 @@ const checkLogin=async()=>{
           <Route path="Email_Verification" element={<EmailVerify />} />
           <Route path="options_page" element={<Options />} />
           <Route path="search_email" element={<EmailSearch/>} />
-          <Route path="otp" element={<Otp/>} />
+          <Route path="otp" element={<Otp/>} /> 
           <Route path="user_home" element={<UserHome/>} />
           <Route path='add_project' element={<AddProject/>} />
           <Route path='update_project' element={<AddProject/>} />
@@ -79,7 +79,7 @@ const checkLogin=async()=>{
     </Routes> 
     {/* <div className="fixed bottom-0 right-[11vw] md:-right-[115px] md:top-[50vh] md:-rotate-90 bg-black md:bg-slate-500 px-4 md:px-1"><p className='text-center'>&copy; 2023 Projeto. All rights reserved</p></div>
   </div>  */}
-  <div className="fixed   -right-[115px] top-[50vh] -rotate-90  md:bg-slate-500 px-1"><p className='text-center'>&copy; 2023 Projeto. All rights reserved</p></div>
+  <div className="fixed   -right-[115px] top-[50vh] -rotate-90  bg-slate-500 px-1"><p className='text-center'>&copy; 2023 Projeto. All rights reserved</p></div>
   </div> 
   </>
   );

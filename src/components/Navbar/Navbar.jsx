@@ -24,7 +24,7 @@ const logoutBtn = () => {
   return (
     <>
       <div className="navContainer fixed top-0 left-0 bg-black max-h-max w-screen px-3 sm:px-4 md:px-5 ">
-        <div className=" flex padding navbarBox ">
+        <div className=" flex padding  navbarBox ">
           <div className=" navbarFirstBox">
             <h1 className="text-2xl sm:text-3xl md:text-4xl">
               <Link className="normal-link" to="/">
