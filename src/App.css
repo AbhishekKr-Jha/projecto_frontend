@@ -1,20 +1,131 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-body{background-color: black;}
+
 .app{
+
  /* position: relative; */
-  /* width: 100vw; */
-  background-color: black;
- 
+  /* width: 100%; */
+  /* max-width: 1700px; */
+/* background-color: rgba(0, 0, 0, 0.596); */
+/* background-color: black; */
+  /* background:url('./Items//space_-_57904\ \(540p\).mp4') */
+
+
+  /* ------------initial one */
+  /* display: flex;
+  justify-content: center; */
+
 } 
+
 .active{
  color: red;
 }
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* -----about text----- */
+.about-text{ @apply  text-base md:text-lg m-2 }
+
+
+
+/* --------home------------ */
+.slide-box{ white-space: nowrap; display: inline-block; animation: move 7s linear infinite  ; }
+.slide-box{ @apply  whitespace-nowrap inline-block  }
+.slide-box h3{ @apply   inline-block  }
+
+.dot{ @apply  inline-block bg-white w-[22px] h-[22px] lg:w-[33px] lg:h-[33px] rounded-full mx-4 lg:mx-6   }
+
+.sliding-text-container::-webkit-scrollbar {
+  display: none;
+} 
+ @keyframes move {
+  /* from {
+      transform: translateX(0);
+  }
+
+  to {
+      transform: translateX(-100%);
+  } */
+}
+
+
+
+/* -------count up------- */
+/* .count-up-container::before{
+  content: "";
+  position: absolute;
+  top: 0;left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: -21;
+  background-image: url(https://data.1freewallpapers.com/download/starry-sky-stars-space-dark-black-2880x1620.jpg);
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  background-repeat: repeat-x;
+} */
+
+
+.count-up{ @apply  text-center text-2xl md:text-4xl md:pl-2 rounded-full border-l-4  border-white my-5 mx-2  }
+
+.counting::after{
+  content:"+"
+}
+
+
+#first-container{
+
+}
+
+
+
+/* .count-up{ @apply bg-green-700 text-2xl p-14 rounded-full border-2 border-white s1 } */
+
 @import 'tailwindcss/utilities';
 
+.img-size{
+  @apply my-3 w-[66vw] sm:w-[50vw] md:w-[38vw] lg:w-[390px] 
+}
+
+/* 
+.main-heading{@apply text-[8vw] sm:text-[6vw] lg:text-8xl font-bold } */
+
+.add-project-input{@apply w-[90vw]  md:w-[75vw]  lg:w-[60vw] max-w-[800px] }
 
 
 
+/* 
+.mh2::before{
+  content: "";
+  position: absolute;
+  width:400px;
+  height: 400px;background-color: white;border-radius: 100%;
+  top: 10%;left: -20%;
+  clip-path: inset(0);
+  filter: blur(60px);
+} */
+
+.b2{border-radius:54% 76% 96% 40% / 41% 37% 100% 100%  ; background-color: rgba(128, 128, 128, 0.164); }
+
+
+
+/* 54% 76% 96% 40% / 20% 37% 100% 48%  */
+
+
+
+
+
+/* .hero-heading{
+-webkit-text-stroke: 5px white; 
+z-index:12;
+} */
+
+.a2:before{
+  content: "";
+  position: absolute;
+  width:250px;
+  height: 250px;background-color: white;border-radius: 100%;
+  top: 8%;left: 0%;
+  filter: blur(77px);
+}
 
 
 

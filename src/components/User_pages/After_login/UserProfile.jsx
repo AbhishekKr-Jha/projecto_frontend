@@ -67,17 +67,19 @@ export default function UserProfile() {
       <div className="fixed">
         <Toaster position="bottom-right" />
       </div>
-      <div className="element-Wrapper pt-[55px] w-[100vw]">
-        <div className="flexC   h-[100%] mt-5 md:flex-row md:justify-evenly">
+    
+        <div className="flexC element-Wrapper pt-[65px] md:flex-row md:justify-evenly">
           {/* todo_____ left section */}
           <div className=" flexC h-[100%]  ">
-            <div className="overflow-hidden p-[5px] w-[40vw] max-w-[150px] rounded-full border-2 border-solid border-white sm:w-[34vw] md:w-[150px] ">
+            {/* <div className="overflow-hidden p-[5px] w-[40vw] max-w-[150px] rounded-full border-2 border-solid border-white sm:w-[34vw] md:w-[150px] ">
+              */}
+              <div className="w-[170px] h-[170px] overflow-hidden p-[6px] border-2 rounded-full border-red">
               <img
-                className="w-[100%] rounded-full"
-                src="https://sg-res.9appsdownloading.com/sg/res/jpg/7d/61/e93e5eb2a71a82e81dbe1fb3267e-4a3e.jpg?x-oss-process=style/hq"
+                className="w-full h-full object-cover rounded-full cursor-pointer"
+                src="https://m.media-amazon.com/images/S/pv-target-images/0d3678e939af88101fef5f9567befcbbc3fc43933aa7543eac5f627f2fb1e1ac.jpg"
                 alt="loading..."
-              />
-            </div>
+              /></div>
+            {/* </div> */}
             <div className="mt-3 flex space-x-0">
               <div className="flexC ">
                 <p className="text-[4.7vw]  m-2 uppercase sm:text-xl ">User</p>
@@ -193,7 +195,7 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
-      </div>
+    
     </>
   );
 }

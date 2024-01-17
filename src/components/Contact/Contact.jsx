@@ -6,15 +6,15 @@ import "./Contact.css";
 export default function Contact() {
   return (
     <>
-      <div className=" flexC element-Wrapper pt-[50px] ">
-        <div className="flexC lg:flex-row lg:flex lg:space-x-12">
+      {/* <div className=" flexC  "> */}
+        <section className="flexC element-Wrapper pt-[85px] md:pt-[100px]  lg:flex-row lg:flex lg:space-x-12">
           <div className=" flexC  mt-[5vw] md:m-0"> 
           <div className="border-solid border-l-8  rounded-full ">
-            <img className="my-3 w-[55vw] md:w-[38vw] lg:w-[360px]"  src={i1} alt="loading..." /></div>
-            <h3 className="text-center mt-2 text-base md:text-lg font-medium lg:text-xl">Need Help? <br/>PROJECTO is here</h3>
+            <img className=" img-size w-[54vw] "  src={i1} alt="loading..." /></div>
+            <h3 className="text-center mt-2 text-base md:text-lg font-medium lg:text-xl">Need Help? <br/>PROJECTO is here.</h3>
           </div> 
           <div className="flex contact-right-section">
-            <form>
+            <form >
               <div className=" flexC ">
                 <input
                   className="input md:w-[400px]"
@@ -36,8 +36,8 @@ export default function Contact() {
               </div>
             </form>
           </div>
-        </div>
-      </div>
+        </section>
+      {/* </div> */}
     </>
   );
 }

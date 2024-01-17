@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState  } from "react";
+import { Link,  useNavigate } from "react-router-dom";
 import { login_function } from "../Services/Apis";
 import { useDispatch } from "react-redux";
 import { login } from "../../Redux/loginSlice";
@@ -10,16 +10,19 @@ import { success, fail } from "../../Items/Toastify";
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const location = useLocation();
+  // console.log(location);
 
   const [loginForm_data, setloginForm_data] = useState({ email: "", pw: "" });
 
-  // useEffect(() => {
-  //   const userLogin = JSON.parse(localStorage.getItem("userData"));
-  //   if (userLogin) {
-  //     dispatch(login());
-  //   }
-  // });
 
+
+//    useEffect(() => {
+// if(location.state){success(location.state)}
+//   },[location.state]);
+
+ 
+ 
   const get_Data = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -36,7 +39,10 @@ export default function Login() {
         if (data.success) {
           success(data.message);
           localStorage.setItem("userData", JSON.stringify(data.loginDetails));
-          localStorage.setItem('userProjectoData',JSON.stringify(data.userInfo))
+          localStorage.setItem(
+            "userProjectoData",
+            JSON.stringify(data.userInfo)
+          );
           dispatch(login());
           navigate("/");
         } else {
@@ -53,19 +59,16 @@ export default function Login() {
       <div className="fixed">
         <Toaster position="bottom-right" />
       </div>
-      <div className=" flex element-Wrapper pt-[55px]">
-        <div className=" box-wrapper flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]">
-          <div className=" flexC login-left-section mb-[20px]">
-            <h1 className="primary-heading sm:text-[5vw] lg:text-[8vw]">
+        <section className=" element-Wrapper pt-[55px] flexC lg:flex-row  lg:justify-evenly  ">
+          <div className=" flexC  mb-[20px] ">
+            <h1 className="main-heading">
               SIGN IN
             </h1>
-            <div className="paraText">
-              New User?<Link to="/register">Create an account</Link>
-            </div>
-          </div>
-          <div className="flex  login-right-section">
-            <form onSubmit={submit_login}>
-              <div className=" flexC  ">
+            <p className="paraText">
+              New User?&nbsp;<Link className="font-semibold italic animated-underline" to="/register">Create an account</Link>
+            </p> 
+          </div>    
+            <form className="flexC" onSubmit={submit_login}>         
                 <input
                   className=" input md:w-[400px] mb-2 "
                   onChange={get_Data}
@@ -76,6 +79,7 @@ export default function Login() {
                   placeholder="E-mail address"
                   required
                   autocomplete="off"
+                  autoFocus="true"
                 />
                 <input
                   className=" input md:w-[400px] mb-2 "
@@ -88,12 +92,10 @@ export default function Login() {
                 />
                 <button type="submit" className="button">
                   SignIn
-                </button>
-              </div>
+                </button>            
             </form>
-          </div>
-        </div>
-      </div>
+        </section>
+  
     </>
   );
 }

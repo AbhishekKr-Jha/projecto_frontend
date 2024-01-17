@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Registeration.css";
 import { register_function } from "../Services/Apis";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -36,15 +35,17 @@ export default function Registeration() {
       if(Data.pw === Data.cpw){
       try {
         const { data } = await register_function(Data);
-        console.log(data);
         if (data.success) {
           success(data.message);
-          // navigate('/options_page')
+          setTimeout(() => {
+            navigate('/login')
+          }, 2000);
         } else {
           fail(data.message);
         }
       } catch (error) {
         console.log("catch block --", error);
+        fail(error)
       }
     }else{fail("Password and Confirm password not matched")}
     }
@@ -55,19 +56,18 @@ export default function Registeration() {
       <div className="fixed">
         <Toaster position="bottom-right" />
       </div>
-      <div className="flex element-Wrapper pt-[-10px] lg:pt-[55px]">
-        <div className=" box-wrapper   flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]">
-          <div className="flexC register-left-section mb-[20px]  ">
-            <h1 className="primary-heading sm:text-[5vw] lg:text-[8vw]">
+      
+        <section className="   element-Wrapper pt-[-10px] lg:pt-[55px]  flexC lg:flex-row lg:justify-evenly  ">
+          <div className="flexC mb-[20px]  ">
+            <h1 className="main-heading ">
               SIGN UP
             </h1>
-            <div className="paraText ">
-              Already have an account?<Link to="/login">Login</Link>
-            </div>
+            <p className="paraText ">
+              Already have an account?&nbsp;<Link className=" font-semibold italic animated-underline " to="/login">Login</Link>
+            </p>
           </div>
-          <div className=" register-right-section">
-            <form onSubmit={submit_register}>
-              <div className=" flexC ">
+        
+            <form className="flexC" onSubmit={submit_register}>
                 <input
                   className=" input md:w-[400px] "
                   value={Data.firstName}
@@ -91,7 +91,6 @@ export default function Registeration() {
                 <input
                   className=" input md:w-[400px] "
                   value={Data.email}
-                  onChange={get_Data}
                   type="email"
                   id="email"
                   name="email"
@@ -136,11 +135,11 @@ export default function Registeration() {
                     SignUp
                   </button>
                 )}
-              </div>
+            
             </form>
-          </div>
-        </div>
-      </div>
+       
+        </section>
+ 
     </>
   );
 }

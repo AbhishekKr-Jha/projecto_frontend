@@ -33,44 +33,26 @@ export default function UserHome() {
 
   return (
     <>
-      <div className="element-Wrapper pt-[55px]  ">
-        <div className="flexC  space-y-3 mt-[50px] ">
-          <p className="text-lg md:text-2xl lg:text-2xl mt-6  underline underline-offset-8">
+     
+        <section className="element-Wrapper pt-[55px] flexC  space-y-3  ">
+
+          <p className="text-xl md:text-2xl lg:text-2xl mt-20 underline underline-offset-8">
             {email}
           </p>
-          <p className=" p-1  text-xl md:text-lg lg:text-3xl mt-5">
+          <p className=" p-1  text-xl md:text-2xl lg:text-2xl mt-4 lg:mt-5">
             Projects
           </p>
-          <div className=" mt-4 flex justify-center border-2 border-white border-dashed rounded-lg p-3">
-            <Link to="/add_project">
-              <button
-                title="Add New"
-                className="group cursor-pointer hover:rotate-90 active:scale-100 duration-500"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="50px"
-                  height="50px"
-                  viewBox="0 0 24 24"
-                  className="stroke-slate-200 fill-none group-active:fill-slate-600 duration-200"
-                >
-                  <path
-                    d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-                    stroke-width="1.5"
-                  ></path>
-                  <path d="M8 12H16" stroke-width="1.5"></path>
-                  <path d="M12 16V8" stroke-width="1.5"></path>
-                </svg>
-              </button>
+          <div className=" my-4 flex justify-center w-[240px] items-center  border-2 border-white border-dashed rounded-lg p-4">
+            <Link className=" p-1 border-x-4 border-white rounded-full hover:rotate-180 duration-300 transition-all" to="/add_project">
+            <i className="text-3xl ri-add-line px-1 "></i>
             </Link>
-            <p className="text-xl">Add Projects</p>
+            <p className="text-2xl -ml-3"> Projects</p>
           </div>
           <div className="flexC space-y-2">
             {Project.length ? (
               Project.map((element, index) => {
-                return (
-                
-                  <div className="" key={index}>
+                return (             
+                  <div key={index}>
                     <ProjectCard
                       projectId={element._id}
                       creatorId={element.user}
@@ -91,8 +73,8 @@ export default function UserHome() {
               </div>
             )}
           </div>
-        </div>
-      </div>
+        </section>
+  
     </>
   );
 }

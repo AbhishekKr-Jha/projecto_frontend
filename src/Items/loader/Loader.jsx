@@ -4,7 +4,7 @@ import './Loader.css'
 export default function Loader({text}) {
   return (
    <>
-   <div classNameName='flexC ' style={{gap:"250px"}}> 
+   <div classNameName='flexC justify-start relative ' > 
    <div className="banter-loader ">
   <div className="banter-loader__box"></div>
   <div className="banter-loader__box"></div>
@@ -16,7 +16,7 @@ export default function Loader({text}) {
   <div className="banter-loader__box"></div>
   <div className="banter-loader__box"></div>
 </div>
-<h3 className='m-5'>Verifying {text}...</h3>
+<h3 className='mt-14 text-3xl'>Verifying {text}...</h3>
 </div>
    </>
   )

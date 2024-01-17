@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import email_image from "./email_image.svg";
 import { useNavigate } from "react-router-dom";
 import { sendOTP_function } from "../Services/Apis";
-import { success, fail } from "../../Items/Toastify";
+import { fail } from "../../Items/Toastify";
 import Loader from "../../Items/loader/Loader";
 import { Toaster } from "react-hot-toast";
 
@@ -26,17 +26,14 @@ export default function Email_verify() {
       try {
         const { data } = await sendOTP_function(email);
         console.log("data-->", data);
-        if (data.success) {
-          setTimeout(() => {
-            setloader(false);
+        setTimeout(() => {
+          setloader(false);
+          if (data.success) {
             navigate("/otp", { state: email.email });
-          }, 1200);
         } else {
-          setTimeout(() => {
-            setloader(false);
             fail(data.message);
-          }, 1300);
         }
+          }, 900);
       } catch (error) {
         setloader(false);
         fail("An Error Occured");
@@ -51,27 +48,26 @@ export default function Email_verify() {
       <div className="fixed">
         <Toaster position="bottom-right" />
       </div>
-      <div className="flex element-Wrapper pt-[25px]     ">
+     
+      <div className="flex  element-Wrapper   pt-[40px] ">
         {loader ? (
           <Loader text="Email" />
         ) : (
-          <div className=" flexC lg:flex-row w-[100vw] lg:justify-evenly  h-[100%]  ">
-            <div className="    email-left-section  ">
+          <div className=" flexC lg:flex-row w-[100vw] lg:justify-around  ">
+            <div className=" ">
               <img
-                className="my-1 w-[55vw] md:w-[38vw] lg:w-[360px]"
+                className="img-size w-[45vw]"
                 src={email_image}
                 alt="loading..."
               />
             </div>
-            <div className="flexC email-right-section  ">
+            <div className="flexC   ">
               <h1
-                className="text-[7vw] sm:text-[30px] md:text-[46px] "
-                style={{ margin: "50px 0" }}
+                className=" text-[7vw] sm:text-[30px] md:text-[46px]  my-10"
               >
                 Email Verification
               </h1>
-              <form onSubmit={send_otp}>
-                <div className=" flexC ">
+              <form className=" flexC " onSubmit={send_otp}>
                   <input
                     className="input md:w-[400px] "
                     onChange={get_Data}
@@ -82,14 +78,12 @@ export default function Email_verify() {
                     placeholder="Please enter your E-mail"
                     autoComplete="off"
                   />
-                  <button type="submit" className="button ">
-                    Send
-                  </button>
-                </div>
+      <button type="submit" className="button "> Send </button>
               </form>
             </div>
           </div>
         )}
+      
       </div>
     </>
   );

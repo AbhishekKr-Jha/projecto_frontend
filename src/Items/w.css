@@ -1,0 +1,47 @@
+.task {
+  /* position: relative; */
+  color: green;
+  cursor: pointer;
+  background-color: blue;
+  /* padding: 1rem; */
+  border-radius: 8px;
+  /* box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px; */
+  /* margin-bottom: 1rem; */
+  border: 3px dashed transparent;
+  /* max-width: 350px; */
+}
+
+
+
+.tag {
+  border-radius: 100px;
+  padding: 4px 13px;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #1389eb;
+}
+
+.tags {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats {
+  /* position: relative; */
+  width: 100%;
+  color: #9fa4aa;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* 
+.task p {
+    font-size: 15px;
+    margin: 1.2rem 0;
+  } */

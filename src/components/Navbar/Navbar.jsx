@@ -23,7 +23,7 @@ const logoutBtn = () => {
 
   return (
     <>
-      <div className="navContainer fixed top-0 left-0 bg-black max-h-max w-screen px-3 sm:px-4 md:px-5 ">
+      <div className="navContainer z-[100] fixed top-0 bg-black  max-h-max w-full max-w-[1800px]  px-3 sm:px-4 md:px-5 ">
         <div className=" flex padding  navbarBox ">
           <div className=" navbarFirstBox">
             <h1 className="text-2xl sm:text-3xl md:text-4xl">
@@ -42,11 +42,11 @@ const logoutBtn = () => {
             </div>
             {isLogin && (
               <div className="  navItems px-1 py-0 hidden md:block">
-                <div className="border-solid border-2 border-white  rounded-[100%]  ">
-                  <Link to="user_profile">
-                    <i className=" text-4xl ri-account-circle-fill "></i>
-                  </Link>
-                </div>
+                {/* <div className="border-solid border-2 border-white  rounded-[100%]  "> */}
+                  <NavLink to="user_profile" className=" text-4xl ri-account-circle-fill ">
+                    {/* <i className=" text-4xl ri-account-circle-fill "></i> */}
+                  </NavLink>
+                {/* </div> */}
               </div>
             )}
 

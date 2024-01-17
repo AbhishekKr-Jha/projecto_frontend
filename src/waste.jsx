@@ -13,6 +13,8 @@ import { delete_project_state, project_deleted } from "../../Redux/deleteSlice";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import CommentBox from "../CommentBox";
+import { Toaster } from "react-hot-toast";
+import { promise } from "../Toastify";
 
 export default function ProjectCard({
   projectId,
@@ -31,6 +33,7 @@ export default function ProjectCard({
   const [openSecond, setOpenSecond] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [Comment, setComment] = useState([]);
+  const [openDelete, setopenDelete] = useState(false);
   const [InputComment, setInputComment] = useState({
     projectId: projectId,
     comment: "",
@@ -62,12 +65,14 @@ export default function ProjectCard({
 
   const delete_project = async (title) => {
     console.log("title is--", title);
+    setopenDelete(false);
     try {
       const user = JSON.parse(localStorage.getItem("userData")).id;
       const { data } = await deleteProject_function({ user, title });
       if (data.success) {
         console.log(data.message);
         console.log(isDelete);
+        // promise("deleting","Project Deleted")
         if (!isDelete) {
           console.log("not true--", isDelete);
           dispatch(delete_project_state());
@@ -146,20 +151,24 @@ export default function ProjectCard({
       console.log("error in projectUPdate", error);
     }
   };
+  const closeIcon = <i className="  text-3xl ri-close-fill  " ></i>;
   return (
     <>
-      <div className="flexC">
-        <div class="project-card hover:md:scale-110">
+      <div className="fixed">
+        <Toaster position="bottom-right" />
+      </div>
+    
+        <div class="project-card hover:md:scale-110 ">
           <div class="border"></div>
           <div class="content">
             <div className="card1 ">
               <div className="flexC md:flex-row justify-between -mt-5">
-                <div className="flex  justify-between ">
-                  <p class="card-title ">{title}</p>
+                <div className="flex  justify-between space-x-1">
+                  <p class="card-title   mt-2 md:mt-0">{title}</p>
                   {githubLink?.length > 0 && (
                     <span
                       onClick={() => visitLink(githubLink)}
-                      className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full"
+                      className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full hidden md:block"
                     >
                       <IconButton className="">
                         <svg
@@ -179,37 +188,75 @@ export default function ProjectCard({
                   {liveLink?.length > 0 && (
                     <span
                       onClick={() => visitLink(liveLink)}
-                      className="text-[14px] animated-underline cursor-pointer "
+                      className=" cursor-pointer hidden md:block"
                     >
-                      Show Live
+                      <h3 className="text-[14px] animated-underline">
+                        Show Live
+                      </h3>
                     </span>
                   )}
                 </div>
-                {ProjectCreator && (
-                  <div className="flex  space-x-1 self-end ">
-                    <span onClick={updateProject} className="">
-                      <IconButton className=" animated-underline cursor-pointer">
-                        <i className="ri-pencil-line"></i>
-                      </IconButton>
-                    </span>
-                    <span onClick={() => delete_project(title)}>
-                      <IconButton className="animated-underline cursor-pointer">
-                        <i class="ri-delete-bin-5-fill"></i>
-                      </IconButton>
-                    </span>
+
+                <div className="flex  space-x-1  ">
+                  <div className="flex justify-between ">
+                    {githubLink?.length > 0 && (
+                      <span
+                        onClick={() => visitLink(githubLink)}
+                        className="mb-1 ml-[-30px] hover:bg-slate-900 rounded-full cursor-pointer md:hidden"
+                      >
+                        <IconButton className="">
+                          <svg
+                            viewBox="0 0 24 24"
+                            height="24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill="#FFFFFF"
+                              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                            ></path>
+                          </svg>
+                        </IconButton>
+                      </span>
+                    )}
+                    {liveLink?.length > 0 && (
+                      <span
+                        onClick={() => visitLink(liveLink)}
+                        className=" cursor-pointer  md:hidden"
+                      >
+                        <h3 className="text-[14px] animated-underline">
+                          Show Live
+                        </h3>
+                      </span>
+                    )}
                   </div>
-                )}            
+                  {ProjectCreator && (
+                    <div className=" flex space-x-1 ">
+                      <span onClick={updateProject} className="">
+                        <IconButton className=" animated-underline  cursor-pointer">
+                          <i className=" ri-pencil-line "></i>
+                        </IconButton>
+                      </span>
+                      <span onClick={() => setopenDelete(true)}>
+                        <IconButton className="animated-underline cursor-pointer">
+                          <i class="ri-delete-bin-5-fill"></i>
+                        </IconButton>
+                      </span>
+                    </div>
+                  )}{" "}
+                </div>
               </div>
 
               <p class="card-des">{description}</p>
               <p class="card-text">
-                <span>
-                  <button className="bg-red-700" onClick={onOpenModal}>
+                <span className="mt-1 md:mt-0">
+                  <button className="bg-red-700 " onClick={onOpenModal}>
                     View More
                   </button>
                 </span>
 
-                <Modal
+{/* //todo updating project modal */}
+                {/* <Modal
                   styles={{
                     modal: {
                       backgroundColor: "black",
@@ -222,6 +269,7 @@ export default function ProjectCard({
                   open={openUpdate}
                   onClose={() => setOpenUpdate(false)}
                   center
+                  closeIcon={closeIcon}
                 >
                   <h3 className=" text-xl mb-[4vh] text-center">
                     Update Project...
@@ -285,8 +333,9 @@ export default function ProjectCard({
                       Update
                     </button>
                   </form>
-                </Modal>
+                </Modal> */}
 
+{/* //todo opening project modal */}
                 <Modal
                   styles={{
                     modal: {
@@ -300,10 +349,11 @@ export default function ProjectCard({
                   open={open}
                   onClose={onCloseModal}
                   center
+                  closeIcon={closeIcon}
                 >
                   <div className="m-2 mt-5 ">
-                    <div className="flex justify-between -mt-5">
-                      <div className="flex  space-x-1 mb-2">
+                    {/* <div className="flex  -mt-5"> */}
+                      <div className="flex justify-between space-x-1 -mt-5 mb-2">
                         <p className="card-title m">{title}</p>
                         {githubLink?.length > 0 && (
                           <Link
@@ -333,7 +383,7 @@ export default function ProjectCard({
                             Show Live
                           </Link>
                         )}
-                      </div>
+                      {/* </div> */}
                     </div>
                     <p className=" my-3 ">{description}</p>
                     {ProjectCreator && (
@@ -360,6 +410,8 @@ export default function ProjectCard({
                   >
                     Comments
                   </div>
+
+
                 </Modal>
 
                 <Modal
@@ -375,9 +427,10 @@ export default function ProjectCard({
                   open={openSecond}
                   onClose={() => {
                     setOpenSecond(false);
-                    setProjectCreator(false);
+                    // setProjectCreator(false);
                   }}
                   center
+                  closeIcon={closeIcon}
                 >
                   {JSON.parse(localStorage.getItem("userData"))?.id !==
                     creatorId && (
@@ -435,6 +488,48 @@ export default function ProjectCard({
                   </div>
                 </Modal>
 
+                <Modal
+                  styles={{
+                    modal: {
+                      backgroundColor: "black",
+                      border: "4px solid grey",
+                      borderRadius: "18px",
+                    },
+                    root: { margin: "98px 0" },
+                    closeIcon: { color: "red" },
+                  }}
+                  open={openDelete}
+                  onClose={() => {
+                    setopenDelete(false);
+                  }}
+                  center
+                  showCloseIcon={false}
+                >
+                  <h3 className="m-1 mb-3 text-center">
+                    Delete Project&nbsp;&nbsp;{" "}
+                    <span className="font-medium text-xl">" {title} "</span>
+                  </h3>
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setopenDelete(false);
+                      }}
+                      className="my-2 border-white border-solid hover:border-dashed border-2 px-5 py-2 rounded-lg "
+                    >
+                      No
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        delete_project(title);
+                      }}
+                      className="my-1 border-white border-double hover:border-dashed border-2 px-5 py-2 rounded-lg"
+                    >
+                      Yes
+                    </button>
+                  </div>
+                </Modal>
                 <svg
                   class="arrow-icon"
                   stroke="currentColor"
@@ -455,7 +550,7 @@ export default function ProjectCard({
           </div>
           <span class="bottom-text">PROJECTO</span>
         </div>
-      </div>
+     
     </>
   );
 }

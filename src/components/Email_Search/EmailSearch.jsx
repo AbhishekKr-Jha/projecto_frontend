@@ -53,18 +53,18 @@ export default function EmailSearch() {
         <Toaster position="bottom-right" />
       </div>
       <div
-        className=" flexC element-Wrapper lg:pt-[55px]"
-        style={{ gap: "20px" }}
+        className=" flexC element-Wrapper lg:pt-[55px] space-y-5"
+       
       >
            <h3>newabjk1234@gmail.com</h3>
         <h3>abhishekhp935@gmail.com</h3>
-        <h1 className="text-[7vw] sm:text-[30px] md:text-[50px] lg:text-[46px]">
+        <h1 className=" text-[7vw] sm:text-[30px] md:text-[50px] ">
           Enter Email to search for Projects
         </h1>
      
         <div
-          className=" flexC sm:flex-row  box-wrapper serach-Box"
-          style={{ gap: "15px" }}
+          className=" flexC sm:flex-row space-y-4  box-wrapper serach-Box "
+          
         >
           <input
             onChange={(e) => {

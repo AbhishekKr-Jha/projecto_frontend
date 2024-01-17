@@ -151,13 +151,13 @@ export default function ProjectCard({
       console.log("error in projectUPdate", error);
     }
   };
-  const closeIcon = <i class="ri-close-fill" style={{ fontSize: "30px" }}></i>;
+  const closeIcon = <i className="  text-3xl ri-close-fill  " ></i>;
   return (
     <>
       <div className="fixed">
         <Toaster position="bottom-right" />
       </div>
-      <div className="flexC">
+    
         <div class="project-card hover:md:scale-110 ">
           <div class="border"></div>
           <div class="content">
@@ -233,8 +233,8 @@ export default function ProjectCard({
                   {ProjectCreator && (
                     <div className=" flex space-x-1 ">
                       <span onClick={updateProject} className="">
-                        <IconButton className=" animated-underline cursor-pointer">
-                          <i className="ri-pencil-line"></i>
+                        <IconButton className=" animated-underline  cursor-pointer">
+                          <i className=" ri-pencil-line "></i>
                         </IconButton>
                       </span>
                       <span onClick={() => setopenDelete(true)}>
@@ -255,7 +255,8 @@ export default function ProjectCard({
                   </button>
                 </span>
 
-                <Modal
+{/* //todo updating project modal */}
+                {/* <Modal
                   styles={{
                     modal: {
                       backgroundColor: "black",
@@ -332,8 +333,9 @@ export default function ProjectCard({
                       Update
                     </button>
                   </form>
-                </Modal>
+                </Modal> */}
 
+{/* //todo opening project modal */}
                 <Modal
                   styles={{
                     modal: {
@@ -342,7 +344,7 @@ export default function ProjectCard({
                       borderRadius: "18px",
                     },
                     root: { margin: "98px 0" },
-                    closeIcon: { color: "red" },
+                    
                   }}
                   open={open}
                   onClose={onCloseModal}
@@ -350,8 +352,8 @@ export default function ProjectCard({
                   closeIcon={closeIcon}
                 >
                   <div className="m-2 mt-5 ">
-                    <div className="flex justify-between -mt-5">
-                      <div className="flex  space-x-1 mb-2">
+                    {/* <div className="flex  -mt-5"> */}
+                      <div className="flex justify-between space-x-1 -mt-5 mb-2">
                         <p className="card-title m">{title}</p>
                         {githubLink?.length > 0 && (
                           <Link
@@ -381,7 +383,7 @@ export default function ProjectCard({
                             Show Live
                           </Link>
                         )}
-                      </div>
+                      {/* </div> */}
                     </div>
                     <p className=" my-3 ">{description}</p>
                     {ProjectCreator && (
@@ -408,8 +410,13 @@ export default function ProjectCard({
                   >
                     Comments
                   </div>
+
+
                 </Modal>
 
+
+
+{/* //todo commenting on the project */}
                 <Modal
                   styles={{
                     modal: {
@@ -417,8 +424,7 @@ export default function ProjectCard({
                       border: "4px solid grey",
                       borderRadius: "18px",
                     },
-                    root: { margin: "98px 0" },
-                    closeIcon: { color: "red" },
+                    root: { margin: "98px 0" }
                   }}
                   open={openSecond}
                   onClose={() => {
@@ -430,7 +436,7 @@ export default function ProjectCard({
                 >
                   {JSON.parse(localStorage.getItem("userData"))?.id !==
                     creatorId && (
-                    <div className="flexC md:flex-row">
+                    <div className="flexC ">
                       <textarea
                         id="commentInput"
                         value={InputComment.comment}
@@ -546,7 +552,7 @@ export default function ProjectCard({
           </div>
           <span class="bottom-text">PROJECTO</span>
         </div>
-      </div>
+     
     </>
   );
 }
