@@ -5,17 +5,19 @@ const loginSlice=createSlice({
     initialState:{
         isLogin:false,
         userLoginDetails:{
-            userName:"",
+            name:"",
             email:"",
-            contact:"",
-            projects:[],
+            totalProject:"",
         }
     },
     reducers :{
         login(state){state.isLogin=true},
-        logout(state){state.isLogin=false}
+        logout(state){state.isLogin=false},
+        userInfo(state,action){
+            state.userLoginDetails = { ...state.userLoginDetails, ...action.payload };
+        }
     }
 })
 
-export const {login,logout}=loginSlice.actions
+export const {login,logout,userInfo}=loginSlice.actions
 export default  loginSlice.reducer

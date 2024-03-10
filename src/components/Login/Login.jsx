@@ -2,7 +2,7 @@ import React, { useState  } from "react";
 import { Link,  useNavigate } from "react-router-dom";
 import { login_function } from "../Services/Apis";
 import { useDispatch } from "react-redux";
-import { login } from "../../Redux/loginSlice";
+import { login, userInfo } from "../../Redux/loginSlice";
 import "../../Items/Button/Button.css";
 import { Toaster } from "react-hot-toast";
 import { success, fail } from "../../Items/Toastify";
@@ -14,8 +14,6 @@ export default function Login() {
   // console.log(location);
 
   const [loginForm_data, setloginForm_data] = useState({ email: "", pw: "" });
-
-
 
 //    useEffect(() => {
 // if(location.state){success(location.state)}
@@ -39,11 +37,17 @@ export default function Login() {
         if (data.success) {
           success(data.message);
           localStorage.setItem("userData", JSON.stringify(data.loginDetails));
-          localStorage.setItem(
-            "userProjectoData",
-            JSON.stringify(data.userInfo)
-          );
+          // localStorage.setItem(
+          //   "userProjectoData",
+          //   JSON.stringify(data.userInfo)
+          // );
           dispatch(login());
+          dispatch(
+            userInfo({
+              name: data.userInfo.firstName + " " + data.userInfo.lastName,
+              email: data.userInfo.email,
+              totalProject: data.userInfo.totalProject,
+            }) )
           navigate("/");
         } else {
           fail(data.message);

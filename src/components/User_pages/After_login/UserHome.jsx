@@ -5,17 +5,20 @@ import { getProject_function } from "../../Services/Apis";
 import { useSelector } from "react-redux";
 
 export default function UserHome() {
+  const userLoginDetails = useSelector((state) => state.login.userLoginDetails);
   const isDelete = useSelector((state) => state.delete.isDelete);
 
   const [Project, setProject] = useState([]);
-  const email = JSON.parse(localStorage.getItem("userData"))?.email;
+  // const email = JSON.parse(localStorage.getItem("userData"))?.email;
 
+console.log(userLoginDetails.email)
   const get_projects = async () => {
     try {
-      console.log("---", email);
-      const { data } = await getProject_function(email);
+      const { data } = await getProject_function(userLoginDetails.email);
       if (data.success) {
         console.log(data.message);
+        console.log(";;;;;;;;;")
+        console.log(data.projects)
         setProject(data.projects);
       } else {
         console.log(data.message);
@@ -28,16 +31,15 @@ export default function UserHome() {
   useEffect(() => {
     get_projects();
     console.log("___", Project);
-    console.log(isDelete);
-  }, [isDelete]);
+  }, []);
 
   return (
     <>
      
-        <section className="element-Wrapper pt-[55px] flexC  space-y-3  ">
+        <section className=" element-Wrapper flexC pt-[55px] ">
 
           <p className="text-xl md:text-2xl lg:text-2xl mt-20 underline underline-offset-8">
-            {email}
+            {userLoginDetails.email}
           </p>
           <p className=" p-1  text-xl md:text-2xl lg:text-2xl mt-4 lg:mt-5">
             Projects
@@ -66,10 +68,9 @@ export default function UserHome() {
               })
             ) : (
               <div className="mt-4">
-                {" "}
                 <h1 className="text-[7vw] sm:text-[30px] md:text-[50px] lg:text-[46px]">
                   0 - Collections yet
-                </h1>{" "}
+                </h1>
               </div>
             )}
           </div>
