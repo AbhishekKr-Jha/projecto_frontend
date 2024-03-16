@@ -22,7 +22,7 @@ import SearchResult from "./components/SearchResult/SearchResult";
 import NewMenu from "./Items/NewMenu/NewMenu";
 import { checkLogin_function } from "./components/Services/Apis";
 import Hero1 from "./components/Hero/Hero1";
-import Wastecard from "./Items/project_card/Wastecard";
+// import Wastecard from "./Items/project_card/Wastecard";
 // import Footer from './components/Footer';
 
 function App() {
@@ -90,7 +90,7 @@ function App() {
           <Route path="user_profile" element={<UserProfile />} />
           <Route path="modals" element={<Modals />} />
           <Route path="search_result" element={<SearchResult />} />
-          <Route path="waste-text" element={<Wastecard />} />
+          {/* <Route path="waste-text" element={<Wastecard />} /> */}
         </Routes>
 
         {/* <div className="fixed bottom-0 right-[11vw] md:-right-[115px] md:top-[50vh] md:-rotate-90 bg-black md:bg-slate-500 px-4 md:px-1"><p className='text-center'>&copy; 2023 Projeto. All rights reserved</p></div>
