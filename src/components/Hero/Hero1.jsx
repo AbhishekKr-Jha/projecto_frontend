@@ -33,19 +33,14 @@ const mousemove=(e)=>{
     <>
       <div   className=" element-Wrapper flex flex-col justify-center  mt-[50px] md:mt-[56px] bg-black  oveflow-hidden">
 
-        {/* <div className="absolute top-32 -right-1 h-[300px] w-[300px] bg-white rounded-full "></div> */}
+
         <div id="first-container" className="  relative w-full mb-16 mt-16    px-2  flex flex-col lg:flex-row   justify-around items-center ">
-          {/* <div  className="flex justify-center items-center absolute -translate-x-1/2 -translate-y-[230%]  left-1/2  bg-white h-24 w-24 rounded-full transition-all ease-in  moving-element"></div> */}
           <h2 className="  text-[9.3vw]  sm:text-6xl  sm:leading-[80px] lg:leading-[82px] font-bold font-[raw] tracking-wider uppercase ">
             Now
             <br /> Showcase <br /> Your Projects<span className="text-[12vw]  sm:text-[65px] lg:text-[95px]" >2</span> <br />
             Everyone Easily
           </h2>
-
-            <Lottie className="mt-6  w-[90%]   sm:w-[80%] md:w-[80%] lg:w-[42%] lg:max-w-[530px] "  animationData={A2} />
-            {/* b2 */}
-            {/* <div className="absolute  h-[300px] w-[300px] bg-white rounded-full "></div> */}
-          
+            <Lottie className="mt-6  w-[90%]   sm:w-[80%] md:w-[80%] lg:w-[42%] lg:max-w-[530px] "  animationData={A2} />    
         </div>
  
         <div className="w-[95%]    mx-2 md:mx-10 lg:mx-12 my-16 ">

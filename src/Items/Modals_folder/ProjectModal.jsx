@@ -3,6 +3,7 @@ import Modal from "react-responsive-modal";
 import { useSelector } from "react-redux";
 import CommentsBox from "../project_card/CommentsBox";
 import { getComment_function } from "../../components/Services/Apis";
+import { AddComments } from "../../components/User_pages/After_login/Projects_func_comp/AddComments";
 // import 'react-responsive-modal/styles.css';
 
 export default function ProjectModal({
@@ -16,49 +17,46 @@ export default function ProjectModal({
   creatorId,
   projectId,
 }) {
-  console.log("bhai project card render ho raha hai")
-  console.log("=====")
+ 
   const userLoginDetails = useSelector((state) => state.login);
-  console.log("is is rendering")
 
+  const userId = JSON.parse(localStorage.getItem("userData"))?.id;
+
+
+  const [runUseEffect,setRunUseEffect]=useState(false)
+    //for getting the value of input Comment
+    const [inputCommentValue, setInputCommentValue] = useState({
+      projectId: projectId,
+      comment: "",
+      userId: userId,
+    });
   useEffect(() => {
-    console.log(":hello")
-  getProjectComments()
-  },[])
+    getProjectComments();
+  }, [runUseEffect]);
 
-const userId=JSON.parse(localStorage.getItem("userData"))?.id
 
   //for setting the comments
-  const [comments,setComments]=useState([])
-  // getProjectComments()
+  const [comments, setComments] = useState([]);
 
 
-//getting all the comments of the project
-const getProjectComments=async()=>{
-  console.log("try to run")
-  try {
-    const { data } = await getComment_function(projectId);
-    console.log("--",projectId)
-    if (data.success) {
-      console.log(data.message);
-      setComments(data.comments)
-    } else {
-      console.log("getcomments  entered in console")
+  //getting all the comments of the project
+  const getProjectComments = async () => {
+    console.log("try to run");
+    try {
+      const { data } = await getComment_function(projectId);
+      console.log("--", projectId);
+      if (data.success) {
+        console.log(data.message);
+        setComments(data.comments);
+      } else {
+        console.log("getcomments  entered in console");
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-}
+  };
 
 
-  //for getting the value of input Comment
-  const [inputComment, setinputComment] = useState({
-    projectId: projectId,
-    comment: "",
-    userId: userId
-  });
-
- 
   return (
     <Modal
       styles={{
@@ -68,15 +66,8 @@ const getProjectComments=async()=>{
           borderRadius: "18px",
           paddingTop: "60px",
           margin: "0 -8px",
-          //  position:"absolute",
         },
-        root: {
-          // margin:"100px 0",
-          // display:"flex",justifyContent:"center",alignItems:"center",
-          // width:"100vw",height:"100vh",
-          // backgroundColor: "green",
-        },
-        // closeButton: { display: "" },
+        root: {},
       }}
       classNames={{ modal: " sc2", root: "bg-black " }}
       open={open}
@@ -84,9 +75,9 @@ const getProjectComments=async()=>{
       center
       closeIcon={<i className=" text-3xl ri-arrow-left-line "></i>}
     >
-      <div className="w-full overflow-y-auto  sc2 max-h-[800px] border-2 px-2 lg:px-3 py-3  rounded-lg ">
+      <div className="w-full overflow-y-auto  sc2  max-h-[800px] border-2 px-2 lg:px-3 py-3  rounded-lg ">
         <div className="  p-1 ">
-          <div className=" mb-2">
+          <div className=" mb-6">
             <div className=" md:flex  justify-start items-center  md:space-x-2  mb-2    ">
               <h3 className=" text-base min-w-[170px] max-w-[400px] bg-slate-900 group-hover:border-[1px] group-hover:border-white py-2 rounded-md px-3  ">
                 {title}
@@ -123,59 +114,63 @@ const getProjectComments=async()=>{
               <span className="text-sm text-gray-400  font-medium">
                 05 Jan, 2023
               </span>
-              <div className="w-full scale-75  flex justify-center transition-all ease-in  duration-500  space-x-3 items-baseline">
-                <i
-                  onClick={openDeleteModal}
-                  className="cursor-pointer  text-3xl  fi fi-rs-trash"
-                ></i>
-                <i className="cursor-pointer text-2xl fi fi-rr-pencil"></i>
-              </div>
+              {creatorId === userId && (
+                <div className="w-full scale-75  flex justify-center transition-all ease-in  duration-500  space-x-3 items-baseline">
+                  <i
+                    onClick={openDeleteModal}
+                    className="cursor-pointer  text-3xl  fi fi-rs-trash"
+                  ></i>
+                  <i className="cursor-pointer text-2xl fi fi-rr-pencil"></i>
+                </div>
+              )}
             </div>
           </div>
           <hr className=" mx-auto w-[90%] " />
           <h2 className="my-3 text-2xl lg:text-3xl ">Suggestions</h2>
+          {userLoginDetails.isLogin && (
+            <div className=" flex flex-col sm:flex gap-y-3 items-start sm:justify-start sm:items-center  gap-3  mt-6">
+              <input
+                type="text"
+                onChange={(e) =>
+                  setInputCommentValue({ ...inputCommentValue, comment: e.target.value })
+                }
+                value={inputCommentValue.comment}
+                placeholder="Enter your Suggestion"
+                className="input w-[280px] sm:w-[400px] text-xs md:text-sm rounded-none  border-0 border-b-[0.1px] border-gray-400 focus:border-white "
+              />
 
-            {/* <input type="text"  disabled="true" placeholder="Enter your Suggestion"  className="input md:w-[700px] rounded-md  " /> */}
+              {inputCommentValue.comment.length > 0 && (
+                <button
+                  onClick={() => {
+                    AddComments(inputCommentValue);
+                    setInputCommentValue({...inputCommentValue,comment:""});
+                    setRunUseEffect(true)
+                  }}
+                  className=" mx-auto sm:mx-0 py-2 px-6 rounded-lg bg-red-900 text-xs font-thin lg:hover:bg-gray-200 hover:text-black "
+                >
+                  <i className=" ri-send-plane-2-line cursor-pointer"></i>
+                </button>
+              )}
+              {/* <i className="text-2xl ri-send-plane-2-line cursor-pointer"></i> */}
+            </div>
+          )}
 
-                    { userLoginDetails.isLogin && <div className=" flex flex-wrap justify-start items-center  gap-3  mt-6">
-                
-                      <input
-                        type="text"
-                        onChange={(e)=>setinputComment({...inputComment,comment:e.target.value})}
-                       
-                        value={inputComment.comment}
-                        placeholder="Enter your Suggestion"
-                        className="input w-[250px] sm:w-[400px] text-xs md:text-sm rounded-none  border-0 border-b-[0.1px] border-gray-400 focus:border-white "
-                      />
-                    
-                  
-                    {inputComment.comment.length > 0 && (
-                      <button
-                        className=" mx-auto sm:mx-0 py-2 px-6 rounded-lg bg-red-900 text-xs font-thin lg:hover:bg-gray-200 hover:text-black "
-                      >
-                       <i className=" ri-send-plane-2-line cursor-pointer"></i>
-                      </button>
-                     
-  )}
-                        {/* <i className="text-2xl ri-send-plane-2-line cursor-pointer"></i> */}
-                        </div> }
-                  
-               
-                    <div className=" my-8 ">
-
+          <div className=" my-8 ">
             {comments.map((element, index) => {
+              console.log(comments)                        
               return (
-                <div key={index}  className="my-4 lg:my-8">
-                  <CommentsBox index={index} 
-                  userLoginDetails={userLoginDetails}  
-                  commentorName={element.user}
-                              comment={element.comment}
-                              commentId={element._id}
-                              reply={element.reply}
-                              creatorId={creatorId}
-                              userId={userId}
-                               />
-                  </div>
+                <div key={index} className="my-4 lg:my-8">
+                  <CommentsBox
+                    index={index}
+                    userLoginDetails={userLoginDetails}
+                    commentorName={element.user}
+                    comment={element.comment}
+                    commentId={element._id}
+                    reply={element.reply}
+                    creatorId={creatorId}
+                    userId={userId}
+                  />
+                </div>
               );
             })}
           </div>
@@ -183,4 +178,4 @@ const getProjectComments=async()=>{
       </div>
     </Modal>
   );
-}  
+}

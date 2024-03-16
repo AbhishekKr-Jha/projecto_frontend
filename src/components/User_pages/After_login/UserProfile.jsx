@@ -1,31 +1,21 @@
-import React, { useState } from "react";
-import "../../../Items/Button/Edit_Btn.css";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Toaster } from "react-hot-toast";
 import github from "../../../Items/Icons/github.svg";
 import instagram from "../../../Items/Icons/instagram.svg";
 import linkedin from "../../../Items/Icons/linkedin.svg";
-import { NavLink } from "react-router-dom";
-import { changePassword_function } from "../../Services/Apis";
-import { Toaster } from "react-hot-toast";
-import { success, fail } from "../../../Items/Toastify";
-import { IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from "@mui/icons-material/Close";
-import { useSelector } from "react-redux";
-import Wastecard from "../../../Items/project_card/Wastecard";
+import GetProjectsComp from "./Projects_func_comp/GetProjectsComp";
 
 export default function UserProfile() {
+
   const userLoginDetails = useSelector((state) => state.login.userLoginDetails);
 
-  //for getting the contact links of the user
-  const [userLinks, setuserLinks] = useState({
-    GitHub: "",
-    Linkedin: "",
-    Instagram: "",
-  });
-  //for show or hide the contact
-  // const [show,setshow]=useState(false)
-
- 
+  // const [userLinks, setuserLinks] = useState({
+  //   GitHub: "",
+  //   Linkedin: "",
+  //   Instagram: "",
+  // });
 
   return (
     <>
@@ -95,12 +85,12 @@ export default function UserProfile() {
               <i className="ri-add-fill text-5xl "></i>
               <span></span>
             </div>
-          </div>
+          </div> 
         </div>
         <hr />
-        <div className="flex flex-wrap my-12">
-          <Wastecard />
-          <Wastecard />
+        
+        <div className=" my-12">
+       <GetProjectsComp email={userLoginDetails.email} />
         </div>
       </section>
     </>

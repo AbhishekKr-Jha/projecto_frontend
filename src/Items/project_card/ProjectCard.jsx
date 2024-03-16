@@ -49,7 +49,7 @@ export default function ProjectCard({
             <h3 className="min-w-[170px]  max-w-[400px] truncate  bg-slate-900 group-hover:border-[1px] group-hover:border-white py-2 rounded-lg px-3">
         {title}
             </h3>
-            <div className="flex  justify-center items-center   px-2    ">
+            <div className="my-4 md:my-0 flex  justify-center items-center   px-2    ">
          <span  className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]"  disabled={githubLink?.length > 0 && "true"}  >
                 <svg
                   viewBox="0 0 24 24"
@@ -73,15 +73,16 @@ export default function ProjectCard({
 
           <div className=" w-full flex justify-between items-center mt-1 ">
             <span className="text-gray-400 font-medium">05 Jan, 2023</span>
-            <div className="flex justify-between">
-              <div className="scale-0  opacity-0 flex  group-hover:scale-75  md:group-hover:opacity-100 transition-transform ease-linear  duration-500  space-x-3 items-baseline">
+        
+             {InputComment.userId === creatorId &&  
+              <div className="scale-0  opacity-0 flex justify-between group-hover:scale-75  md:group-hover:opacity-100 transition-transform ease-linear  duration-500  space-x-3 items-baseline">
                 <i
                   onClick={() => setopenDelete(true)}
                   className="cursor-pointer hover:opacity-75 text-2xl  fi fi-rs-trash"
                 ></i>
                 <i className="cursor-pointer hover:opacity-50 text-xl fi fi-rr-pencil"></i>
-              </div>
-            </div>
+              </div>  }
+        
           <i
               onClick={onOpenModal}
               className=" cursor-pointer flex lg:hidden group-hover:flex items-center text-[28px] fi fi-rr-angle-double-small-right lg:arrow"
@@ -116,15 +117,7 @@ export default function ProjectCard({
         <p className="text-[12px] md:text-sm">  <span className="text-red-500 font-bold">Note :</span>  projects deleted are permanently removed from the database</p>
         {/* <p className="text-center my-2 text-base">Are you sure to delete?</p> */}
         <div className="mt-3 mb-3 flex space-x-2">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setopenDelete(false);
-            }}
-            className=" my-1 border-white  border-[1px] px-6 py-[6px] rounded-lg  hover:bg-white hover:text-black font-medium transition-all ease-linear duration-100"
-          >
-            No
-          </button>
+          
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -133,6 +126,16 @@ export default function ProjectCard({
             className=" my-1 border-white  border-[1px] px-6 py-[6px] rounded-lg  hover:bg-white hover:text-black font-medium transition-all ease-linear duration-100"
           >
             Yes
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setopenDelete(false);
+            }}
+            className=" my-1 border-white  border-[1px] px-6 py-[6px] rounded-lg  hover:bg-white hover:text-black font-medium transition-all ease-linear duration-100"
+          >
+            No
           </button>
         </div>
       </Modal>

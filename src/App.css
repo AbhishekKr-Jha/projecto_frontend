@@ -76,6 +76,12 @@
 }
 
 
+/* <div className="">
+<div className="scale-0  hidden group-hover:flex  group-hover:scale-75  md:group-hover:opacity-100 transition-transform ease-linear  duration-500  space-x-3 items-baseline">
+<i className="cursor-pointer hover:opacity-75 text-2xl  fi fi-rs-trash"></i>
+<i className="cursor-pointer hover:opacity-50 text-xl fi fi-rr-pencil"></i>
+</div></div> */
+
 
 /* .count-up{ @apply bg-green-700 text-2xl p-14 rounded-full border-2 border-white s1 } */
 
@@ -85,8 +91,8 @@
   @apply my-3 w-[66vw] sm:w-[50vw] md:w-[38vw] lg:w-[390px] 
 }
 
-/* 
-.main-heading{@apply text-[8vw] sm:text-[6vw] lg:text-8xl font-bold } */
+
+.main-heading{@apply text-[8vw] sm:text-[6vw] lg:text-8xl font-bold }
 
 .add-project-input{@apply w-[90vw]  md:w-[75vw]  lg:w-[60vw] max-w-[800px] }
 
@@ -130,8 +136,14 @@ z-index:12;
 
 
 
+.ci{@apply border-none bg-red-800 text-white rounded-full}
 
+.sc2::-webkit-scrollbar {
+  display: none;
+}
 
-
+.suggestion_input{
+  
+}
 
 

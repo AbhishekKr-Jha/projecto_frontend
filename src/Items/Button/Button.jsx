@@ -4,7 +4,7 @@ import './Button.css'
 export default function Button() {
   return (
    <>
-   <button class="button"> Button
+   <button className="button"> Button
 </button>
    </>
   )

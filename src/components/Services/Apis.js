@@ -52,11 +52,18 @@ export const updateProject_function=async(updatedData,header)=>{
     return commonRequest("PUT",`${BACKEND}/users/v1/updateProject`,updatedData)
 }
 
+//get the emails for real time search
+export const realTimeSearch_function=async()=>{
+    return commonRequest("GET",`${BACKEND}/users/v1/realTimeSearch`)
+}
+
+
+
+
 //get comment of project
 export const getComment_function=async(projectId,header)=>{
     return commonRequest("GET",`${BACKEND}/users/v1/getComments/${projectId}`)
 }
-
 
 //post comment of project
 export const postComment_function=async(data,header)=>{

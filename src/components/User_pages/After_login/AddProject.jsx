@@ -42,8 +42,8 @@ export default function AddProject() {
           success(data.message);
         } else {
           fail(data.message);
-          // console.log("else block");
-          // console.log(data.message.split(',')[0]);
+          console.log("else block");
+          console.log(data.message.split(',')[0]);
         
         }
       }
