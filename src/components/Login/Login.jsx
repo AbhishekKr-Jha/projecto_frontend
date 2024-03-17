@@ -71,6 +71,8 @@ export default function Login() {
             <p className="paraText">
               New User?&nbsp;<Link className="font-semibold italic animated-underline" to="/register">Create an account</Link>
             </p> 
+            <button className="red-900 border-2 border-blue-700" onClick={()=>process.env.REACT_APP_URL}>hello</button>
+                
           </div>    
             <form className="flexC" onSubmit={submit_login}>         
                 <input
@@ -86,8 +88,7 @@ export default function Login() {
                   autocomplete="off"
                   autoFocus="true"
                 />
-                <button className="red-900 border-2 border-blue-700" onClick={()=>process.env.REACT_APP_URL}></button>
-                <input
+              <input
                   className=" input md:w-[400px] mb-2 "
                   onChange={get_Data}
                   value={loginForm_data.pw}
