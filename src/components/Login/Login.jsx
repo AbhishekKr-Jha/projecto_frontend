@@ -86,6 +86,7 @@ export default function Login() {
                   autocomplete="off"
                   autoFocus="true"
                 />
+                <button className="red-900 border-2 border-blue-700" onClick={()=>process.env.REACT_APP_URL}></button>
                 <input
                   className=" input md:w-[400px] mb-2 "
                   onChange={get_Data}

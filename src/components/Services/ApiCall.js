@@ -12,5 +12,5 @@ export const commonRequest=async(methods,url,body,header)=>{
 
     return axios(config).then((data)=>{
         return data
-    }).catch((err)=>{return err})
+    }).catch((err)=>{return err.message})
 }
