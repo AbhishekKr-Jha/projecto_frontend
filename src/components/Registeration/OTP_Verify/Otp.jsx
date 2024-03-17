@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { verifyOTP_function } from "../../Services/Apis";
 import Loader from "../../../Items/loader/Loader";
 import { Toaster } from "react-hot-toast";
-import { fail, success } from "../../../Items/Toastify";
+import { fail } from "../../../Items/Toastify";
 
 export default function Otp() {
   const location = useLocation();

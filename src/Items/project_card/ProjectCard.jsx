@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal } from "react-responsive-modal";
 // import "./w.css";
-import { showInput } from "../ExtraFunction";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { showInput } from "../ExtraFunction";
+// import { useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 import ProjectModal from "../Modals_folder/ProjectModal";
 
 export default function ProjectCard({
@@ -14,7 +14,7 @@ export default function ProjectCard({
   githubLink,
   description,
 }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const isUserLoginData = useSelector((state) => state.login);
   // const isDelete = useSelector((state) => state.delete.isDelete);
@@ -30,7 +30,7 @@ export default function ProjectCard({
     userId: JSON.parse(localStorage.getItem("userData"))?.id,
   });
   //for getting input value of reply
-  const [reply, setreply] = useState("");
+  // const [reply, setreply] = useState("");
 
   //fpr the followers modal list
   const onOpenModal = () => setOpen(true);

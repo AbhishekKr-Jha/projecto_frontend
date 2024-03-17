@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import 'react-responsive-modal/styles.css';
 import github from "../../Items/Icons/github.svg";
@@ -9,8 +9,8 @@ import GetProjectsComp from "../User_pages/After_login/Projects_func_comp/GetPro
 export default function SearchResult() {
   const location = useLocation();
   const userData = location.state;
-  const [showLogin, setShowLogin] = useState(false);
-  const [open, setOpen] = useState(false);
+  //const [showLogin, setShowLogin] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   // const onOpenModal = () => setOpen(true);
   // const onCloseModal = () => setOpen(false);
@@ -44,13 +44,12 @@ export default function SearchResult() {
               </div>
             </div>
           </div>
-        
-          <div className="mt-6 md:mt-0 flex justify-center gap-x-14 mx-auto lg:mx-0 ">
+        <div className="mt-6 md:mt-0 flex justify-center gap-x-14 mx-auto lg:mx-0 ">
             <div className="flex flex-col gap-0  cursor-pointer">
               <span>{userData.projects.length}</span>
               <span>projects</span>
             </div>
-            <div onClick={() => setShowLogin(true)} className="flex flex-col gap-0  cursor-pointer">
+            <div  className="flex flex-col gap-0  cursor-pointer">
               <span>20</span>
               <span>followers</span>
             </div>

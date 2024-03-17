@@ -15,9 +15,9 @@ export default function CommentsBox({
   const [inputReplyValue, setInputReplyValue] = useState("");
 
 //submit your comment
-const submitComment=async()=>{
+// const submitComment=async()=>{
 
-}
+// }
 
   return (
     <>

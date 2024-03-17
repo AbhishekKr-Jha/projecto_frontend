@@ -16,26 +16,19 @@ import UserHome from "./components/User_pages/After_login/UserHome";
 import UserProfile from "./components/User_pages/After_login/UserProfile";
 import { useDispatch } from "react-redux";
 import { login, userInfo } from "./Redux/loginSlice";
-import ProjectCard from "./Items/project_card/ProjectCard";
+// import ProjectCard from "./Items/project_card/ProjectCard";
 import Modals from "react-responsive-modal";
 import SearchResult from "./components/SearchResult/SearchResult";
 import NewMenu from "./Items/NewMenu/NewMenu";
 import { checkLogin_function } from "./components/Services/Apis";
 import Hero1 from "./components/Hero/Hero1";
+//import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
 // import Wastecard from "./Items/project_card/Wastecard";
 // import Footer from './components/Footer';
 
 function App() {
   // const locomotiveScroll = new LocomotiveScroll();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    checkLogin();
-    setTimeout(() => {
-      document.querySelector(".front-page").style.opacity = "0";
-      document.querySelector(".front-page").style.zIndex = "-1000";
-    }, 2400);
-  }, []);
 
   const checkLogin = async () => {
     const ifUserData = JSON.parse(localStorage.getItem("userData"));
@@ -60,8 +53,19 @@ function App() {
       } catch (error) {
         console.log("error");
       }
-    }
+    } 
   };
+
+  useEffect(() => {
+  
+    checkLogin();
+    setTimeout(() => {
+      document.querySelector(".front-page").style.opacity = "0";
+      document.querySelector(".front-page").style.zIndex = "-1000";
+    }, 2400);
+  }, []);
+
+ 
 
   return (
     <>

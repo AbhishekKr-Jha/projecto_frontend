@@ -4,30 +4,30 @@ import './Hero.css'
 import CountUp from 'react-countup';
 import Lottie from "lottie-react";
 import Compo1 from './Hero_component/Compo1'
-import A1 from "./animations/A1.json";
+// import A1 from "./animations/A1.json";
 import A2 from "./animations/A2.json";
-import A3 from "./animations/A3.json";
-import A4 from "./animations/A4.json";
-import Hero_s1 from './animations/Hero_s1.svg'
+// import A3 from "./animations/A3.json";
+// import A4 from "./animations/A4.json";
+// import Hero_s1 from './animations/Hero_s1.svg'
 import h3 from './animations/h3.svg'
-import Explore_s1 from './animations/Explore_s1.svg'
+// import Explore_s1 from './animations/Explore_s1.svg'
 import e3 from './animations/e3.svg' 
 import S1 from './animations/S1.svg' 
 import c1 from './animations/c1.svg' 
 import space2 from './animations/space2.json'
 export default function Hero1() {
-  const style = {
-    width: "100%",
-    height: "100%",
-  };
+  // const style = {
+  //   width: "100%",
+  //   height: "100%",
+  // };
 
   
 
-const mousemove=(e)=>{
+// const mousemove=(e)=>{
 //   const moving_ele=document.querySelector('.moving-element')
 //   moving_ele.style.left=e.pageX+"px"
 //  moving_ele.style.top=e.pageY+"px"
-}
+// }
   return (
     // max-text-[72px]
     <>

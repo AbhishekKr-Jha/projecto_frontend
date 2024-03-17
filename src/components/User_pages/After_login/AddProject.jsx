@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { addProject_function } from "../../Services/Apis";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { success, fail } from "../../../Items/Toastify";
 
 export default function AddProject() {
-  const isUpdate = useSelector((state) => state.update.isUpdate);
+  //const isUpdate = useSelector((state) => state.update.isUpdate);
   const navigate = useNavigate();
 
   const [projectData, setprojectData] = useState({
@@ -62,7 +62,6 @@ export default function AddProject() {
         <section className=" element-Wrapper flexC space-y-3 pt-[55px]  pb-[20px] ">
          
             <h1 className=" text-xl  sm:mt-[20px] mb-[2vh] md:mb-[25px]   md:text-2xl"> Adding project... </h1>
-        
 
           <form className="flexC space-y-3 " onSubmit={submit_project}>
             <input
