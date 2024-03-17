@@ -76,7 +76,8 @@ export default function Login() {
                 <input
                   className=" input md:w-[400px] mb-2 "
                   onChange={get_Data}
-                  value={loginForm_data.email}
+                  // value={loginForm_data.email}
+                  value="abhishekhp935@gmail.com"
                   type="email"
                   id="email"
                   name="email"
