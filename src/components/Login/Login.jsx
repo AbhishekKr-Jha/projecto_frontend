@@ -30,13 +30,17 @@ export default function Login() {
 
   const submit_login = async (e) => {
     e.preventDefault();
+    console.log("out",loginForm_data)
+    console.log("---",`${REACT_APP_URL}/users/v1/login`)
     if (!loginForm_data.email || !loginForm_data.pw) {
       fail("Please enter all the fields for login");
     } else {
       try {
-        const { data } = await login_function(loginForm_data);
-        if (data.success) {
-          success(data.message);
+        const {data} = await login_function(loginForm_data);
+        console.log("data is",data)
+        console.log("insie",loginForm_data)
+        if (data?.success) {
+          success(data?.message);
           localStorage.setItem("userData", JSON.stringify(data.loginDetails));
           // localStorage.setItem(
           //   "userProjectoData",
@@ -51,6 +55,7 @@ export default function Login() {
             }) )
           navigate("/");
         } else {
+          console.log("entered in else")
           fail(data.message);
         }
       } catch (error) {
@@ -72,7 +77,7 @@ export default function Login() {
             <p className="paraText">
               New User?&nbsp;<Link className="font-semibold italic animated-underline" to="/register">Create an account</Link>
             </p> 
-            <button className="red-900 border-2 border-blue-700" onClick={()=>console.log("--env--",REACT_APP_URL)}>hello</button>
+            <button className="red-900 border-2 border-blue-700" onClick={()=>console.log("--env--",REACT_APP_URL)}>hello ipdated</button>
                 
           </div>    
             <form className="flexC" onSubmit={submit_login}>         
@@ -80,14 +85,14 @@ export default function Login() {
                   className=" input md:w-[400px] mb-2 "
                   onChange={get_Data}
                   // value={loginForm_data.email}
-                  value="abhishekhp935@gmail.com"
+                  value={loginForm_data.email}
                   type="email"
                   id="email"
                   name="email"
                   placeholder="E-mail address"
                   required
                   autocomplete="off"
-                  autoFocus="true"
+                  autoFocus
                 />
               <input
                   className=" input md:w-[400px] mb-2 "

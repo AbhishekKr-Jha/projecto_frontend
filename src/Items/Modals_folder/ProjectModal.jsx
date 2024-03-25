@@ -32,7 +32,7 @@ export default function ProjectModal({
     });
   useEffect(() => {
     getProjectComments();
-  }, [runUseEffect]);
+  }, [runUseEffect,getProjectComments]);
 
 
   //for setting the comments
