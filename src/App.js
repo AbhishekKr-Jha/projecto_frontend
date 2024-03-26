@@ -38,10 +38,8 @@ function App() {
           email: ifUserData?.email,
           id: ifUserData?.id,
         });
-        // console.log("something found...")
         if (data.success) {
           dispatch(login());
-          // console.log("already login");
           dispatch(
             userInfo({
               name: data.userInfo.firstName + " " + data.userInfo.lastName,
@@ -70,11 +68,12 @@ function App() {
   return (
     <>
       {/* max-w-[1800px]   -----initial one */}
-      <div className=" w-full max-h-max flex flex-col justify-center bg-[#131313]  max-w-[2200px]  app">
+      <div className=" w-full max-h-max flex flex-col justify-center bg-black  max-w-[2200px]  app">
         <div className="w-full h-screen flex justify-center items-center   z-[10001] transition-all ease-in duration-500  bg-[#131313] fixed top-0 left-0 front-page">
           <h6 className="text-[10vw]  skew-x-12  ">Welcome! </h6>
           {/* <h6 className="text-[14vw] absolute left-[28%]  top-[36%]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{userInfo.firstName.length>0?userInfo.firstName:"User"}</h6> */}
         </div>
+        {/* bg-[#131313] */}
         <NewMenu />
         <Navbar />
         <Routes>

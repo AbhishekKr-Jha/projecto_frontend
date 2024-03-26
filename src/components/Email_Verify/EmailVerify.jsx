@@ -25,7 +25,7 @@ export default function Email_verify() {
       setloader(true);
       try {
         const { data } = await sendOTP_function(email);
-        console.log("data-->", data);
+        console.log("data of email verify -->", data);
         setTimeout(() => {
           setloader(false);
           if (data.success) {
@@ -51,7 +51,7 @@ export default function Email_verify() {
      
       <div className="flex  element-Wrapper   pt-[40px] ">
         {loader ? (
-          <Loader text="Email" />
+          <Loader text="Verifying Email ..." />
         ) : (
           <div className=" flexC lg:flex-row w-[100vw] lg:justify-around  ">
             <div className=" ">
