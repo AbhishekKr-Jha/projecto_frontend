@@ -51,7 +51,7 @@ function EditProfile() {
         success(data.message)
         setTimeout(()=>{
           setLoader(false)
-
+navigate('/user_profile')
         },2000)
       } else {
         console.log("else is active as ", data);
