@@ -65,7 +65,7 @@ const [showOrHidePassword,setShowOrHidePassword]=useState(false)
             }) )
           navigate("/");
         } else {
-          console.log("entered in else")
+          console.log("entered in else",data.message)
           fail(data.message);
         }
       } catch (error) {

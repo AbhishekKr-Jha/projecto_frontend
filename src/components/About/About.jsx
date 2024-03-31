@@ -8,7 +8,7 @@ export default function About() {
         <img className="img-size " src={aboutImg} alt="loading..." />
 
         <div className=" w-[95vw] max-w-[1300px] text-center ">
-          <h3 className="  about-text">
+          <h3 className="about-text">
             Welcome to Projeto, a platform where creativity meets collaboration!
             Our mission is to provide a space for individuals like you to
             showcase your projects, ideas, and innovations to a global audience.

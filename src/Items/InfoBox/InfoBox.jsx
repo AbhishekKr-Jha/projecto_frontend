@@ -38,13 +38,13 @@ function InfoBox() {
           <span className="my-1 font-semibold text-sm">Testing Emails</span>
      
           <div className="mt-4" >abhishekhp935@gmail.com</div>
-          <div>pw1234</div>
+          <div>pw1234@aryan</div>
           <hr  className="my-2" />
-          <div>fofero8172@apdiv.com</div>
-          <div>789</div>
-          <hr  className="my-2" />
+          <div>davari2366@mnsaf.com</div>
+          <div>abhipw1234</div>
+          {/* <hr  className="my-2" />
           <div className="">davari2366@mnsaf.com</div>
-          <div className="">Anurag12@</div>
+          <div className="">Anurag12@</div> */}
           <hr  className="my-2" />
         </div>
        <ul  className="mt-4">

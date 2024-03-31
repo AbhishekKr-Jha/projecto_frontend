@@ -1,6 +1,6 @@
 @font-face {
   font-family: raw;
-  src: url('./Items/Rejouice-Headline.ttf');
+  src: url("./Items/Rejouice-Headline.ttf");
 }
 * {
   margin: 0;
@@ -8,12 +8,17 @@
   box-sizing: border-box;
   color: white;
 }
-html,body{width: 100%;height: 100%; 
-  background-color: black; 
-   /* display: flex;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  /* display: flex;
   justify-content: center; */
- }
-.height{height: calc(100vh - 50px);}
+}
+.height {
+  height: calc(100vh - 50px);
+}
 .flex {
   display: flex;
   justify-content: center;
@@ -30,7 +35,7 @@ html,body{width: 100%;height: 100%;
   /* margin: 0 auto; */
 
   /* width: 98vw;   ------initial one */
-  width:98vw;
+  width: 98vw;
   /* max-width: 1500px;  ------initial one */
   max-width: 1600px;
   min-height: 100vh;
@@ -64,11 +69,6 @@ html,body{width: 100%;height: 100%;
   font-weight: 700;
 }
 
-.box-wrapper {
-  /* gap: 100px;  */
-  width: 100vw;
-}
-
 .secondary-heading {
   font-size: 3vw;
   font-weight: 500;
@@ -78,8 +78,6 @@ html,body{width: 100%;height: 100%;
   padding: 0.5rem;
 }
 
-
-
 /* --------ellipsis text in project card-------- */
 /* .elipsis-text{
   display: -webkit-box;
@@ -88,9 +86,12 @@ html,body{width: 100%;height: 100%;
   overflow:hidden;
 } */
 
-.arrow{animation: bounce 1s infinite;}
+.arrow {
+  animation: bounce 1s infinite;
+}
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(-25%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
@@ -99,8 +100,8 @@ html,body{width: 100%;height: 100%;
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
-
-
-
 /* --------default selector------- */
-h2::selection{color: green;background-color: black;}
+h2::selection {
+  color: green;
+  background-color: black;
+}

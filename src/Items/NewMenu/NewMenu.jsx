@@ -56,11 +56,7 @@ const hideSideBar=()=>{
              Logout
           </li> }
          
-          <li className="flex  lg:hidden " onClick={hideSideBar}>
-            <NavLink to="/waste-text" >
-        Card
-            </NavLink>
-          </li>
+  
         </ul>
       </nav>
 

@@ -20,7 +20,7 @@ import Modals from "react-responsive-modal";
 import SearchResult from "./components/SearchResult/SearchResult";
 import NewMenu from "./Items/NewMenu/NewMenu";
 import { checkLogin_function } from "./components/Services/Apis";
-import Hero1 from "./components/Hero/Hero1";
+import Hero from "./components/Hero/Hero";
 import InfoBox from "./Items/InfoBox/InfoBox";
 import EditProfile from "./components/EditProfile/EditProfile";
 //import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
@@ -80,7 +80,7 @@ function App() {
         <Navbar />
       <InfoBox />
         <Routes>
-          <Route path="/" element={<Hero1 />} />
+          <Route path="/" element={<Hero />} />
           <Route path="register" element={<Registeration />} />
           <Route path="options_page" element={<Options />} />
           <Route path="login" element={<Login />} />

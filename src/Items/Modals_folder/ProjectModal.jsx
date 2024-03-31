@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import CommentsBox from "../project_card/CommentsBox";
 import { getComment_function } from "../../components/Services/Apis";
 import { AddComments } from "../../components/User_pages/After_login/Projects_func_comp/AddComments";
-// import 'react-responsive-modal/styles.css';
+// import 'react-responsive-modal/styles.css'; 
 
 export default function ProjectModal({
   open,

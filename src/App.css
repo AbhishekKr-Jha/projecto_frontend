@@ -1,52 +1,49 @@
-
-.app{
-
- /* position: relative; */
-  /* width: 100%; */
-  /* max-width: 1700px; */
-/* background-color: rgba(0, 0, 0, 0.596); */
-/* background-color: black; */
-  /* background:url('./Items//space_-_57904\ \(540p\).mp4') */
-
-
+.app {
   /* ------------initial one */
   /* display: flex;
   justify-content: center; */
-
-} 
-
-.active{
- color: red;
 }
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+
+.active {
+  color: red;
+}
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
 /* -----about text----- */
-.about-text{ @apply  text-base md:text-lg m-2 }
-
-
+.about-text {
+  @apply text-base md:text-lg m-2;
+}
 
 /* --------home------------ */
-.slide-box{ white-space: nowrap; display: inline-block; animation: move 7s linear infinite  ; }
-.slide-box{ @apply  whitespace-nowrap inline-block  }
-.slide-box h3{ @apply   inline-block  }
+.slide-box {
+  white-space: nowrap;
+  display: inline-block;
+  animation: move 7s linear infinite;
+}
+.slide-box {
+  @apply whitespace-nowrap inline-block;
+}
+.slide-box h3 {
+  @apply inline-block;
+}
 
-.dot{ @apply  inline-block bg-white w-[22px] h-[22px] lg:w-[33px] lg:h-[33px] rounded-full mx-4 lg:mx-6   }
+.dot {
+  @apply inline-block bg-white w-[22px] h-[22px] lg:w-[33px] lg:h-[33px] rounded-full mx-4 lg:mx-6;
+}
 
 .sliding-text-container::-webkit-scrollbar {
   display: none;
-} 
- @keyframes move {
+}
+@keyframes move {
   from {
-      transform: translateX(0);
+    transform: translateX(0);
   }
 
   to {
-      transform: translateX(-100%);
+    transform: translateX(-100%);
   }
 }
-
-
 
 /* -------count up------- */
 /* .count-up-container::before{
@@ -63,87 +60,50 @@
   background-repeat: repeat-x;
 } */
 
-
-.count-up{ @apply  text-center text-2xl md:text-4xl md:pl-2 rounded-full border-l-4  border-white my-5 mx-2  }
-
-.counting::after{
-  content:"+"
+.count-up {
+  @apply text-center text-2xl md:text-4xl md:pl-2 rounded-full border-l-4  border-white my-5 mx-2;
 }
 
-
-#first-container{
-
+.counting::after {
+  content: "+";
 }
 
+@import "tailwindcss/utilities";
 
-/* <div className="">
-<div className="scale-0  hidden group-hover:flex  group-hover:scale-75  md:group-hover:opacity-100 transition-transform ease-linear  duration-500  space-x-3 items-baseline">
-<i className="cursor-pointer hover:opacity-75 text-2xl  fi fi-rs-trash"></i>
-<i className="cursor-pointer hover:opacity-50 text-xl fi fi-rr-pencil"></i>
-</div></div> */
-
-
-/* .count-up{ @apply bg-green-700 text-2xl p-14 rounded-full border-2 border-white s1 } */
-
-@import 'tailwindcss/utilities';
-
-.img-size{
-  @apply my-3 w-[66vw] sm:w-[50vw] md:w-[38vw] lg:w-[390px] 
+.img-size {
+  @apply my-3 w-[66vw] sm:w-[50vw] md:w-[38vw] lg:w-[390px];
 }
 
+.main-heading {
+  @apply text-[8vw] sm:text-[6vw] lg:text-8xl font-bold;
+}
 
-.main-heading{@apply text-[8vw] sm:text-[6vw] lg:text-8xl font-bold }
+.add-project-input {
+  @apply w-[90vw]  md:w-[75vw]  lg:w-[60vw] max-w-[800px];
+}
 
-.add-project-input{@apply w-[90vw]  md:w-[75vw]  lg:w-[60vw] max-w-[800px] }
-
-
-
-/* 
-.mh2::before{
-  content: "";
-  position: absolute;
-  width:400px;
-  height: 400px;background-color: white;border-radius: 100%;
-  top: 10%;left: -20%;
-  clip-path: inset(0);
-  filter: blur(60px);
-} */
-
-.b2{border-radius:54% 76% 96% 40% / 41% 37% 100% 100%  ; background-color: rgba(128, 128, 128, 0.164); }
-
-
-
-/* 54% 76% 96% 40% / 20% 37% 100% 48%  */
-
-
-
-
-
+.b2 {
+  border-radius: 54% 76% 96% 40% / 41% 37% 100% 100%;
+  background-color: rgba(128, 128, 128, 0.164);
+}
 /* .hero-heading{
 -webkit-text-stroke: 5px white; 
 z-index:12;
 } */
-
-.a2:before{
+.a2:before {
   content: "";
   position: absolute;
-  width:250px;
-  height: 250px;background-color: white;border-radius: 100%;
-  top: 8%;left: 0%;
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 100%;
+  top: 8%;
+  left: 0%;
   filter: blur(77px);
 }
-
-
-
-
-.ci{@apply border-none bg-red-800 text-white rounded-full}
-
+.ci {
+  @apply border-none bg-red-800 text-white rounded-full;
+}
 .sc2::-webkit-scrollbar {
   display: none;
 }
-
-.suggestion_input{
-  
-}
-
-
