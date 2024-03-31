@@ -59,7 +59,7 @@ export default function Otp() {
       </div>
       <div className="flexC element-Wrapper ">
         {loader ? (
-       <Loader text="OTP"/>
+       <Loader text="Verifying OTP"/>
         ) : (
           <>
             <div className="my-4">

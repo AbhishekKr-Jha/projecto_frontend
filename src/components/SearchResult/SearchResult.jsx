@@ -1,19 +1,25 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import 'react-responsive-modal/styles.css';
+import {  useLocation } from "react-router-dom";
+import "react-responsive-modal/styles.css";
+import { useDispatch } from "react-redux";
 import github from "../../Items/Icons/github.svg";
 import instagram from "../../Items/Icons/instagram.svg";
 import linkedin from "../../Items/Icons/linkedin.svg";
 import GetProjectsComp from "../User_pages/After_login/Projects_func_comp/GetProjectsComp";
+import { useSelector } from "react-redux";
+import { followUP_func } from "../../Items/Modals_folder/Follow_Modal/FollowModal_func";
+import { followThePerson } from "../../Redux/loginSlice";
 
 export default function SearchResult() {
+  const dispatch=useDispatch()
+  const userEmail = useSelector((state) => state.login.userLoginDetails.email);
   const location = useLocation();
   const userData = location.state;
   //const [showLogin, setShowLogin] = useState(false);
   // const [open, setOpen] = useState(false);
-
   // const onOpenModal = () => setOpen(true);
   // const onCloseModal = () => setOpen(false);
+
 
 
   return (
@@ -44,12 +50,12 @@ export default function SearchResult() {
               </div>
             </div>
           </div>
-        <div className="mt-6 md:mt-0 flex justify-center gap-x-14 mx-auto lg:mx-0 ">
+          <div className="mt-6 md:mt-0 flex justify-center gap-x-14 mx-auto lg:mx-0 ">
             <div className="flex flex-col gap-0  cursor-pointer">
               <span>{userData.projects.length}</span>
               <span>projects</span>
             </div>
-            <div  className="flex flex-col gap-0  cursor-pointer">
+            <div className="flex flex-col gap-0  cursor-pointer">
               <span>20</span>
               <span>followers</span>
             </div>
@@ -58,28 +64,25 @@ export default function SearchResult() {
               <span>followers</span>
             </div>
           </div>
-         
-              <div className="my-2  w-full flex justify-center gap-12 md:gap-20 text-sm md:text-base  ">
-          <NavLink
-              to="/add_project"
-              className=" my-3 py-2 px-4  rounded-lg bg-slate-600 hover:bg-slate-700  cursor-pointer font-semibold      "
+
+        {userEmail!==userData.email  && <div  className="my-2  w-full flex justify-center gap-12 md:gap-20 text-sm md:text-base  ">
+            <button  onClick={async () => {
+    const result = await followUP_func(userData.userName, userData.email);
+    if (result) {
+        dispatch(followThePerson(result));
+        console.log("clicked")
+    }
+}}
+        type="button"      
+              className=" my-3 py-[6px] px-6  rounded-lg bg-slate-600 hover:bg-slate-700  cursor-pointer font-semibold "
             >
-              <i className="ri-edit-line mr-1 "></i> Edit Profile 
-            </NavLink>
-            <NavLink
-              to="/add_project"
-              className="   my-3 py-2 px-4  rounded-lg bg-slate-600 hover:bg-slate-700  cursor-pointer font-semibold      "
-            >
-              <i className="ri-add-line mr-1 "></i> First Project
-            </NavLink>
-            
-            <div className="hidden flex-col gap-0 text-center cursor-pointer  border-[1px] border-white rounded-full "><i className='ri-add-fill text-5xl '></i><span></span>
-        </div>
-          </div> 
+              Follow
+            </button>
+          </div>}
         </div>
         <hr />
         <div className="my-12">
-<GetProjectsComp email={userData.email}  />
+          <GetProjectsComp email={userData.email} />
         </div>
       </section>
       {/* <FollowModal show={showLogin}  close={() => setShowLogin(false)}  /> */}

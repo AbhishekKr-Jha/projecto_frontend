@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { success, fail } from "../../../Items/Toastify";
+import { useDispatch } from "react-redux";
+import { storeUserProjects } from "../../../Redux/projectSlice";
 
 export default function AddProject() {
   //const isUpdate = useSelector((state) => state.update.isUpdate);
   const navigate = useNavigate();
+  const dispatch=useDispatch()
 
   const [projectData, setprojectData] = useState({
     title: "",
@@ -38,6 +41,7 @@ export default function AddProject() {
             description: "",
             user: "",
           });
+dispatch(storeUserProjects(data.projects))
           navigate("/user_home");
           success(data.message);
         } else {

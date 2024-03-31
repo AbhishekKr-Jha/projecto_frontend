@@ -17,6 +17,7 @@ export default function Login() {
 
   const [loginForm_data, setloginForm_data] = useState({ email: "", pw: "" });
 const [loader,setLoader]=useState(false)
+const [showOrHidePassword,setShowOrHidePassword]=useState(false)
 //    useEffect(() => {
 // if(location.state){success(location.state)}
 //   },[location.state]);
@@ -38,7 +39,7 @@ const [loader,setLoader]=useState(false)
     } else {
       setLoader(true)
       try {
-       
+       console.log("'in")
         const {data} = await login_function(loginForm_data);
         console.log("data is",data)
         console.log("insie",loginForm_data)
@@ -56,6 +57,11 @@ const [loader,setLoader]=useState(false)
               name: data.userInfo.firstName + " " + data.userInfo.lastName,
               email: data.userInfo.email,
               totalProject: data.userInfo.totalProject,
+              followers:data.userInfo.followers,
+              following:data.userInfo.following,
+              linkedin:data.userInfo.contact.linkedin ,
+              github: data.userInfo.contact.github ,
+              instagram:data.userInfo.contact.instagram ,
             }) )
           navigate("/");
         } else {
@@ -68,7 +74,7 @@ const [loader,setLoader]=useState(false)
       }
     }
   };
-
+console.log(showOrHidePassword)
   return (
     <>
       <div className="fixed">
@@ -76,8 +82,7 @@ const [loader,setLoader]=useState(false)
       </div>
       { loader ? ( <Loader text="Fetching data from server ..." /> ) :
        ( <section className=" element-Wrapper pt-[55px] flexC lg:flex-row  lg:justify-evenly  ">
-         <span> abhishekhp935@gmail.com
-          <p>pw1234@aryan</p></span>
+        
           <div className=" flexC  mb-[20px] ">
         
             <h1 className="main-heading">
@@ -104,15 +109,20 @@ const [loader,setLoader]=useState(false)
                   autoComplete="off"
                   autoFocus
                 />
+                <div className="flex justify-between input md:w-[400px]
+                 mb-2">
               <input
-                  className=" input md:w-[400px] mb-2 "
+                  className=" w-[94%] outline-none bg-transparent  "
                   onChange={get_Data}
                   value={loginForm_data.pw}
-                  type="password"
+                  type={showOrHidePassword?"text":"password"}
                   id="pw"
                   name="pw"
                   placeholder="Password"
                 />
+                <i onClick={()=>showOrHidePassword?setShowOrHidePassword(false):setShowOrHidePassword(true)}
+                className={`cursor-pointer ${showOrHidePassword?"ri-eye-line":"ri-eye-close-line"}`}></i>
+                </div>
                 <button type="submit" className="button">
                   SignIn
                 </button>            

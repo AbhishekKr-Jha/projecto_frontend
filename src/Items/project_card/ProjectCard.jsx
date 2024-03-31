@@ -89,9 +89,8 @@ export default function ProjectCard({
             ></i>  
           </div>
         </div>
-    <ProjectModal  open={open} close={onCloseModal} openDeleteModal={openDeleteModal} title={title} description={description} githubLink={githubLink} liveLink={liveLink} projectId={projectId} creatorId={creatorId} />
+    <ProjectModal   open={open} close={onCloseModal} openDeleteModal={openDeleteModal} title={title} description={description} githubLink={githubLink} liveLink={liveLink} projectId={projectId} creatorId={creatorId} />
     
-
     <Modal
         styles={{
           modal: {

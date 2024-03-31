@@ -22,7 +22,7 @@ export default function Contact() {
                   id="email"
                   name="email"
                   placeholder="E-mail address"
-                  autocomplete="off"
+                  autoComplete="off"
                 />
                 <textarea
                   type="text"

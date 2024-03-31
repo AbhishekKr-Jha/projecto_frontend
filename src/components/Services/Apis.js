@@ -17,6 +17,12 @@ export const login_function=async(data,header)=>{
     return commonRequest("POST",`${REACT_APP_URL}/users/v1/login`,data)
 }
 
+//update profile
+export const update_function=async(data,header)=>{
+    console.log("api data",data)
+    return commonRequest("POST",`${REACT_APP_URL}/users/v1/updateprofile`,data)
+}
+
 //change password
 export const changePassword_function=async(data,header)=>{
     return commonRequest("POST",`${REACT_APP_URL}/users/v1/changePassword`,data)
@@ -71,6 +77,18 @@ export const postComment_function=async(data,header)=>{
 export const replyComment_function=async(data,header)=>{
     return commonRequest("POST",`${REACT_APP_URL}/users/v1/replyComment`,data)
 }
+
+//follow a person
+export const followUp_function=async(data,header)=>{
+    return commonRequest("POST",`${REACT_APP_URL}/users/v1/follow`,data)
+}
+
+//unFollow a person
+export const unFollow_function=async(data,header)=>{
+    return commonRequest("POST",`${REACT_APP_URL}/users/v1/unfollow`,data)
+}
+
+
 
 
 

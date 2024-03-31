@@ -14,21 +14,21 @@ import Otp from "./components/Registeration/OTP_Verify/Otp";
 import AddProject from "./components/User_pages/After_login/AddProject";
 import UserHome from "./components/User_pages/After_login/UserHome";
 import UserProfile from "./components/User_pages/After_login/UserProfile";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, userInfo } from "./Redux/loginSlice";
-// import ProjectCard from "./Items/project_card/ProjectCard";
 import Modals from "react-responsive-modal";
 import SearchResult from "./components/SearchResult/SearchResult";
 import NewMenu from "./Items/NewMenu/NewMenu";
 import { checkLogin_function } from "./components/Services/Apis";
 import Hero1 from "./components/Hero/Hero1";
+import InfoBox from "./Items/InfoBox/InfoBox";
+import EditProfile from "./components/EditProfile/EditProfile";
 //import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
-// import Wastecard from "./Items/project_card/Wastecard";
-// import Footer from './components/Footer';
 
 function App() {
   // const locomotiveScroll = new LocomotiveScroll();
   const dispatch = useDispatch();
+  const userProjects = useSelector((state) => state.project.userProjects);
 
   const checkLogin = async () => {
     const ifUserData = JSON.parse(localStorage.getItem("userData"));
@@ -38,6 +38,7 @@ function App() {
           email: ifUserData?.email,
           id: ifUserData?.id,
         });
+        
         if (data.success) {
           dispatch(login());
           dispatch(
@@ -45,17 +46,21 @@ function App() {
               name: data.userInfo.firstName + " " + data.userInfo.lastName,
               email: data.userInfo.email,
               totalProject: data.userInfo.totalProject,
+              followers:data.userInfo.followers,
+              following:data.userInfo.following,
+              linkedin:data.userInfo.contact.linkedin ,
+              github: data.userInfo.contact.github ,
+              instagram:data.userInfo.contact.instagram ,
             })
           );
         }
       } catch (error) {
         console.log("error");
       }
-    } 
+    }
   };
 
   useEffect(() => {
-  
     checkLogin();
     setTimeout(() => {
       document.querySelector(".front-page").style.opacity = "0";
@@ -63,19 +68,17 @@ function App() {
     }, 2400);
   }, []);
 
- 
-
   return (
     <>
       {/* max-w-[1800px]   -----initial one */}
       <div className=" w-full max-h-max flex flex-col justify-center bg-black  max-w-[2200px]  app">
         <div className="w-full h-screen flex justify-center items-center   z-[10001] transition-all ease-in duration-500  bg-[#131313] fixed top-0 left-0 front-page">
           <h6 className="text-[10vw]  skew-x-12  ">Welcome! </h6>
-          {/* <h6 className="text-[14vw] absolute left-[28%]  top-[36%]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{userInfo.firstName.length>0?userInfo.firstName:"User"}</h6> */}
         </div>
         {/* bg-[#131313] */}
         <NewMenu />
         <Navbar />
+      <InfoBox />
         <Routes>
           <Route path="/" element={<Hero1 />} />
           <Route path="register" element={<Registeration />} />
@@ -89,20 +92,17 @@ function App() {
           <Route path="user_home" element={<UserHome />} />
           <Route path="add_project" element={<AddProject />} />
           <Route path="update_project" element={<AddProject />} />
-          {/* <Route path="project_card" element={<ProjectCard/>} /> */}
           <Route path="user_profile" element={<UserProfile />} />
           <Route path="modals" element={<Modals />} />
           <Route path="search_result" element={<SearchResult />} />
-          {/* <Route path="waste-text" element={<Wastecard />} /> */}
+          <Route path="update_profile" element={<EditProfile />} />
         </Routes>
 
-        {/* <div className="fixed bottom-0 right-[11vw] md:-right-[115px] md:top-[50vh] md:-rotate-90 bg-black md:bg-slate-500 px-4 md:px-1"><p className='text-center'>&copy; 2023 Projeto. All rights reserved</p></div>
-  </div>  */}
-        {/* <div className="fixed   -right-[115px] top-[50vh] -rotate-90  bg-slate-500 px-1"><p className='text-center'>&copy; 2023 Projeto. All rights reserved</p></div>
-         */}
-
-        {/* <div className="relative -z[11] h-screen w-full bg-blue-900">  kjHJ </div>
-<Footer/> */}
+        <div className="w-full md:max-w-max   px-3  sm:px-4 md:fixed md:rounded-md  md:-right-[130px] md:top-[50vh] md:-rotate-90  md:bg-slate-500 md:px-3">
+          <p className="text-center h-[50px]  md:max-h-max border-t-2  md:border-t-0  border-white flex items-center md:items-start  ">
+            &copy; 2024 Projeto. All rights reserved
+          </p>
+        </div>
       </div>
     </>
   );

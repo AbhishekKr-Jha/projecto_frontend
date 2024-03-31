@@ -73,7 +73,7 @@ export default function Email_verify() {
                     onChange={get_Data}
                     value={email.email}
                     type="email"
-                    id="email"
+                    id="email"Veyfing 
                     name="email"
                     placeholder="Please enter your E-mail"
                     autoComplete="off"

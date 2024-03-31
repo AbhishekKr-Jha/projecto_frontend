@@ -32,16 +32,16 @@ export default function ProjectModal({
     });
   useEffect(() => {
     getProjectComments();
-  }, [runUseEffect,getProjectComments]);
+  }, [runUseEffect]);
 
-
+  
   //for setting the comments
   const [comments, setComments] = useState([]);
 
 
   //getting all the comments of the project
   const getProjectComments = async () => {
-    console.log("try to run");
+    console.log("ruuni again ");
     try {
       const { data } = await getComment_function(projectId);
       console.log("--", projectId);
@@ -127,7 +127,7 @@ export default function ProjectModal({
           </div>
           <hr className=" mx-auto w-[90%] " />
           <h2 className="my-3 text-2xl lg:text-3xl ">Suggestions</h2>
-          {userLoginDetails.isLogin && (
+          {userLoginDetails.isLogin && userId !==creatorId && (
             <div className=" flex flex-col sm:flex gap-y-3 items-start sm:justify-start sm:items-center  gap-3  mt-6">
               <input
                 type="text"
@@ -141,10 +141,11 @@ export default function ProjectModal({
 
               {inputCommentValue.comment.length > 0 && (
                 <button
-                  onClick={() => {
+                  onClick={async() => {
                     AddComments(inputCommentValue);
-                    setInputCommentValue({...inputCommentValue,comment:""});
+                    // setComments(result)
                     setRunUseEffect(true)
+                    setInputCommentValue({...inputCommentValue,comment:""});
                   }}
                   className=" mx-auto sm:mx-0 py-2 px-6 rounded-lg bg-red-900 text-xs font-thin lg:hover:bg-gray-200 hover:text-black "
                 >

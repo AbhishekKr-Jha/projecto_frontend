@@ -10,8 +10,7 @@ const projectSlice=createSlice({
         getProjectRerun(state){state.isGetProjectRerun=state.isGetProjectRerun?"false":"true"},
    
         storeUserProjects(state,action){
-            state.userProjects=[]
-            state.userProjects = state.userProjects.push(action.payload);
+            state.userProjects=action.payload
         }
     }
 })

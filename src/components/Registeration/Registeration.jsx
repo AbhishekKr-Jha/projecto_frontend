@@ -97,7 +97,7 @@ export default function Registeration() {
                   placeholder="E-mail address"
                   required
                   disabled
-                  autocomplete="off"
+                  autoComplete="off"
                 />
                 <input
                   className=" input md:w-[400px] "

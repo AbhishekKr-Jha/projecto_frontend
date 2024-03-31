@@ -1,37 +1,42 @@
 import React, { useEffect, useState } from 'react'
 import { getProject_function } from '../../../Services/Apis';
 import ProjectCard from '../../../../Items/project_card/ProjectCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeUserProjects } from '../../../../Redux/projectSlice';
 
 export default function GetProjectsComp({email}) {
-
-  useEffect(() => {
-    get_projects();
-    console.log("___", Project);
-  }, []);
-
+  const userProjects = useSelector((state) => state.project.userProjects);
+  const dispatch=useDispatch()
   const [Project, setProject] = useState([]);
 
-  const get_projects = async () => {
-    try {
-      const { data } = await getProject_function(email);
-      if (data.success) {
-        console.log(data.message);
-        console.log(";;;;;;;;;")
-        console.log(data.projects)
-        setProject(data.projects);
-      } else {
-        console.log(data.message);
+  useEffect(() => {
+
+    const get_projects = async () => {
+      try {
+        const { data } = await getProject_function(email);
+        console.log("waiting for peojects")
+        if (data.success) {
+          console.log("the project data ",data);
+          setProject(data.projects);
+          dispatch(storeUserProjects(data.projects))
+          console.log(data.projects)
+        } else {
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+    get_projects();
+    console.log("___", Project);
+  },[]);
+ 
   return (
    <>
    
    <div className="flex flex-wrap  space-y-2">
-            {Project.length ? (
-              Project.map((element, index) => {
+            {userProjects.length ? (
+              userProjects.map((element, index) => {
                 return (             
                   <div key={index}>
                     <ProjectCard
