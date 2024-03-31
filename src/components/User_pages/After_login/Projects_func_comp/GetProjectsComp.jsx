@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { storeUserProjects } from '../../../../Redux/projectSlice';
 
 export default function GetProjectsComp({email}) {
-  const userProjects = useSelector((state) => state.project.userProjects);
+  const userProjects = useSelector((state) => state.project?.userProjects);
   const dispatch=useDispatch()
   const [Project, setProject] = useState([]);
 
   useEffect(() => {
 
     const get_projects = async () => {
+      console.log(" get projects is ruiinnig")
       try {
         const { data } = await getProject_function(email);
         console.log("waiting for peojects")
@@ -35,8 +36,8 @@ export default function GetProjectsComp({email}) {
    <>
    
    <div className="flex flex-wrap  space-y-2">
-            {userProjects.length ? (
-              userProjects.map((element, index) => {
+            {userProjects?.length ? (
+              userProjects?.map((element, index) => {
                 return (             
                   <div key={index}>
                     <ProjectCard

@@ -11,6 +11,7 @@ import FollowModal from "../../../Items/Modals_folder/Follow_Modal/FollowModal";
 export default function UserProfile() {
   const navigate=useNavigate()
   const userLoginDetails = useSelector((state) => state.login.userLoginDetails);
+ 
 const [openModal,setOpenModal]=useState(false)
 const [openFollowingModal,setOpenFollowingModal]=useState(false)
   const navigateToEditProfile = (e) => {
@@ -46,7 +47,7 @@ const redirectLink=(textLink)=>{
               <p className=" m-1  ">{userLoginDetails.name}</p>
               <p className="  m-1  ">{userLoginDetails.email}</p>
               <div  className="flex mt-7  gap-8 ">
-                <span onClick={()=>redirectLink(userLoginDetails.github)} className="w-[7.5vw] max-w-[35px]  bg-white rounded-md cursor-pointer hover:scale-125 transition-all duration-200 ease-in-out ">
+                <span  onClick={()=>redirectLink(userLoginDetails.github)} className="w-[7.5vw] max-w-[35px]  bg-white rounded-md cursor-pointer hover:scale-125 transition-all duration-200 ease-in-out ">
                   <img src={github} className="" alt="loading..." />
                 </span>
                 <span type="button" onClick={()=>redirectLink(userLoginDetails.linkedin)} className="w-[9.7vw] max-w-[44px] rounded-md cursor-pointer hover:scale-125 transition-all duration-200 ease-in-out">

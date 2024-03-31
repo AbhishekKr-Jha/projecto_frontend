@@ -35,11 +35,11 @@ function InfoBox() {
         } left-[-120px] transition-all ease-linear duration-500 `}
       >
         <div className=" ">
-          <span className="my-1 font-semibold text-sm">Testing Emails</span>
+          <span className="mb-1 font-semibold text-sm animated-underline">Testing Emails</span>
      
-          <div className="mt-4" >abhishekhp935@gmail.com</div>
+          <div className="mt-2" >abhishekhp935@gmail.com</div>
           <div>pw1234@aryan</div>
-          <hr  className="my-2" />
+          <hr  className="my-2 w-[60px] mx-auto" />
           <div>davari2366@mnsaf.com</div>
           <div>abhipw1234</div>
           {/* <hr  className="my-2" />
@@ -50,6 +50,8 @@ function InfoBox() {
        <ul  className="mt-4">
         <li>- Profile Image Uploading is not done Yet</li>
         <li>- Some small error may ocuur I will fix it shortly</li>
+        <hr className="my-2 w-[60px] mx-auto" />
+        <li>-If Logged in please edit your profile to add you social links</li>
        </ul>
       </div>
     </div>

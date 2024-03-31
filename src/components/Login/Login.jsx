@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Loader from '../../Items/loader/Loader'
 import { success, fail } from "../../Items/Toastify";
 import { REACT_APP_URL } from "../Services/Helper";
+import { storeUserProjects } from "../../Redux/projectSlice";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ const [showOrHidePassword,setShowOrHidePassword]=useState(false)
               github: data.userInfo.contact.github ,
               instagram:data.userInfo.contact.instagram ,
             }) )
+            dispatch(storeUserProjects(data.userInfo.projects))
           navigate("/");
         } else {
           console.log("entered in else",data.message)

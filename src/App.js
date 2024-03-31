@@ -23,14 +23,16 @@ import { checkLogin_function } from "./components/Services/Apis";
 import Hero from "./components/Hero/Hero";
 import InfoBox from "./Items/InfoBox/InfoBox";
 import EditProfile from "./components/EditProfile/EditProfile";
+import { storeUserProjects } from "./Redux/projectSlice";
 //import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
 
 function App() {
   // const locomotiveScroll = new LocomotiveScroll();
   const dispatch = useDispatch();
-  const userProjects = useSelector((state) => state.project.userProjects);
+
 
   const checkLogin = async () => {
+
     const ifUserData = JSON.parse(localStorage.getItem("userData"));
     if (ifUserData) {
       try {
@@ -40,6 +42,7 @@ function App() {
         });
         
         if (data.success) {
+          console.log(data)
           dispatch(login());
           dispatch(
             userInfo({
@@ -53,6 +56,7 @@ function App() {
               instagram:data.userInfo.contact.instagram ,
             })
           );
+          dispatch(storeUserProjects(data.userInfo.projects))
         }
       } catch (error) {
         console.log("error");

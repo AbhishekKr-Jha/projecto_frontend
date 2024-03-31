@@ -75,7 +75,7 @@ export default function ProjectModal({
       center
       closeIcon={<i className=" text-3xl ri-arrow-left-line "></i>}
     >
-      <div className="w-full overflow-y-auto  sc2  max-h-[800px] border-2 px-2 lg:px-3 py-3  rounded-lg ">
+      <div className="w-full min-w-[300px] overflow-y-auto  sc2  max-h-[800px] border-2 px-2 lg:px-3 py-3  rounded-lg ">
         <div className="  p-1 ">
           <div className=" mb-6">
             <div className=" md:flex  justify-start items-center  md:space-x-2  mb-2    ">
