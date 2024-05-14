@@ -66,7 +66,7 @@ dispatch(storeUserProjects(data.projects))
     
         <section className=" element-Wrapper flexC space-y-3 pt-[55px]  pb-[20px] ">
          
-            <h1 className=" text-xl  sm:mt-[20px] mb-[2vh] md:mb-[25px]   md:text-2xl"> Adding project... </h1>
+            <h1 className=" text-xl  sm:mt-[20px] mb-[2vh] md:mb-[25px]   md:text-2xl">-- Adding project... </h1>
 
           <form className="flexC space-y-3 " onSubmit={submit_project}>
             <input
