@@ -10,17 +10,16 @@ export default function GetProjectsComp({email}) {
   const [Project, setProject] = useState([]);
 
   useEffect(() => {
-
     const get_projects = async () => {
-      console.log(" get projects is ruiinnig")
+      // console.log(" get projects is ruiinnig")
       try {
         const { data } = await getProject_function(email);
-        console.log("waiting for peojects")
+        // console.log("waiting for peojects")
         if (data.success) {
-          console.log("the project data ",data);
+          // console.log("the project data ",data);
           setProject(data.projects);
           dispatch(storeUserProjects(data.projects))
-          console.log(data.projects)
+          // console.log(data.projects)
         } else {
           console.log(data.message);
         }
@@ -38,6 +37,10 @@ export default function GetProjectsComp({email}) {
    <div className="flex flex-wrap  space-y-2">
             {userProjects?.length ? (
               userProjects?.map((element, index) => {
+                //changing the date format
+                let dateObj = new Date(element.createdAt);
+                let formattedDate = dateObj.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                
                 return (             
                   <div key={index}>
                     <ProjectCard
@@ -47,6 +50,7 @@ export default function GetProjectsComp({email}) {
                       liveLink={element.live}
                       githubLink={element.github}
                       description={element.description}
+                      createdAt={formattedDate}
                     />
                   </div>
                 );

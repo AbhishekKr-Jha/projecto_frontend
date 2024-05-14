@@ -40,6 +40,7 @@ export default function AddProject() {
             github: "",
             description: "",
             user: "",
+          
           });
 dispatch(storeUserProjects(data.projects))
           navigate("/user_home");

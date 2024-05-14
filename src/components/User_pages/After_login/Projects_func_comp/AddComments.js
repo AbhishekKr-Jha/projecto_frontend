@@ -4,15 +4,13 @@ import { postComment_function } from "../../../Services/Apis"
 
 export const AddComments=async(commentData)=>{
   try {
-    console.log("ppkaakdhkhdkh")
     const { data }=await postComment_function(commentData)
-    if(data.succcess){
-success(data.message)
-console.log("---",data.comments)
-return data.comments
-// return data.comment
+ 
+    if(data.success){
+return data.comment
     }
-    else{
+    else{   
+      console.log("---else is active",data)
 fail(data.message) 
     }
   } catch (error) {

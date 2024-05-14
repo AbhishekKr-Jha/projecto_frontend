@@ -43,13 +43,13 @@ export const addProject_function=async(data,header)=>{
 }
 
 //get project 
-export const getProject_function=async(email,header)=>{
-    return commonRequest("GET",`${REACT_APP_URL}/users/v1/getProject/${email}`)
+export const getProject_function=async(email,userEmail,header)=>{
+    return commonRequest("GET",`${REACT_APP_URL}/users/v1/getProject/${email}/${userEmail}`)
 }
 
 //delete project
 export const deleteProject_function=async(project_info,header)=>{
-    return commonRequest("DELETE",`${REACT_APP_URL}/users/v1/deleteProject/${project_info.user}/${project_info.title}`)
+    return commonRequest("DELETE",`${REACT_APP_URL}/users/v1/deleteProject/${project_info.projectId}/${project_info.title}`)
 }
 
 //update project
@@ -73,7 +73,7 @@ export const postComment_function=async(data,header)=>{
 }
 
 
-//post comment of project
+//post reply of project
 export const replyComment_function=async(data,header)=>{
     return commonRequest("POST",`${REACT_APP_URL}/users/v1/replyComment`,data)
 }
@@ -87,6 +87,12 @@ export const followUp_function=async(data,header)=>{
 export const unFollow_function=async(data,header)=>{
     return commonRequest("POST",`${REACT_APP_URL}/users/v1/unfollow`,data)
 }
+
+
+// //unFollow a person
+// export const getFollow=async(data,header)=>{
+//     return commonRequest("GET",`${REACT_APP_URL}/users/v1/getFollowers/${data}`)
+// }
 
 
 

@@ -22,18 +22,38 @@ const loginSlice = createSlice({
     logout(state) {
       state.isLogin = false;
     },
+    
     userInfo(state, action) {
       state.userLoginDetails = { ...state.userLoginDetails, ...action.payload };
     },
     followThePerson(state, action) {
-      state.userLoginDetails.following.push(action.payload);
+     console.log("the action is ",action.payload)
+      state.userLoginDetails.following.push({...action.payload,userStatus:true}); 
+      state.userLoginDetails.followers=state.userLoginDetails.followers.map((item)=>{
+        if(item.email===action.payload.email){
+          return { ...item, userStatus: true };
+        } else {
+            return item;
+        }
+      })
+     
     },
     unFollowThePerson(state, action) {
+      console.log("the unfollow slice is runninfg properly")
       const unfollowPeopleData = action.payload;
+      state.userLoginDetails.followers=state.userLoginDetails.followers.map((item)=>{
+        if(item.email===action.payload){  
+         
+            return { ...item, userStatus: false };
+      } else {
+          return item;
+      }})
       state.userLoginDetails.following =
-        state.userLoginDetails.following.filter(
-          (item) => item.email !== unfollowPeopleData
-        );
+      state.userLoginDetails.following.filter(
+        (item) => item.email !== unfollowPeopleData
+      );
+      console.log("the value of the new followers be",state.userLoginDetails.followers)
+        
     },
   },
 });

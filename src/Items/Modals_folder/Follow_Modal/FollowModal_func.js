@@ -9,15 +9,14 @@ export const followUP_func = async (userName,email) => {
         followedPersonName:userName,
         followedPersonEmail:email,
       });
-      console.log("entering--")
       if(data?.success){
-        console.log("ok done",data)
+        console.log("follow is returning this",data)
         return {
             userIdentity:userName,
             email:email
         }
     }
-      else console.log("else of follow",data)
+      else console.log("else of follow ",data)
     } catch (error) {
       console.log("catch of follow",error)     
     } 
@@ -32,13 +31,12 @@ export const followUP_func = async (userName,email) => {
         unFollowedPersonName:userName,
         unFollowedPersonEmail:email,
       });
-      console.log("entering--")
       if(data?.success){
-console.log("ok")
+        console.log("UN-follow is returning this",data)
 return email
       }
-      else console.log("else of follow",data)
+      else console.log("else of UN-follow",data)
     } catch (error) {
-      console.log("catch of follow",error)     
+      console.log("catch of UN-follow",error)     
     } 
   }

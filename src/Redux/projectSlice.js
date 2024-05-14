@@ -11,9 +11,12 @@ const projectSlice=createSlice({
    
         storeUserProjects(state,action){
             state.userProjects=action.payload
-        }
+        },
+        deleteUserProjects(state,action){
+state.userProjects=state.userProjects.filter(item=>item._id!==action.payload)
+        } 
     }
 })
 
-export const {getProjectRerun,storeUserProjects}=projectSlice.actions
+export const {getProjectRerun,storeUserProjects,deleteUserProjects}=projectSlice.actions
 export default  projectSlice.reducer

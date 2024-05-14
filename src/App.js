@@ -24,6 +24,7 @@ import Hero from "./components/Hero/Hero";
 import InfoBox from "./Items/InfoBox/InfoBox";
 import EditProfile from "./components/EditProfile/EditProfile";
 import { storeUserProjects } from "./Redux/projectSlice";
+import UpdateProject from "./components/User_pages/After_login/Projects_func_comp/UpdateProject";
 //import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
               followers:data.userInfo.followers,
               following:data.userInfo.following,
               linkedin:data.userInfo.contact.linkedin ,
-              github: data.userInfo.contact.github ,
+              github: data.userInfo.contact.github,
               instagram:data.userInfo.contact.instagram ,
             })
           );
@@ -95,7 +96,7 @@ function App() {
           <Route path="otp" element={<Otp />} />
           <Route path="user_home" element={<UserHome />} />
           <Route path="add_project" element={<AddProject />} />
-          <Route path="update_project" element={<AddProject />} />
+          <Route path="update_project" element={<UpdateProject />} />
           <Route path="user_profile" element={<UserProfile />} />
           <Route path="modals" element={<Modals />} />
           <Route path="search_result" element={<SearchResult />} />

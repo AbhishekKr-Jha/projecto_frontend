@@ -5,12 +5,16 @@ import "../../Items/Search_icon.css";
 import { getProject_function, realTimeSearch_function } from "../Services/Apis";
 import { Toaster } from "react-hot-toast";
 import { fail, success } from "../../Items/Toastify";
+import { useSelector } from "react-redux";
 
 export default function EmailSearch() {
   useEffect(() => {
     getEmails();
   }, []);
   const navigate = useNavigate();
+
+  const userEmail = useSelector((state) => state.login.userLoginDetails.email);
+  const isFollowedByMe=useSelector((state)=>state.login.userLoginDetails.following)
 
   //todo _____projects found
   const [searchProject, setsearchProject] = useState(" ");
@@ -30,7 +34,8 @@ export default function EmailSearch() {
       if (!email) {
         fail("Email is required");
       } else {
-        const { data } = await getProject_function(email);
+        const { data } = await getProject_function(email,userEmail);
+        console.log(email,userEmail)
         if (data?.success) {
           success(data.message);
           setsuccessResult(true);
@@ -50,7 +55,11 @@ export default function EmailSearch() {
 
   const navigate_result = (e) => {
     e.preventDefault();
-   navigate("/search_result", { state: searchProject });
+    const isFollowed = isFollowedByMe.some(
+      (item) => item.email === email
+    );
+    console.log(">>>>>>",isFollowed)
+   navigate("/search_result", { state: {...searchProject,isFollowed} });
 
   };
  
