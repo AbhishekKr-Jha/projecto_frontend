@@ -46,7 +46,7 @@ fail("Project deletion error")
     >
       <h3 className="m-1 mb-3 text-center">
         Delete Project &nbsp;&nbsp;
-        <span className="font-medium text-xl">" hhjghj "</span>
+        <span className="font-medium text-xl">" {title} "</span>
       </h3>
       <p className="text-[12px] md:text-sm">
         {" "}
