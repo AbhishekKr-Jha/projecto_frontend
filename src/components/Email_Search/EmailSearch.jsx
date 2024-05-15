@@ -69,6 +69,7 @@ export default function EmailSearch() {
       const { data } = await realTimeSearch_function();
       if (data?.success) {
         setrealTimeEmail(data.emailArray);
+        console.log(data.emailArray)
       } else {
         console.log(data.message);
       }
@@ -91,12 +92,13 @@ export default function EmailSearch() {
         {/* <h3>newabjk1234@gmail.com</h3>
         <h3>abhishekhp935@gmail.com</h3> */}
         <h1 className="text-center text-[7vw] sm:text-[30px] md:text-[50px] ">
-          Enter Email to search for Projects
+          Enter Email to search for Projects-
         </h1>
 
         <div className=" flexC sm:flex-row space-x-4 space-y-4 sm:space-y-0  serach-Box ">
           <input
             onChange={(e) => {
+              emailFilter(e.target.value)
               setemail(e.target.value);
               setprojectCount(false);
               // getEmails();
