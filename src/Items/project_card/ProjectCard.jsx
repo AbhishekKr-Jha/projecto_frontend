@@ -40,7 +40,10 @@ export default function ProjectCard({
 
   //for the deletre modal
   const openDeleteModal = () => setopenDelete(true);
-
+//redirecting link
+const redirectLink = (textLink) => {
+  window.location.href = textLink;
+};
   return (
     <>
       {/* <div className="  flex flex-col  pt-[90px] pb-[30px]  justify-center items-center "> */}
@@ -53,7 +56,7 @@ export default function ProjectCard({
             </h3>
             <div className="my-4 md:my-0 flex  justify-center items-center   px-2    ">
               {githubLink?.length > 0 && (
-                <span className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]">
+                <span   onClick={() => redirectLink(githubLink)} className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]">
                   <svg
                     viewBox="0 0 24 24"
                     height="24"
@@ -68,7 +71,7 @@ export default function ProjectCard({
                 </span>
               )}
               {liveLink?.length > 0 && (
-                <span className=" text-[14px]  cursor-pointer ">Show Live</span>
+                <span onClick={() => redirectLink(liveLink)} className=" text-[14px]  cursor-pointer ">Show Live</span>
               )}
               {/* <span className="text-[14px]  cursor-pointer border-x-2 border-white px-1 rounded-md">Images</span> */}
             </div>
