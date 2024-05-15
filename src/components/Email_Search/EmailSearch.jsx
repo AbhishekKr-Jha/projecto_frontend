@@ -23,7 +23,7 @@ export default function EmailSearch() {
   //todo ______is data successfuly found
   const [successResult, setsuccessResult] = useState(false);
   //todo ______getting email input
-  const [email, setemail] = useState("");
+  const [email, setemail] = useState("akjha4127@gmail.com");
   //todo ______setting the emails for real time search
   const [realTimeEmail, setrealTimeEmail] = useState([]);
   //todo ______show or hide the real time serach emails
@@ -79,8 +79,9 @@ export default function EmailSearch() {
     }
   };
   //fliltering the emails
-  const emailFilter = () => {
+  const emailFilter = () => { 
     return realTimeEmail.filter((str) => str.startsWith(email));
+    //return realTimeEmail.filter((str) => str.startsWith(email));
   };
 
   return (

@@ -30,14 +30,17 @@ function InfoBox() {
       <div
         className={` text-xs p-3 bg-black rounded-md border-2 border-white absolute ${
           infoBoxVisibility
-            ? " w-[180px] h-[300px] bottom-[80px] opacity-100 "
+            ? " w-[180px] h-[310px] bottom-[80px] opacity-100 "
             : "w-[200px] h-[0px] -bottom-[400px] opacity-0 "
         } left-[-120px] transition-all ease-linear duration-500 `}
       >
         <div className=" ">
-          <span className="mb-1 font-semibold text-sm animated-underline">Testing Emails</span>
+        <span className="mb-[4px] font-semibold text-sm animated-underline">My Email</span>
+        <div>davari2366@mnsaf.com</div>
+        <hr  className="my-2" />
+          <span className="mb-[2px] font-semibold text-sm animated-underline">Testing Emails</span>
      
-          <div className="mt-2" >abhishekhp935@gmail.com</div>
+          <div className="mt-1" >abhishekhp935@gmail.com</div>
           <div>pw1234@aryan</div>
           <hr  className="my-2 w-[60px] mx-auto" />
           <div>davari2366@mnsaf.com</div>
@@ -47,9 +50,10 @@ function InfoBox() {
           <div className="">Anurag12@</div> */}
           <hr  className="my-2" />
         </div>
-       <ul  className="mt-4">
+       <ul  className="">
+        {/* <li>- </li> */}
         <li>- Profile Image Uploading is not done Yet</li>
-        <li>- Some small error may ocuur I will fix it shortly</li>
+        {/* <li>- Some small error may ocuur I will fix it shortly</li> */}
         <hr className="my-2 w-[60px] mx-auto" />
         <li>-If Logged in please edit your profile to add you social links</li>
        </ul>

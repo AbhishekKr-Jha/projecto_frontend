@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { fail } from '../../../../Items/Toastify'
 import { updateProject_function } from '../../../Services/Apis'
+import { useDispatch } from 'react-redux'
+import { updateUserProjects } from '../../../../Redux/projectSlice'
 
 export default function UpdateProject() {
     const location=useLocation()
+const navigate=useNavigate()
     const initialData=location.state
+    console.log("initial state is",initialData)
+    const dispatch=useDispatch()
     const [updatedProjectData,setUpdatedProjectData]=useState({
-        project_Id:initialData.projectId,
+        project_id:initialData.projectId,
         user:initialData.creatorId, 
         title:initialData.title,
         live:initialData.liveLink,
@@ -16,17 +21,24 @@ export default function UpdateProject() {
     })
 
     const getUpdatedProjectData=(e)=>{
+      console.log("---",updatedProjectData)
+      console.log('Input name:', e.target.name);
+      console.log('Input value:', e.target.value);
 setUpdatedProjectData({...updatedProjectData,[e.target.name]:e.target.value})
     }
-const submit_updated_project=async()=>{
-    if(!updatedProjectData.title || updatedProjectData.description){
+const submit_updated_project=async(e)=>{
+  console.log("button is clicked")
+  e.preventDefault()
+    if(!updatedProjectData.title || !updatedProjectData.description){
         fail("Title and Description are required")
     }
     else{
 try {
     const {data}=await updateProject_function(updatedProjectData)
     if(data.success){
-        console.log(data.message)
+        console.log(data)
+        dispatch(updateUserProjects(data.updateProject))
+        // navigate('/user_home')
     }
     else{
         fail(data.message);
