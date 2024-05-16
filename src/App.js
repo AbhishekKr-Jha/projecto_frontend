@@ -31,7 +31,7 @@ import Loader from "./Items/loader/Loader";
 function App() {
   // const locomotiveScroll = new LocomotiveScroll();
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(false);
 
   const checkLogin = async () => {
    
