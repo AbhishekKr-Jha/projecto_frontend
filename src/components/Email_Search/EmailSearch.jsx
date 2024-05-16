@@ -6,6 +6,8 @@ import { getProject_function, realTimeSearch_function } from "../Services/Apis";
 import { Toaster } from "react-hot-toast";
 import { fail, success } from "../../Items/Toastify";
 import { useSelector } from "react-redux";
+import Loader2 from "../../Items/loader2/Loader2";
+// import Loader from "../../Items/loader/Loader";
 
 export default function EmailSearch() {
   useEffect(() => {
@@ -14,9 +16,11 @@ export default function EmailSearch() {
   const navigate = useNavigate();
 
   const userEmail = useSelector((state) => state.login.userLoginDetails.email);
-  const isFollowedByMe=useSelector((state)=>state.login.userLoginDetails.following)
+  const isFollowedByMe = useSelector(
+    (state) => state.login.userLoginDetails.following
+  );
 
-  //todo _____projects found 
+  //todo _____projects found
   const [searchProject, setsearchProject] = useState(" ");
   //todo ______showing or hiding image
   const [projectCount, setprojectCount] = useState(false);
@@ -26,51 +30,58 @@ export default function EmailSearch() {
   const [email, setemail] = useState("akjha4127@gmail.com");
   //todo ______setting the emails for real time search
   const [realTimeEmail, setrealTimeEmail] = useState([]);
+  //todo ______loader
+  const [loader, setLoader] = useState(false);
   //todo ______show or hide the real time serach emails
   const [emailsView, setemailsView] = useState(false);
   const get_projects = async () => {
+    
     setemailsView(false);
     try {
       if (!email) {
         fail("Email is required");
       } else {
-        const { data } = await getProject_function(email,userEmail);
-        console.log(email,userEmail)
+        setLoader(true);
+        const { data } = await getProject_function(email, userEmail);
+        console.log(email, userEmail);
         if (data?.success) {
+          setLoader(false)
           success(data.message);
           setsuccessResult(true);
           setsearchProject(data.userDetails);
-          console.log("---",data.userDetails);
+          console.log("---", data.userDetails);
         } else {
+          setLoader(false)
+          fail(data.message)
           setprojectCount(true);
           setsuccessResult(false);
           console.log(data.message);
         }
       }
     } catch (error) {
-      console.log("error block");
-      console.log(error);
+      fail("Server Error")
+      // console.log("error block");
+      // console.log(error);
     }
   };
 
   const navigate_result = (e) => {
     e.preventDefault();
-    const isFollowed = isFollowedByMe.some(
-      (item) => item.email === email
-    );
-    console.log(">>>>>>",isFollowed)
-   navigate("/search_result", { state: {...searchProject,isFollowed} });
-
+    const isFollowed = isFollowedByMe.some((item) => item.email === email);
+    navigate("/search_result", { state: { ...searchProject, isFollowed } });
   };
- 
+
   //getting emails for real time search
   const getEmails = async () => {
+   
     try {
       const { data } = await realTimeSearch_function();
       if (data?.success) {
         setrealTimeEmail(data.emailArray);
-        console.log(data.emailArray)
+        console.log(data.emailArray);
+        setLoader(false);
       } else {
+  
         console.log(data.message);
       }
     } catch (error) {
@@ -79,9 +90,8 @@ export default function EmailSearch() {
     }
   };
   //fliltering the emails
-  const emailFilter = () => { 
+  const emailFilter = () => {
     return realTimeEmail.filter((str) => str.startsWith(email));
-    //return realTimeEmail.filter((str) => str.startsWith(email));
   };
 
   return (
@@ -89,20 +99,19 @@ export default function EmailSearch() {
       <div className="fixed">
         <Toaster position="bottom-right" />
       </div>
+      {/* {loader?<Loader2 />:( */}
       <div className=" flexC items-center element-Wrapper lg:pt-[55px] space-y-5">
-        {/* <h3>newabjk1234@gmail.com</h3>
-        <h3>abhishekhp935@gmail.com</h3> */}
         <h1 className="text-center text-[7vw] sm:text-[30px] md:text-[50px] ">
-          Enter Email to search for Projects-
+          -Enter Email to search for Projects-
         </h1>
 
         <div className=" flexC sm:flex-row space-x-4 space-y-4 sm:space-y-0  serach-Box ">
           <input
             onChange={(e) => {
-              emailFilter(e.target.value)
+              setLoader(false)
+              emailFilter(e.target.value);
               setemail(e.target.value);
               setprojectCount(false);
-              // getEmails();
               setemailsView(true);
               setsuccessResult(false);
             }}
@@ -138,7 +147,7 @@ export default function EmailSearch() {
             )
           : ""}
 
-        {projectCount && (
+     {loader?<Loader2/>:   <>{ projectCount && (
           <div className="noResult_img ">
             <img width="120px" src={NoResult} alt="loading..." />
             <h3 className="mt-2">No Result Found</h3>
@@ -149,12 +158,12 @@ export default function EmailSearch() {
             className="hover:scale-105 duration-150 transition-all ease-linear cursor-pointer border-solid border-white border-[1px] p-3 rounded-lg"
             onClick={navigate_result}
           >
-            {/* <NavLink to='/search_result'>  */}
             <h3>User available with {searchProject.projects.length} Project</h3>
-            {/* </NavLink> */}
           </div>
-        )}
+        )}</>}
+     
       </div>
+      {/*  )}  */}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 // import LocomotiveScroll from 'locomotive-scroll';
@@ -25,15 +25,16 @@ import InfoBox from "./Items/InfoBox/InfoBox";
 import EditProfile from "./components/EditProfile/EditProfile";
 import { storeUserProjects } from "./Redux/projectSlice";
 import UpdateProject from "./components/User_pages/After_login/Projects_func_comp/UpdateProject";
+import Loader from "./Items/loader/Loader";
 //import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
 
 function App() {
   // const locomotiveScroll = new LocomotiveScroll();
   const dispatch = useDispatch();
-
+  const [loader, setLoader] = useState(true);
 
   const checkLogin = async () => {
-
+   
     const ifUserData = JSON.parse(localStorage.getItem("userData"));
     if (ifUserData) {
       try {
@@ -41,29 +42,32 @@ function App() {
           email: ifUserData?.email,
           id: ifUserData?.id,
         });
-        
+
         if (data.success) {
-          console.log(data)
+          setLoader(false)
+          console.log(data);
+          // setLoader(false)
           dispatch(login());
           dispatch(
             userInfo({
               name: data.userInfo.firstName + " " + data.userInfo.lastName,
               email: data.userInfo.email,
               totalProject: data.userInfo.totalProject,
-              followers:data.userInfo.followers,
-              following:data.userInfo.following,
-              linkedin:data.userInfo.contact.linkedin ,
+              followers: data.userInfo.followers,
+              following: data.userInfo.following,
+              linkedin: data.userInfo.contact.linkedin,
               github: data.userInfo.contact.github,
-              instagram:data.userInfo.contact.instagram ,
+              instagram: data.userInfo.contact.instagram,
             })
           );
-          console.log(data.userInfo.projects)
-          dispatch(storeUserProjects(data.userInfo.projects))
-        }
+          console.log(data.userInfo.projects);
+          dispatch(storeUserProjects(data.userInfo.projects));
+        }else{setLoader(false)}
       } catch (error) {
+        setLoader(false)
         console.log("error");
       }
-    }
+    }else{setLoader(false)}
   };
 
   useEffect(() => {
@@ -82,10 +86,11 @@ function App() {
           <h6 className="text-[10vw]  skew-x-12  ">Welcome! </h6>
         </div>
         {/* bg-[#131313] */}
+        {loader?<div className="w-full h-screen flex justify-center items-center"><Loader text="Loading Files"/></div>:<>
         <NewMenu />
         <Navbar />
-      <InfoBox />
-        <Routes>
+        <InfoBox />
+ <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="register" element={<Registeration />} />
           <Route path="options_page" element={<Options />} />
@@ -108,7 +113,7 @@ function App() {
           <p className="text-center h-[50px]  md:max-h-max border-t-2  md:border-t-0  border-white flex items-center md:items-start  ">
             &copy; 2024 Projeto. All rights reserved
           </p>
-        </div>
+        </div></>}
       </div>
     </>
   );
