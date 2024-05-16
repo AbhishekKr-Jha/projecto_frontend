@@ -57,6 +57,7 @@ function App() {
               instagram:data.userInfo.contact.instagram ,
             })
           );
+          console.log(data.userInfo.projects)
           dispatch(storeUserProjects(data.userInfo.projects))
         }
       } catch (error) {

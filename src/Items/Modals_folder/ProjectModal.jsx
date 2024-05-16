@@ -72,7 +72,7 @@ const redirectLink = (textLink) => {
       onClose={close}
       center
       closeIcon={<i className=" text-3xl ri-arrow-left-line "></i>}
-    >
+    > 
       <div className="  overflow-y-auto  w-[85vw]  sm:max-w-[500px]  lg:max-w-[600px] sc2  max-h-[800px] border-2 px-2 lg:px-3 py-3  rounded-lg ">
         <div className="  p-1 ">
           <div className=" mb-6">

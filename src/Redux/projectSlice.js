@@ -14,9 +14,18 @@ const projectSlice=createSlice({
         },
         deleteUserProjects(state,action){
 state.userProjects=state.userProjects.filter(item=>item._id!==action.payload)
-        } 
+        } ,
+        updateUserProjects(state,action){
+            const data=action.payload
+           state.userProjects=state.userProjects.map((item)=>{
+            if(item._id===data._id){
+                return data
+            }
+            else{return item}
+           })
+        }
     }
 })
 
-export const {getProjectRerun,storeUserProjects,deleteUserProjects}=projectSlice.actions
+export const {getProjectRerun,storeUserProjects,deleteUserProjects, updateUserProjects}=projectSlice.actions
 export default  projectSlice.reducer

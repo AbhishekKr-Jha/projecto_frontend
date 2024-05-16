@@ -15,6 +15,7 @@ export default function Registeration() {
     pw: "",
     cpw: "",
   });
+
   const [checkbox_change, setcheckbox_change] = useState(false);
 
   const get_Data = (e) => {

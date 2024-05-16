@@ -36,7 +36,7 @@ function InfoBox() {
       >
         <div className=" ">
         <span className="mb-[4px] font-semibold text-sm animated-underline">My Email</span>
-        <div>davari2366@mnsaf.com</div>
+        <div>akjha4127@gmail.com</div>
         <hr  className="my-2" />
           <span className="mb-[2px] font-semibold text-sm animated-underline">Testing Emails</span>
      

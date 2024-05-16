@@ -92,7 +92,7 @@ console.log(showOrHidePassword)
               SIGN IN
             </h1>
             <p className="paraText">
-              New User?&nbsp;<Link className="font-semibold italic animated-underline" to="/register">Create an account</Link>
+              New User?&nbsp;<Link className="font-semibold italic animated-underline" to="/Email_Verification">Create an account</Link>
             </p> 
             <button className=" border-2 border-blue-700 " onClick={()=>console.log("--env--",REACT_APP_URL)}>
           
