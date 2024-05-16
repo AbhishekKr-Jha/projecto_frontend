@@ -159,8 +159,7 @@ const redirectLink = (textLink) => {
                    setTimeout(() => {
                     console.log("the setcommment value now is",comments)
                    }, 3000);
-                    setInputCommentValue({ ...inputCommentValue, comment: "" });
-                 
+                    setInputCommentValue({ ...inputCommentValue, comment: "" });               
                   }}
                   className=" mx-auto sm:mx-0 py-2 px-6 rounded-lg bg-red-900 text-xs font-thin lg:hover:bg-gray-200 hover:text-black "
                 >
@@ -169,10 +168,6 @@ const redirectLink = (textLink) => {
               )}
             </div>
           )}
-
-
-
-
           <div className=" my-5 ">
             {comments.length>0 && comments.map((element, index) => {
             
