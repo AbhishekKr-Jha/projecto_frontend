@@ -16,7 +16,7 @@ export default function EmailSearch() {
   const userEmail = useSelector((state) => state.login.userLoginDetails.email);
   const isFollowedByMe=useSelector((state)=>state.login.userLoginDetails.following)
 
-  //todo _____projects found
+  //todo _____projects found 
   const [searchProject, setsearchProject] = useState(" ");
   //todo ______showing or hiding image
   const [projectCount, setprojectCount] = useState(false);

@@ -29,7 +29,7 @@ function InfoBox() {
 
       <div
         className={` text-xs p-3 bg-black rounded-md border-2 border-white absolute ${
-          infoBoxVisibility
+          infoBoxVisibility 
             ? " w-[180px] h-[310px] bottom-[80px] opacity-100 "
             : "w-[200px] h-[0px] -bottom-[400px] opacity-0 "
         } left-[-120px] transition-all ease-linear duration-500 `}
