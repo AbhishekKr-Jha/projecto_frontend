@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import CheckConnection from "../CheckConn/CheckConnection";
 
 function InfoBox() {
+  const serverStatusCheck = useSelector(
+    (state) => state.login.isServerConnected
+  );
+  console.log("----",serverStatusCheck)
   const [infoBoxVisibility, setInfoBoxVisibility] = useState(false);
-  
+
   return (
     <div className="fixed bottom-10 z-[1200] right-10">
       <div
@@ -10,7 +16,7 @@ function InfoBox() {
           infoBoxVisibility
             ? setInfoBoxVisibility(false)
             : setInfoBoxVisibility(true);
-            localStorage.setItem('notificationNumbers',JSON.stringify(1))
+          localStorage.setItem("notificationNumbers", JSON.stringify(1));
         }}
         className=" bg-blue-600 rounded-full px-2 py-1 cursor-pointer"
       >
@@ -20,43 +26,51 @@ function InfoBox() {
           } `}
         ></i>
 
-        {!JSON.parse(localStorage.getItem("notificationNumbers")) &&
+        {!JSON.parse(localStorage.getItem("notificationNumbers")) && (
           <span className="absolute h-[20px] w-[20px] flex justify-center items-center bottom-0 -left-1 bg-white rounded-full font-semibold text-red-700">
             1
           </span>
-        }
+        )}
       </div>
 
       <div
         className={` text-xs p-3 bg-black rounded-md border-2 border-white absolute ${
-          infoBoxVisibility 
+          infoBoxVisibility
             ? " w-[180px] h-[310px] bottom-[80px] opacity-100 "
             : "w-[200px] h-[0px] -bottom-[400px] opacity-0 "
         } left-[-120px] transition-all ease-linear duration-500 `}
       >
         <div className=" ">
-        <span className="mb-[4px] font-semibold text-sm animated-underline">My Email</span>
-        <div>akjha4127@gmail.com</div>
-        <hr  className="my-2" />
-          <span className="mb-[2px] font-semibold text-sm animated-underline">Testing Emails</span>
-     
-          <div className="mt-1" >abhishekhp935@gmail.com</div>
+          <span className="mb-[4px] font-semibold text-sm animated-underline">
+            My Email
+          </span>
+          <div>akjha4127@gmail.com</div>
+          <hr className="my-2" />
+          <span className="mb-[2px] font-semibold text-sm animated-underline">
+            Testing Emails
+          </span>
+
+          <div className="mt-1">abhishekhp935@gmail.com</div>
           <div>pw1234@aryan</div>
-          <hr  className="my-2 w-[60px] mx-auto" />
+          <hr className="my-2 w-[60px] mx-auto" />
           <div>davari2366@mnsaf.com</div>
           <div>abhipw1234</div>
-          {/* <hr  className="my-2" />
-          <div className="">davari2366@mnsaf.com</div>
-          <div className="">Anurag12@</div> */}
-          <hr  className="my-2" />
+          <hr className="my-2" />
         </div>
-       <ul  className="">
-        {/* <li>- </li> */}
-        <li>- Profile Image Uploading is not done Yet</li>
-        {/* <li>- Some small error may ocuur I will fix it shortly</li> */}
-        <hr className="my-2 w-[60px] mx-auto" />
-        <li>-If Logged in please edit your profile to add you social links</li>
-       </ul>
+        {serverStatusCheck ? (
+          <div className="my-4">
+          <CheckConnection visibility={true} />
+          <p></p>
+          </div>
+        ) : (
+          <ul className="">
+            <li>- Profile Image Uploading is not done Yet</li>
+            <hr className="my-2 w-[60px] mx-auto" />
+            <li>
+              -If Logged in please edit your profile to add you social links
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );

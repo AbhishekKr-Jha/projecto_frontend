@@ -14,27 +14,49 @@ import Otp from "./components/Registeration/OTP_Verify/Otp";
 import AddProject from "./components/User_pages/After_login/AddProject";
 import UserHome from "./components/User_pages/After_login/UserHome";
 import UserProfile from "./components/User_pages/After_login/UserProfile";
-import { useDispatch, useSelector } from "react-redux";
-import { login, userInfo } from "./Redux/loginSlice";
+import { useDispatch } from "react-redux";
+import { login, serverConnection, userInfo } from "./Redux/loginSlice";
 import Modals from "react-responsive-modal";
 import SearchResult from "./components/SearchResult/SearchResult";
 import NewMenu from "./Items/NewMenu/NewMenu";
-import { checkLogin_function } from "./components/Services/Apis";
+import {
+  checkLogin_function,
+  serverConnectionStatus,
+} from "./components/Services/Apis";
 import Hero from "./components/Hero/Hero";
 import InfoBox from "./Items/InfoBox/InfoBox";
 import EditProfile from "./components/EditProfile/EditProfile";
 import { storeUserProjects } from "./Redux/projectSlice";
 import UpdateProject from "./components/User_pages/After_login/Projects_func_comp/UpdateProject";
-import Loader from "./Items/loader/Loader";
+import CheckConnection from "./Items/CheckConn/CheckConnection";
+import { fail } from "./Items/Toastify";
 //import GetProjectsComp from "./components/User_pages/After_login/Projects_func_comp/GetProjectsComp";
 
 function App() {
   // const locomotiveScroll = new LocomotiveScroll();
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
+
+  const serverStatus = async () => {
+    try {
+      const { data } = await serverConnectionStatus();
+      if (data.success) {
+        dispatch(serverConnection());
+        setLoader(false);
+        console.log("data found --");
+      }
+    } catch (error) {
+      dispatch(serverConnection());
+      setLoader(false);
+      fail("Server Error");
+      fail("Try after some time"); 
+      console.log("data found else server status");
+    }
+  };
 
   const checkLogin = async () => {
-   
+    setLoader(true);
+    console.log("hello");
     const ifUserData = JSON.parse(localStorage.getItem("userData"));
     if (ifUserData) {
       try {
@@ -44,9 +66,9 @@ function App() {
         });
 
         if (data.success) {
-          setLoader(false)
-          console.log(data);
-          // setLoader(false)
+          console.log("data found in success");
+          dispatch(serverConnection());
+          setLoader(false);
           dispatch(login());
           dispatch(
             userInfo({
@@ -60,14 +82,22 @@ function App() {
               instagram: data.userInfo.contact.instagram,
             })
           );
-          console.log(data.userInfo.projects);
           dispatch(storeUserProjects(data.userInfo.projects));
-        }else{setLoader(false)}
+        } else {
+          console.log("data found in else");
+          dispatch(serverConnection());
+          setLoader(false);
+        }
       } catch (error) {
-        setLoader(false)
-        console.log("error");
+        dispatch(serverConnection());
+        setLoader(false);
+        console.log("error while connecting in app");
+        console.log("data found in catch");
       }
-    }else{setLoader(false)}
+    } else {
+      // setLoader(false)
+      serverStatus();
+    }
   };
 
   useEffect(() => {
@@ -86,11 +116,21 @@ function App() {
           <h6 className="text-[10vw]  skew-x-12  ">Welcome! </h6>
         </div>
         {/* bg-[#131313] */}
-        {loader?<div className="w-full h-screen flex justify-center items-center"><Loader text="Loading Files"/></div>:<>
+        {/* {loader ? (
+          <div className="w-full h-screen flex justify-center items-center">
+            <Loader text="Loading Files" />
+          </div>
+        ) : (
+          <> */}
         <NewMenu />
         <Navbar />
         <InfoBox />
- <Routes>
+        {loader && (
+          <div className="absolute top-[80px] left-1/2 md:left-[50px]">
+            <CheckConnection visibility={false} />
+          </div>
+        )}
+        <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="register" element={<Registeration />} />
           <Route path="options_page" element={<Options />} />
@@ -113,7 +153,9 @@ function App() {
           <p className="text-center h-[50px]  md:max-h-max border-t-2  md:border-t-0  border-white flex items-center md:items-start  ">
             &copy; 2024 Projeto. All rights reserved
           </p>
-        </div></>}
+        </div>
+        {/* </> */}
+        {/* )} */}
       </div>
     </>
   );

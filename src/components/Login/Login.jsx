@@ -34,16 +34,16 @@ const [showOrHidePassword,setShowOrHidePassword]=useState(false)
   const submit_login = async (e) => {
     e.preventDefault();
  
-    console.log("out",loginForm_data)
+    // console.log("out",loginForm_data)
     if (!loginForm_data.email || !loginForm_data.pw) {
       fail("Please enter all the fields for login");
     } else {
       setLoader(true)
       try {
-       console.log("'in")
+      //  console.log("'in")
         const {data} = await login_function(loginForm_data);
-        console.log("data is",data)
-        console.log("insie",loginForm_data)
+        // console.log("data is",data)
+        // console.log("insie",loginForm_data)
         setLoader(false)
         if (data?.success) {
           success(data?.message);
@@ -52,7 +52,7 @@ const [showOrHidePassword,setShowOrHidePassword]=useState(false)
           //   "userProjectoData",
           //   JSON.stringify(data.userInfo)
           // );
-          console.log("login successful")
+          // console.log("login successful")
           dispatch(login());
           dispatch(
             userInfo({
@@ -77,7 +77,6 @@ const [showOrHidePassword,setShowOrHidePassword]=useState(false)
       }
     }
   };
-console.log(showOrHidePassword)
   return (
     <>
       <div className="fixed">
@@ -94,7 +93,7 @@ console.log(showOrHidePassword)
             <p className="paraText">
               New User?&nbsp;<Link className="font-semibold italic animated-underline" to="/Email_Verification">Create an account</Link>
             </p> 
-            <button className=" border-2 border-blue-700 " onClick={()=>console.log("--env--",REACT_APP_URL)}>
+            <button className=" border-2 border-blue-700 " onClick={()=>console.log("--env updated--",REACT_APP_URL)}>
           
             </button>
           </div>    

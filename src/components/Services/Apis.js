@@ -2,6 +2,13 @@ import { commonRequest } from "./ApiCall"
 import {REACT_APP_URL} from './Helper'
 
 
+// conection status
+export const serverConnectionStatus=async(data,header)=>{
+    return commonRequest("GET",`${REACT_APP_URL}/users/v1/serverstatus`)
+}
+
+
+
 //is user Login
 export const checkLogin_function=async(data,header)=>{
     return commonRequest("GET",`${REACT_APP_URL}/users/v1/checkLogin/${data.id}/${data.email}`)
