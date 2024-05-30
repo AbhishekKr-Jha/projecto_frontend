@@ -29,7 +29,7 @@ export default function SearchResult() {
   
   const [openFollowingModal, setOpenFollowingModal] = useState(false);
   const [openFollowersModal, setOpenFollowersModal] = useState(false);
-  
+
 
   const follow = async (userName, email) => {
     const result = await followUP_func(userName, email);
@@ -117,7 +117,7 @@ export default function SearchResult() {
           />
 
 
-          {userLoginDetails.email !== userData.email && (
+          {userLoginDetails.email && userLoginDetails.email !== userData.email && (
             <div className="my-2  w-full flex justify-center gap-12 md:gap-20 text-sm md:text-base  ">
               <button
                 onClick={() => {
