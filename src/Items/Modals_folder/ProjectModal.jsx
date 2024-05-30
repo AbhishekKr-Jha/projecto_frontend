@@ -10,20 +10,20 @@ import { useNavigate } from "react-router-dom";
 export default function ProjectModal({
   open,
   close,
-   openDelete,
+  openDelete,
   title,
   description,
   githubLink,
   liveLink,
   creatorId,
   projectId,
-  createdAt
+  createdAt,
 }) {
   const userLoginDetails = useSelector((state) => state.login);
-
   const userId = JSON.parse(localStorage.getItem("userData"))?.id;
-const navigate=useNavigate()
- 
+  console.log("the value of te project id is", projectId, userId);
+  const navigate = useNavigate();
+
   //for getting the value of input Comment
   const [inputCommentValue, setInputCommentValue] = useState({
     projectId: projectId,
@@ -31,8 +31,16 @@ const navigate=useNavigate()
     userId: userId,
   });
   useEffect(() => {
-    getProjectComments();
-  }, [open]);
+    if (open) {
+      getProjectComments();
+      setInputCommentValue((prev) => ({
+        ...prev,
+        projectId: projectId,
+      }));
+    }
+  }, [open, close,projectId]);
+
+ 
 
   //for setting the comments
   const [comments, setComments] = useState([]);
@@ -40,7 +48,8 @@ const navigate=useNavigate()
   //getting all the comments of the project
   const getProjectComments = async () => {
     try {
-      const { data } = await getComment_function(projectId);  
+      const { data } = await getComment_function(projectId);
+      console.log("the get comments has returned", data);
       if (data.success) {
         setComments(data.comments);
       } else {
@@ -51,15 +60,15 @@ const navigate=useNavigate()
     }
   };
 
-//redirecting link
-const redirectLink = (textLink) => {
-  window.location.href = textLink;
-};
+  //redirecting link
+  const redirectLink = (textLink) => {
+    window.location.href = textLink;
+  };
 
   return (
     <Modal
       styles={{
-        modal: { 
+        modal: {
           backgroundColor: "black",
           borderRadius: "18px",
           paddingTop: "60px",
@@ -72,7 +81,7 @@ const redirectLink = (textLink) => {
       onClose={close}
       center
       closeIcon={<i className=" text-3xl ri-arrow-left-line "></i>}
-    > 
+    >
       <div className="  overflow-y-auto  w-[85vw]  sm:max-w-[500px]  lg:max-w-[600px] sc2  max-h-[800px] border-2 px-2 lg:px-3 py-3  rounded-lg ">
         <div className="  p-1 ">
           <div className=" mb-6">
@@ -82,7 +91,10 @@ const redirectLink = (textLink) => {
               </h3>
               <div className="flex  justify-center   my-3 px-2    ">
                 {githubLink?.length > 0 && (
-                  <span onClick={() => redirectLink(githubLink)} className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]">
+                  <span
+                    onClick={() => redirectLink(githubLink)}
+                    className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]"
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       height="24"
@@ -97,7 +109,10 @@ const redirectLink = (textLink) => {
                   </span>
                 )}
                 {liveLink?.length > 0 && (
-                  <span onClick={() => redirectLink(liveLink)} className=" text-[14px]  cursor-pointer ">
+                  <span
+                    onClick={() => redirectLink(liveLink)}
+                    className=" text-[14px]  cursor-pointer "
+                  >
                     Show Live
                   </span>
                 )}
@@ -108,7 +123,7 @@ const redirectLink = (textLink) => {
             </p>
             <div className=" w-full mt-1 ">
               <span className="text-sm text-gray-400  font-medium">
-              {createdAt}
+                {createdAt}
               </span>
               {creatorId === userId && (
                 <div className="w-full scale-75  flex justify-center transition-all ease-in  duration-500  space-x-3 items-baseline">
@@ -116,18 +131,21 @@ const redirectLink = (textLink) => {
                     onClick={openDelete}
                     className="cursor-pointer  text-3xl  fi fi-rs-trash"
                   ></i>
-                  <i  onClick={() =>
-                    navigate("/update_project", {
-                      state: {
-                        projectId,
-                        creatorId,
-                        title,
-                        liveLink,
-                        githubLink,
-                        description,
-                      },
-                    })
-                  } className="cursor-pointer text-2xl fi fi-rr-pencil"></i>
+                  <i
+                    onClick={() =>
+                      navigate("/update_project", {
+                        state: {
+                          projectId,
+                          creatorId,
+                          title,
+                          liveLink,
+                          githubLink,
+                          description,
+                        },
+                      })
+                    }
+                    className="cursor-pointer text-2xl fi fi-rr-pencil"
+                  ></i>
                 </div>
               )}
             </div>
@@ -143,6 +161,7 @@ const redirectLink = (textLink) => {
                     ...inputCommentValue,
                     comment: e.target.value,
                   });
+                  console.log('the input comment value is ',inputCommentValue)
                 }}
                 value={inputCommentValue.comment}
                 placeholder="Enter your Suggestion"
@@ -153,13 +172,8 @@ const redirectLink = (textLink) => {
                 <button
                   onClick={async () => {
                     const result = await AddComments(inputCommentValue);
-          console.log("the comment result is ",result)
-                   setComments((pre)=>[result,...pre])
-                   console.log("the setcommment value before is",comments) 
-                   setTimeout(() => {
-                    console.log("the setcommment value now is",comments)
-                   }, 3000);
-                    setInputCommentValue({ ...inputCommentValue, comment: "" });               
+                    setComments((pre) => [result, ...pre]);
+                    setInputCommentValue({ ...inputCommentValue, comment: "" });
                   }}
                   className=" mx-auto sm:mx-0 py-2 px-6 rounded-lg bg-red-900 text-xs font-thin lg:hover:bg-gray-200 hover:text-black "
                 >
@@ -169,25 +183,25 @@ const redirectLink = (textLink) => {
             </div>
           )}
           <div className=" my-5 ">
-            {comments.length>0 && comments.map((element, index) => {
-            
-              return (
-                <div key={index} className="my-4 lg:my-8">
-                  <CommentsBox
-                    index={index}
-                    userLoginDetails={userLoginDetails}
-                    commentorName={element.user}
-                    commentorEmail={element.userEmail}
-                    comment={element.comment}
-                    commentId={element._id}
-                    reply={element.reply}
-                    creatorId={creatorId}
-                    userId={userId}
-                    projectId={projectId}
-                  />
-                </div>
-              );
-            })}
+            {comments.length > 0 &&
+              comments.map((element, index) => {
+                return (
+                  <div key={index} className="my-4 lg:my-8">
+                    <CommentsBox
+                      index={index}
+                      userLoginDetails={userLoginDetails}
+                      commentorName={element.user}
+                      commentorEmail={element.userEmail}
+                      comment={element.comment}
+                      commentId={element._id}
+                      reply={element.reply}
+                      creatorId={creatorId}
+                      userId={userId}
+                      projectId={projectId}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>

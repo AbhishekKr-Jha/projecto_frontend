@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { showInput } from "../ExtraFunction";
 import { replyComment_function } from "../../components/Services/Apis";
 
@@ -19,6 +19,10 @@ export default function CommentsBox({
   //for getting input value of reply
   const [inputReplyValue, setInputReplyValue] = useState("");
   const [replyVal,setReplyVal]=useState(reply)
+  useEffect(() => {
+    setReplyVal(reply)
+  }, [reply])
+  
 
 //submit your reply
 const submitReply=async()=>{

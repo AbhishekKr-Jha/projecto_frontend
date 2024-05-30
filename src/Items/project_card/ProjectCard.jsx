@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-// import { Modal } from "react-responsive-modal";
-// import "./w.css";
-// import { showInput } from "../ExtraFunction";
-// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ProjectModal from "../Modals_folder/ProjectModal";
 import DeleteModal from "../Modals_folder/Delete_Modal/DeleteModal";
@@ -17,9 +13,6 @@ export default function ProjectCard({
   createdAt,
 }) {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const isUserLoginData = useSelector((state) => state.login);
-  // const isDelete = useSelector((state) => state.delete.isDelete);
 
   //open modal
   const [open, setOpen] = useState(false);
@@ -31,23 +24,15 @@ export default function ProjectCard({
     comment: "",
     userId: JSON.parse(localStorage.getItem("userData"))?.id,
   });
-  //for getting input value of reply
-  // const [reply, setreply] = useState("");
-
   //fpr the followers modal list
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-
-  //for the deletre modal
-  const openDeleteModal = () => setopenDelete(true);
-//redirecting link
-const redirectLink = (textLink) => {
-  window.location.href = textLink;
-};
+  //redirecting link
+  const redirectLink = (textLink) => {
+    window.location.href = textLink;
+  };
   return (
     <>
-      {/* <div className="  flex flex-col  pt-[90px] pb-[30px]  justify-center items-center "> */}
-      {/* <div className=" opacity-0  scale-75 flex md:focus:scale-100  md:group-hover:opacity-100 transition-all ease-linear  duration-500 group-hover:flex space-x-3 items-baseline"></div> */}
       <div className="">
         <div className=" max-h-max w-[90vw] md:w-[80vw] max-w-[600px] border-2 border-white   rounded-lg  p-3 hover:scale-105 transition-all linear duration-700  group">
           <div className=" md:flex  justify-start items-center  md:space-x-2  mb-2    ">
@@ -56,7 +41,10 @@ const redirectLink = (textLink) => {
             </h3>
             <div className="my-4 md:my-0 flex  justify-center items-center   px-2    ">
               {githubLink?.length > 0 && (
-                <span   onClick={() => redirectLink(githubLink)} className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]">
+                <span
+                  onClick={() => redirectLink(githubLink)}
+                  className=" hover:bg-slate-900 cursor-pointer rounded-full p-[6px]"
+                >
                   <svg
                     viewBox="0 0 24 24"
                     height="24"
@@ -71,9 +59,13 @@ const redirectLink = (textLink) => {
                 </span>
               )}
               {liveLink?.length > 0 && (
-                <span onClick={() => redirectLink(liveLink)} className=" text-[14px]  cursor-pointer ">Show Live</span>
+                <span
+                  onClick={() => redirectLink(liveLink)}
+                  className=" text-[14px]  cursor-pointer "
+                >
+                  Show Live
+                </span>
               )}
-              {/* <span className="text-[14px]  cursor-pointer border-x-2 border-white px-1 rounded-md">Images</span> */}
             </div>
           </div>
           <p className=" text-justify  min-h-[40px]  line-clamp-2   px-2 my-3">
@@ -132,9 +124,7 @@ const redirectLink = (textLink) => {
           open={openDelete}
           close={() => setopenDelete(false)}
         />
-        {/* // openDeleteModal={openDeleteModal} */}
       </div>
-      {/* </div> */}
     </>
   );
 }

@@ -4,12 +4,12 @@ import { fail } from '../../../../Items/Toastify'
 import { updateProject_function } from '../../../Services/Apis'
 import { useDispatch } from 'react-redux'
 import { updateUserProjects } from '../../../../Redux/projectSlice'
+import Loader from '../../../../Items/loader/Loader'
 
 export default function UpdateProject() {
     const location=useLocation()
 const navigate=useNavigate()
     const initialData=location.state
-    console.log("initial state is",initialData)
     const dispatch=useDispatch()
     const [updatedProjectData,setUpdatedProjectData]=useState({
         project_id:initialData.projectId,
@@ -20,40 +20,47 @@ const navigate=useNavigate()
         description:initialData.description,
     })
 
+const [loader,setLoader]=useState(false)
+
     const getUpdatedProjectData=(e)=>{
-      console.log("---",updatedProjectData)
-      console.log('Input name:', e.target.name);
-      console.log('Input value:', e.target.value);
 setUpdatedProjectData({...updatedProjectData,[e.target.name]:e.target.value})
     }
 const submit_updated_project=async(e)=>{
-  console.log("button is clicked")
   e.preventDefault()
+
     if(!updatedProjectData.title || !updatedProjectData.description){
         fail("Title and Description are required")
     }
     else{
+      setLoader(true)
 try {
     const {data}=await updateProject_function(updatedProjectData)
     if(data.success){
-        console.log(data)
         dispatch(updateUserProjects(data.updateProject))
-        // navigate('/user_home')
+        setLoader(false)
+        if(!loader){
+          navigate('/user_home')
+        }
     }
     else{
         fail(data.message);
         console.log("else block");
-        console.log(data.message.split(',')[0]); 
+        setLoader(false)
     }
 } catch (error) {
     fail("An Error Occured");
+    setLoader(false)
+    fail("Try after some time")
     console.log("catch block in frontend active due to ---  ", error);
 }}
 }
 
   return (
-   
-    <section className=" element-Wrapper flexC space-y-3 pt-[55px]  pb-[20px] ">
+  <>
+    {loader ? (
+      <Loader text="Updating your Project..." />
+    ) :  ( 
+      <section className=" element-Wrapper flexC space-y-3 pt-[55px]  pb-[20px] ">
          
          <h1 className=" text-xl  sm:mt-[20px] mb-[2vh] md:mb-[25px]   md:text-2xl"> Update project </h1>
 
@@ -108,5 +115,7 @@ try {
        </form>
    
    </section>
+   )}
+   </>
   )
 }
