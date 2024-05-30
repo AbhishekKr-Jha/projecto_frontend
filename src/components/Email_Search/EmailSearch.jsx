@@ -15,7 +15,7 @@ export default function EmailSearch() {
   }, []);
   const navigate = useNavigate();
 
-  const userEmail = useSelector((state) => state.login.userLoginDetails.email);
+  const userEmail = useSelector((state) => state.login.userLoginDetails.email) || "default@gmail.com"
   const isFollowedByMe = useSelector(
     (state) => state.login.userLoginDetails.following
   );
@@ -34,6 +34,8 @@ export default function EmailSearch() {
   const [loader, setLoader] = useState(false);
   //todo ______show or hide the real time serach emails
   const [emailsView, setemailsView] = useState(false);
+  //todo ______setting data
+  // const [data,setData]=useState(null)
   const get_projects = async () => {
     
     setemailsView(false);
@@ -43,25 +45,20 @@ export default function EmailSearch() {
       } else {
         setLoader(true);
         const { data } = await getProject_function(email, userEmail);
-        console.log(email, userEmail);
         if (data?.success) {
           setLoader(false)
           success(data.message);
           setsuccessResult(true);
           setsearchProject(data.userDetails);
-          console.log("---", data.userDetails);
         } else {
           setLoader(false)
           fail(data.message)
           setprojectCount(true);
           setsuccessResult(false);
-          console.log(data.message);
         }
       }
     } catch (error) {
       fail("Server Error")
-      // console.log("error block");
-      // console.log(error);
     }
   };
 
