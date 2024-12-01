@@ -27,7 +27,7 @@ function InfoBox() {
         ></i>
 
         {!JSON.parse(localStorage.getItem("notificationNumbers")) && (
-          <span className="absolute h-[20px] w-[20px] flex justify-center items-center bottom-0 -left-1 bg-white rounded-full font-semibold text-red-700">
+          <span className="pulse-ball absolute h-[20px] w-[20px] flex justify-center items-center bottom-0 -left-1 bg-white rounded-full font-semibold text-red-700">
             1
           </span>
         )}

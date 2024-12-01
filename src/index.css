@@ -105,3 +105,27 @@ h2::selection {
   color: green;
   background-color: black;
 }
+
+
+
+
+.pulse-ball {
+  border-radius: 100%;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0.7); /* Initial glow */
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); /* Start with small glow */
+  }
+  40% {
+    box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.8), 0 0 30px 20px rgba(255, 255, 255, 0.5); /* Soft glow + second glow */
+  }
+  70% {
+    box-shadow: 0 0 20px 15px rgba(255, 255, 255, 0.9), 0 0 40px 25px rgba(255, 255, 255, 0.4); /* More intense glow */
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); /* Fade out with no glow */
+  }
+}
